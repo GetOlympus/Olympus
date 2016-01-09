@@ -1,0 +1,56 @@
+##############################################
+# @package Olympus
+# @author Achraf Chouk <achrafchouk@gmail.com>
+# @since 0.0.1
+##############################################
+
+# Composer
+composer.lock
+vendor/
+
+# Useless auto-generated files
+.DS_Store
+.idea/
+Thumbs.db
+
+# Olympus dist files
+/app/cache/*
+/app/config/*
+!/app/config/common.php.dist
+!/app/config/env.php.dist
+/app/config/env/*
+!/app/config/env/prod.php.dist
+/app/logs/*
+!/app/logs/.gitkeep
+
+# WordPress core
+/web/cms/*
+!/web/cms/.gitkeep
+
+# WordPress languages
+/web/statics/languages/
+
+# WordPress must use plugins
+/web/statics/mu-plugins/*
+!/web/statics/mu-plugins/.gitkeep
+!/web/statics/mu-plugins/index.php
+!/web/statics/mu-plugins/load-olympus.php
+
+# WordPress plugins
+/web/statics/plugins/*
+!/web/statics/plugins/.gitkeep
+!/web/statics/plugins/index.php
+
+# WordPress themes
+/web/statics/themes/*
+!/web/statics/themes/.gitkeep
+!/web/statics/themes/index.php
+
+# WordPress upgrade
+/web/statics/upgrade/
+
+# WordPress uploads
+/web/statics/uploads/*
+!/web/statics/uploads/.gitkeep
+!/web/statics/uploads/index.php
+

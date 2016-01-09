@@ -1,0 +1,42 @@
+{
+  "name": "crewstyle/olympus",
+  "type": "project",
+  "description": "The Olympus framework, made with ♥ especially for WordPress developers.",
+  "keywords": ["olympus", "wordpress", "framework", "php"],
+  "homepage": "https://github.com/crewstyle/Olympus",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Achraf Chouk",
+      "email": "achrafchouk@gmail.com",
+      "homepage": "https://github.com/crewstyle"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://wpackagist.org"
+    }
+  ],
+  "config": {
+    "preferred-install": "dist"
+  },
+  "require": {
+    "php": ">=5.4",
+    "crewstyle/tea-theme-options": ">=3.3",
+    "johnpbloch/wordpress": ">=4.3",
+    "mkomorowski/php-config": "1.0",
+    "wpackagist-theme/twentysixteen": "*"
+  },
+  "minimum-stability": "stable",
+  "extra": {
+  	"branch-alias": {
+      "dev-master": "0.x-dev"
+    },
+    "installer-paths":{
+      "web/statics/plugins/{$name}/": ["type:wordpress-plugin"],
+      "web/statics/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "wordpress-install-dir": "web/cms"
+  }
+}

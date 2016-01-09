@@ -1,0 +1,55 @@
+<?php
+
+/**
+ *
+ * @package Olympus
+ * @author Achraf Chouk <achrafchouk@gmail.com>
+ * @since 0.0.1
+ *
+ */
+
+/**
+ * Database.
+ */
+define('DB_CHARSET', 'utf8');
+define('DB_COLLATE', '');
+
+/**
+ * WordPress Database Table prefix.
+ */
+$table_prefix = 'wp_';
+
+/**
+ * Authentication unique keys and salts.
+ * @link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service 
+ */
+define('AUTH_KEY',         'put your unique phrase here');
+define('SECURE_AUTH_KEY',  'put your unique phrase here');
+define('LOGGED_IN_KEY',    'put your unique phrase here');
+define('NONCE_KEY',        'put your unique phrase here');
+define('AUTH_SALT',        'put your unique phrase here');
+define('SECURE_AUTH_SALT', 'put your unique phrase here');
+define('LOGGED_IN_SALT',   'put your unique phrase here');
+define('NONCE_SALT',       'put your unique phrase here');
+
+/**
+ * Custom settings common for all environments.
+ */
+// Change admin panel language.
+define('WPLANG', 'en_EN');
+
+// Disable the auto updator of the core system.
+define('WP_AUTO_UPDATE_CORE', false);
+
+// Disable internal CRON tasks and redirection to the alternative one.
+define('ALTERNATE_WP_CRON', false);
+define('DISABLE_WP_CRON', true);
+
+// Fix revisions up to 10 - 0 to disable revisions, remove the line to make it infinite.
+define('WP_POST_REVISIONS', 3);
+
+// Disable file editor in the "Theme editor"
+define('DISALLOW_FILE_EDIT', true);
+
+// Enable internal cache.
+define('WP_CACHE', false);
