@@ -17,7 +17,6 @@ $path = dirname(__DIR__);
 defined('S')           or define('S',           DIRECTORY_SEPARATOR);
 // Paths.
 defined('APPPATH')     or define('APPPATH',     $path.S.'app'.S);
-defined('LIBRARYPATH') or define('LIBRARYPATH', $path.S.'library'.S);
 defined('VENDORPATH')  or define('VENDORPATH',  $path.S.'vendor'.S);
 defined('WEBPATH')     or define('WEBPATH',     $path.S.'web'.S);
 // Contents folder
