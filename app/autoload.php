@@ -14,7 +14,8 @@
 if (!file_exists($autoload = VENDORPATH.'autoload.php')) {
     die('
         <h1>Unable to find composer autoloader.</h1>
-        Please use: <code>curl -s http://getcomposer.org/installer | php</code> and <code>php composer.phar install</code>
+        Please use: <code>curl -s http://getcomposer.org/installer | php</code> 
+        and <code>php composer.phar install</code>
     ');
 }
 

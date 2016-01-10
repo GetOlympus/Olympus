@@ -12,31 +12,41 @@
       "homepage": "https://github.com/crewstyle"
     }
   ],
+  "autoload": {
+    "psr-0": {
+      "": "src/"
+    },
+    "psr-4": {
+      "crewstyle\\TeaThemeOptions\\": "src/"
+    }
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.x-dev"
+    },
+    "installer-paths":{
+      "web/statics/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "web/statics/plugins/{$name}/": ["type:wordpress-plugin"],
+      "web/statics/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "wordpress-install-dir": "web/cms"
+  },
+  "minimum-stability": "stable",
   "repositories": [
     {
       "type": "composer",
       "url": "http://wpackagist.org"
     }
   ],
-  "config": {
-    "preferred-install": "dist"
-  },
   "require": {
     "php": ">=5.4",
     "crewstyle/tea-theme-options": ">=3.3",
     "johnpbloch/wordpress": ">=4.3",
     "mkomorowski/php-config": "1.0",
-    "wpackagist-theme/twentysixteen": "*"
-  },
-  "minimum-stability": "stable",
-  "extra": {
-  	"branch-alias": {
-      "dev-master": "0.x-dev"
-    },
-    "installer-paths":{
-      "web/statics/plugins/{$name}/": ["type:wordpress-plugin"],
-      "web/statics/themes/{$name}/": ["type:wordpress-theme"]
-    },
-    "wordpress-install-dir": "web/cms"
+    "wpackagist-theme/twentysixteen": "*",
+    "jarednova/timber": "^0.22.4"
   }
 }
