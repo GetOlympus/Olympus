@@ -3,7 +3,6 @@
 _**Olympus** is a simple, easy to use and powerfull **framework** to deploy and work with **WordPress**. An awesome framework build with ♥ for **WordPress developers**.  
 [![Total Downloads](https://img.shields.io/packagist/dt/crewstyle/olympus.svg?style=flat-square)](https://packagist.org/packages/crewstyle/olympus) 
 [![GitHub version](https://img.shields.io/github/tag/crewstyle/Olympus.svg?style=flat-square)](https://github.com/crewstyle/Olympus) 
-[![OpenHub](https://www.openhub.net/p/OlympusFramework/widgets/project_thin_badge?format=gif)](https://www.openhub.net/p/OlympusFramework) 
 ~ ![For WordPress](https://img.shields.io/badge/for-WordPress-00aadc.svg?style=flat-square) 
 ~ ![With GruntJS](https://img.shields.io/badge/with-GruntJS-fba919.svg?style=flat-square) 
 ![With Bower](https://img.shields.io/badge/with-Bower-ffcc2f.svg?style=flat-square)  
