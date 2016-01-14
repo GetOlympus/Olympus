@@ -9,18 +9,18 @@
  */
 
 /**
+ * Path to WordPress.
+ */
+if (!defined('ABSPATH')) {
+    define('ABSPATH', WEBPATH.'cms'.S);
+}
+
+/**
  * Include composer autoloading.
  */
-require_once(APPPATH.'autoload.php');
+$loader = require_once APPPATH.'autoload.php';
 
 /**
  * Load environment configuration.
  */
-require_once(APPPATH.'environment.php');
-
-/**
- * Path to WordPress.
- */
-if (!defined('ABSPATH')) {
-	define('ABSPATH', WEBPATH.'cms'.S);
-}
+require_once APPPATH.'environment.php';

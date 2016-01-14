@@ -23,6 +23,10 @@ Thumbs.db
 /app/logs/*
 !/app/logs/.gitkeep
 
+# Olympus packages assets
+/web/medias/*
+!/web/medias/.gitkeep
+
 # WordPress core
 /web/cms/*
 !/web/cms/.gitkeep
@@ -34,7 +38,7 @@ Thumbs.db
 /web/statics/mu-plugins/*
 !/web/statics/mu-plugins/.gitkeep
 !/web/statics/mu-plugins/index.php
-!/web/statics/mu-plugins/load-olympus.php
+!/web/statics/mu-plugins/autoload.php
 
 # WordPress plugins
 /web/statics/plugins/*

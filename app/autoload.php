@@ -19,7 +19,7 @@ if (!file_exists($autoload = VENDORPATH.'autoload.php')) {
     ');
 }
 
-require $autoload;
+$loader = require $autoload;
 
 /**
  * Include the compiled class file.
@@ -31,3 +31,8 @@ require $autoload;
 if (file_exists($compiled = APPPATH.'cache'.S.'compiled.php')) {
     require $compiled;
 }
+
+/**
+ * Return autoload.
+ */
+return $loader;

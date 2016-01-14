@@ -1,7 +1,7 @@
 {
   "name": "crewstyle/olympus",
   "type": "project",
-  "description": "The Olympus framework, made with ♥ especially for WordPress developers.",
+  "description": "The Olympus framework, Your simple, easy to use and powerfull framework to deploy and work with WordPress. An awesome framework build with ♥ for WordPress developers.",
   "keywords": ["olympus", "wordpress", "framework", "php"],
   "homepage": "https://github.com/crewstyle/Olympus",
   "license": "MIT",
@@ -12,14 +12,6 @@
       "homepage": "https://github.com/crewstyle"
     }
   ],
-  "autoload": {
-    "psr-0": {
-      "": "src/"
-    },
-    "psr-4": {
-      "crewstyle\\TeaThemeOptions\\": "src/"
-    }
-  },
   "config": {
     "preferred-install": "dist"
   },
@@ -43,10 +35,15 @@
   ],
   "require": {
     "php": ">=5.4",
-    "crewstyle/tea-theme-options": ">=3.3",
+    "crewstyle/olympus-zeus": ">=4.0",
+    "jarednova/timber": "^0.22.4",
     "johnpbloch/wordpress": ">=4.3",
     "mkomorowski/php-config": "1.0",
-    "wpackagist-theme/twentysixteen": "*",
-    "jarednova/timber": "^0.22.4"
+    "wpackagist-theme/twentysixteen": "*"
+  },
+  "scripts": {
+    "pre-autoload-dump": [
+      "mkdir web/medias/zeus && cp -r vendor/crewstyle/olympus-zeus/assets web/medias/zeus"
+    ]
   }
 }

@@ -22,7 +22,7 @@ if (!file_exists($env = APPPATH.'config'.S.'env.php')) {
 }
 
 // Load all environments
-$getenvs = require_once($env);
+$getenvs = require_once $env;
 $environments = new mKomorowski\Config\Environments($getenvs);
 
 // Retrieve all configs
@@ -87,4 +87,4 @@ if (!file_exists($common = APPPATH.'config'.S.'common.php')) {
     ');
 }
 
-require_once($common);
+require_once $common;
