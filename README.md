@@ -48,7 +48,7 @@ Guys, do **not** hesitate to spread your love about the **Olympus WordPress fram
 + http://github.com/crewstyle
 
 Please, read [LICENSE](https://github.com/crewstyle/Olympus/blob/master/LICENSE "LICENSE") for more details.  
-[![MIT](https://img.shields.io/badge/license-MIT_License-brightgreen.svg?style=flat-square)](http://opensource.org/licenses/MIT "MIT")  
+[![MIT](https://img.shields.io/badge/license-MIT_License-blue.svg?style=flat-square)](http://opensource.org/licenses/MIT "MIT")  
 
 ---
 
