@@ -1,9 +1,17 @@
-# Olympus [![GitHub version](https://badge.fury.io/gh/crewstyle%2FOlympus.svg)](https://packagist.org/packages/crewstyle/olympus)
+# Olympus [![Packagist version](https://img.shields.io/packagist/v/crewstyle/olympus.svg?style=flat-square)](https://packagist.org/packages/crewstyle/olympus)
 
-[![Total Downloads](https://poser.pugx.org/crewstyle/olympus/downloads.svg)](https://packagist.org/packages/crewstyle/olympus) 
-[![License](https://poser.pugx.org/crewstyle/olympus/license.svg)](https://github.com/crewstyle/Olympus/blob/master/LICENSE) 
-[![Gratipay](https://img.shields.io/gratipay/crewstyle.svg?style=flat)](https://www.gittip.com/crewstyle/) 
-[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=crewstyle&url=https://github.com/crewstyle/Olympus&title=Olympus&language=&tags=github&category=software)
+[![Total Downloads](https://img.shields.io/packagist/dt/crewstyle/olympus.svg?style=flat-square)](https://packagist.org/packages/crewstyle/olympus) 
+[![License](https://img.shields.io/github/license/crewstyle/Olympus.svg?style=flat-square)](https://github.com/crewstyle/Olympus/blob/master/LICENSE) 
+[![OpenHub](https://www.openhub.net/p/OlympusFramework/widgets/project_thin_badge?format=gif)](https://www.openhub.net/p/OlympusFramework)
+
+---
+
+**The goal of the Olympus team is to work actively on the project of the same name.**  
+Here are all the links you need:
+
+[Salt Bountysource page](https://salt.bountysource.com/teams/olympus)  
+[Bountysource page](https://www.bountysource.com/teams/olympus)  
+[Documentation](https://olympus.readme.io/)
 
 ---
 
@@ -15,7 +23,15 @@ __In progress__
 
 ### Documentation
 
-__In progress__
+[To learn more about the Olympus framework, read the docs](https://olympus.readme.io/).  
+The Olympus framework uses [ReadMe.io](https://readme.io) which was built entirely on Open Source projects.
+
+---
+
+### All we need is looooooooooooove :)
+
+[![Salt Bountysource page](https://img.shields.io/badge/Salt%20Bountysource-♥-brightgreen.svg?style=flat-square)](https://salt.bountysource.com/teams/olympus) [![Bountysource page](https://img.shields.io/badge/Bountysource-♥-brightgreen.svg?style=flat-square)](https://www.bountysource.com/teams/olympus)  
+Guys, do **not** hesitate to spread your love about the **Olympus** framework and **all its packages** ;)
 
 ---
 
