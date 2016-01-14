@@ -1,8 +1,13 @@
 # Olympus [![Packagist version](https://img.shields.io/packagist/v/crewstyle/olympus.svg?style=flat-square)](https://packagist.org/packages/crewstyle/olympus)
 
+_**Olympus** is a simple, easy to use and powerfull **framework** to deploy and work with **WordPress**. An awesome framework build with ♥ for **WordPress developers**.  
 [![Total Downloads](https://img.shields.io/packagist/dt/crewstyle/olympus.svg?style=flat-square)](https://packagist.org/packages/crewstyle/olympus) 
 [![License](https://img.shields.io/github/license/crewstyle/Olympus.svg?style=flat-square)](https://github.com/crewstyle/Olympus/blob/master/LICENSE) 
-[![OpenHub](https://www.openhub.net/p/OlympusFramework/widgets/project_thin_badge?format=gif)](https://www.openhub.net/p/OlympusFramework)
+[![GitHub version](https://img.shields.io/github/tag/crewstyle/Olympus.svg?style=flat-square)](https://github.com/crewstyle/Olympus) 
+[![OpenHub](https://www.openhub.net/p/OlympusFramework/widgets/project_thin_badge?format=gif)](https://www.openhub.net/p/OlympusFramework) 
+~ ![For WordPress](https://img.shields.io/badge/for-WordPress-00aadc.svg?style=flat-square) 
+~ ![With GruntJS](https://img.shields.io/badge/with-GruntJS-fba919.svg?style=flat-square) 
+![With Bower](https://img.shields.io/badge/with-Bower-ffcc2f.svg?style=flat-square)  
 
 ---
 
@@ -23,15 +28,15 @@ __In progress__
 
 ### Documentation
 
-[To learn more about the Olympus framework, read the docs](https://olympus.readme.io/).  
-The Olympus framework uses [ReadMe.io](https://readme.io) which was built entirely on Open Source projects.
+[To learn more about the **Olympus WordPress framework**, read the docs](https://olympus.readme.io/).  
+The **Olympus WordPress framework** uses [ReadMe.io](https://readme.io) which was built entirely on Open Source projects.
 
 ---
 
 ### All we need is looooooooooooove :)
 
 [![Salt Bountysource page](https://img.shields.io/badge/Salt%20Bountysource-♥-brightgreen.svg?style=flat-square)](https://salt.bountysource.com/teams/olympus) [![Bountysource page](https://img.shields.io/badge/Bountysource-♥-brightgreen.svg?style=flat-square)](https://www.bountysource.com/teams/olympus)  
-Guys, do **not** hesitate to spread your love about the **Olympus** framework and **all its packages** ;)
+Guys, do **not** hesitate to spread your love about the **Olympus WordPress framework** and **all its packages** ;)
 
 ---
 
