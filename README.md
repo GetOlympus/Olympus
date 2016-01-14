@@ -2,7 +2,6 @@
 
 _**Olympus** is a simple, easy to use and powerfull **framework** to deploy and work with **WordPress**. An awesome framework build with ♥ for **WordPress developers**.  
 [![Total Downloads](https://img.shields.io/packagist/dt/crewstyle/olympus.svg?style=flat-square)](https://packagist.org/packages/crewstyle/olympus) 
-[![License](https://img.shields.io/github/license/crewstyle/Olympus.svg?style=flat-square)](https://github.com/crewstyle/Olympus/blob/master/LICENSE) 
 [![GitHub version](https://img.shields.io/github/tag/crewstyle/Olympus.svg?style=flat-square)](https://github.com/crewstyle/Olympus) 
 [![OpenHub](https://www.openhub.net/p/OlympusFramework/widgets/project_thin_badge?format=gif)](https://www.openhub.net/p/OlympusFramework) 
 ~ ![For WordPress](https://img.shields.io/badge/for-WordPress-00aadc.svg?style=flat-square) 
@@ -48,7 +47,7 @@ Guys, do **not** hesitate to spread your love about the **Olympus WordPress fram
 + http://twitter.com/crewstyle
 + http://github.com/crewstyle
 
-Please, read [LICENSE](https://github.com/crewstyle/Olympus/blob/master/LICENSE "LICENSE") ([MIT](http://opensource.org/licenses/MIT "MIT")) for more details.
+Please, read [LICENSE](https://github.com/crewstyle/Olympus/blob/master/LICENSE "LICENSE") [![MIT](https://img.shields.io/badge/license-MIT_License-brightgreen.svg?style=flat-square)](http://opensource.org/licenses/MIT "MIT") for more details.
 
 ---
 
