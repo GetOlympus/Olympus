@@ -85,8 +85,6 @@ add_action('setup_theme', function (){
     define('OLZ_HOME', OL_TPL_HOME);
     //The language blog
     define('OLZ_LOCAL', OL_TPL_LANGUAGE);
-    //The path
-    //define('OLZ_PATH', dirname(APPPATH));
     //The URI
     define('OLZ_URI', OL_TPL_HOME.'/medias/zeus');
     //The Twig cache folder

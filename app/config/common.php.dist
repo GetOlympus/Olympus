@@ -35,9 +35,6 @@ define('NONCE_SALT',       'put your unique phrase here');
 /**
  * Custom settings common for all environments.
  */
-// Change admin panel language.
-define('WPLANG', 'en_EN');
-
 // Disable the auto updator of the core system.
 define('WP_AUTO_UPDATE_CORE', false);
 
