@@ -35,11 +35,11 @@ $config = new mKomorowski\Config\Config($loader, $environments, 'dev');
 define('DB_HOST',           $config->has('database.host') ? $config->get('database.host') : '127.0.0.1');
 define('DB_NAME',           $config->has('database.name') ? $config->get('database.name') : 'wordpress');
 define('DB_USER',           $config->has('database.user') ? $config->get('database.user') : 'root');
-define('DB_PASSWORD',       $config->has('database.password') ? $config->get('database.password') : 'password');
+define('DB_PASSWORD',       $config->has('database.pass') ? $config->get('database.pass') : 'password');
 
 // WordPress URLs
-$home = $config->has('wordpress.home') ? $config->get('wordpress.home') : 'http://localhost';
-$siteurl = $config->has('wordpress.siteurl') ? $config->get('wordpress.siteurl') : 'http://localhost/cms';
+$home = $config->has('wordpress.home') ? $config->get('wordpress.home') : 'http://staging.domain.tld';
+$siteurl = $config->has('wordpress.siteurl') ? $config->get('wordpress.siteurl') : 'http://staging.domain.tld/cms';
 
 // CHeck home and siteurl
 if ($home === $siteurl) {

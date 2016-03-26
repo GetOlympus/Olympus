@@ -8,18 +8,28 @@
 composer.lock
 vendor/
 
+# Capistrano
+.bundle
+
 # Useless auto-generated files
 .DS_Store
 .idea/
 Thumbs.db
 
+# Capistrano dist files
+/app/deploy/stages/*
+!/app/deploy/stages/production.rb.dist
+!/app/deploy/stages/staging.rb.dist
+
 # Olympus dist files
-/app/cache/*
 /app/config/*
 !/app/config/common.php.dist
 !/app/config/env.php.dist
 /app/config/env/*
-!/app/config/env/prod.php.dist
+!/app/config/env/production.php.dist
+!/app/config/env/staging.php.dist
+/app/cache/*
+!/app/cache/.gitkeep
 /app/logs/*
 !/app/logs/.gitkeep
 
@@ -37,8 +47,8 @@ Thumbs.db
 # WordPress must use plugins
 /web/statics/mu-plugins/*
 !/web/statics/mu-plugins/.gitkeep
-!/web/statics/mu-plugins/index.php
 !/web/statics/mu-plugins/autoload.php
+!/web/statics/mu-plugins/index.php
 
 # WordPress plugins
 /web/statics/plugins/*
@@ -57,4 +67,3 @@ Thumbs.db
 /web/statics/uploads/*
 !/web/statics/uploads/.gitkeep
 !/web/statics/uploads/index.php
-

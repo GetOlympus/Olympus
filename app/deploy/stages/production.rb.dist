@@ -1,0 +1,42 @@
+# Setup Server
+set :stage, :production
+set :stage_url, 'http://www.domain.tld'
+
+# ~~~~
+
+# Setup roles
+role :app, %w{production1 production2}
+role :web, %w{production1 production2}
+role :db,  %w{production1 production2}
+
+# ~~~~
+
+# Setup Git
+set :branch, 'master'
+set :deploy_to, '/path/to/project'
+
+# ~~~~
+
+# Servers configuration: 'production1'
+server 'production1',
+  user: 'ssh_user',
+  roles: %w{web app db},
+  hostname: 'ssh_hostname_1',
+  ssh_options: {
+    user: 'ssh_user',
+    keys: %w(/path/to/file/id_rsa), # ~/.ssh/id_rsa
+    forward_agent: true,
+    auth_methods: %w(publickey)
+  }
+
+# Servers configuration: 'production2'
+server 'production2',
+  user: 'ssh_user',
+  roles: %w{web app db},
+  hostname: 'ssh_hostname_2',
+  ssh_options: {
+    user: 'ssh_user',
+    keys: %w(/path/to/file/id_rsa), # ~/.ssh/id_rsa
+    forward_agent: true,
+    auth_methods: %w(publickey)
+  }

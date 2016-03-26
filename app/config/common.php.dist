@@ -35,10 +35,7 @@ define('NONCE_SALT',       'put your unique phrase here');
 /**
  * Custom settings common for all environments.
  */
-// Disable the auto updator of the core system.
-define('WP_AUTO_UPDATE_CORE', false);
-
-// Disable internal CRON tasks and redirection to the alternative one.
+// Disable internal CRON tasks and redirection to the alternative one to let admin network uses real Cron tasks.
 define('ALTERNATE_WP_CRON', false);
 define('DISABLE_WP_CRON', true);
 
@@ -48,5 +45,5 @@ define('WP_POST_REVISIONS', 3);
 // Disable file editor in the "Theme editor"
 define('DISALLOW_FILE_EDIT', true);
 
-// Enable internal cache.
+// Enable internal cache in production environment only.
 define('WP_CACHE', false);

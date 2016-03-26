@@ -9,13 +9,12 @@ _**Olympus** is a simple, easy to use and powerfull **framework** to deploy and 
 [![Total Downloads](https://img.shields.io/packagist/dt/crewstyle/olympus.svg?style=flat-square)](https://packagist.org/packages/crewstyle/olympus) 
 [![GitHub version](https://img.shields.io/github/tag/crewstyle/Olympus.svg?style=flat-square)](https://github.com/crewstyle/Olympus) 
 ![For WordPress](https://img.shields.io/badge/for-WordPress-00aadc.svg?style=flat-square) 
-~ ![With GruntJS](https://img.shields.io/badge/with-GruntJS-fba919.svg?style=flat-square) 
-![With Bower](https://img.shields.io/badge/with-Bower-ffcc2f.svg?style=flat-square)  
+~ ![With Composer](https://img.shields.io/badge/with-Composer-885630.svg?style=flat-square) 
+![With Capistrano](https://img.shields.io/badge/with-Capistrano-52c1db.svg?style=flat-square)  
 
 ---
 
-**The goal of the Olympus team is to work actively on the project of the same name.**  
-Here are all the links you need:
+To follow more about the project and help if you want:
 
 [Github project repository](https://github.com/crewstyle/Olympus)  
 [Salt Bountysource page](https://salt.bountysource.com/teams/olympus)  
@@ -24,36 +23,35 @@ Here are all the links you need:
 
 ---
 
+### Requirements
+
+The **Olympus framework** needs [**composer**](https://getcomposer.org/) to be installed.  
+Just follow the instructions to install it in your working environments.
+
+---
+
+### Optional
+
+The **Olympus framework** also works with [**capistrano**](http://capistranorb.com/) if you need it.  
+Just follow the instructions to install it in your working environments.
+
+---
+
+### Installation
+
+_In progress_
+
+---
+
 ### What's inside?
 
---
+[**Olympus Zeus**](https://github.com/crewstyle/OlympusZeus)  
+A library allows you to easily add professional looking theme options panels to your WordPress website.  
+[![Packagist version](https://img.shields.io/packagist/v/crewstyle/olympus-zeus.svg?style=flat-square)](https://packagist.org/packages/crewstyle/olympus-zeus)
 
-### Olympus Zeus [![Packagist version](https://img.shields.io/packagist/v/crewstyle/olympus-zeus.svg?style=flat-square)](https://packagist.org/packages/crewstyle/olympus-zeus) 
-
-**The Olympus Zeus library allows you to easily add professional looking theme options panels to your WordPress website.**
-
-Easier for administrators **and** developers, the interface is thought to be the most user-friendly. The **Olympus Zeus** adds some extra interface customisations to make your life easier. Developers can now create new admin panels with just a couple lines of codes. All is made to allow non-developer profiles to easily create the settings they need to customise their templates.
-
-**The Olympus Zeus is built with ♥ for WordPress v3.x/4.x and uses the WordPress built-in pages.**
-
-Custom post types, custom terms, here is the simpliest way to create custom content types to your **WordPress** website. A new experience with dashicons, complete customisable backend panels, custom fields and datas saved in DB as the good way. The **Olympus Zeus** uses the **WordPress** Media Manager too: a beautiful interface where you can create galleries faster with drag-and-drop reordering, inline caption editing, and simplified controls.
-
-**A better search engine, real related contents, highly smart algorithms. The Olympus Zeus offers you full of functionalities.**
-
-The **Olympus Zeus** works has deeply integrated ElasticSearch search engine features to creates scaleable, real-time search for your website by indexing all your datas millions of times a day. Related contents works by the same way. The **Olympus Zeus** is upgraded every day with new features you can use as you need.
-
---
-
-### Olympus Hera [![Build Status](https://img.shields.io/travis/crewstyle/OlympusHera.svg?style=flat-square)](https://travis-ci.org/crewstyle/OlympusHera) 
-
-**Makes your WordPress better, faster and more user-friendly.**
-
-Contains all jQuery scripts and Less css styles to make your **WordPress** admin panel works with the Olympus Zeus library.  
-The **Olympus Hera** library provides 4 **WordPress** admin panel themes that you can set in your profile. You can use them easily by installing the Olympus Zeus library in your **WordPress** theme.
-
-**Easy to include for developers.**
-
-The **Olympus Hera** library is made with GruntJS and bower. So you can easily use the `bower install --save olympus.hera` or `npm install olympus.hera` to install it in your project.
+[**Olympus Hera**](https://github.com/crewstyle/OlympusHera)  
+The framework core system used to make all libraries work efficiently.  
+[![Build Status](https://img.shields.io/travis/crewstyle/OlympusHera.svg?style=flat-square)](https://travis-ci.org/crewstyle/OlympusHera)
 
 ---
 
