@@ -16,16 +16,16 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     capistrano-composer (0.0.6)
       capistrano (>= 3.0.0.pre)
-    capistrano-wpcli (0.0.9)
-      capistrano (>= 3.0)
     i18n (0.7.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.1.1)
-    rake (11.1.1)
+    rake (11.1.2)
     sshkit (1.9.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    sshkit-sudo (0.1.0)
+      sshkit (~> 1.8)
 
 PLATFORMS
   ruby
@@ -33,7 +33,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano!
   capistrano-composer
-  capistrano-wpcli
+  sshkit-sudo
 
 BUNDLED WITH
    1.10.6

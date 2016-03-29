@@ -24,7 +24,7 @@ server 'production1',
   hostname: 'ssh_hostname_1',
   ssh_options: {
     user: 'ssh_user',
-    keys: %w(/path/to/file/id_rsa), # ~/.ssh/id_rsa
+    keys: %w(/path/to/file/id_rsa),
     forward_agent: true,
     auth_methods: %w(publickey)
   }
@@ -36,7 +36,7 @@ server 'production2',
   hostname: 'ssh_hostname_2',
   ssh_options: {
     user: 'ssh_user',
-    keys: %w(/path/to/file/id_rsa), # ~/.ssh/id_rsa
+    keys: %w(/path/to/file/id_rsa),
     forward_agent: true,
     auth_methods: %w(publickey)
   }

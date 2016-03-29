@@ -4,14 +4,9 @@
  *
  * @package Olympus
  * @author Achraf Chouk <achrafchouk@gmail.com>
- * @since 0.0.1
+ * @since 0.0.2
  *
  */
-
-/**
- * Load environment files.
- */
-$loader = new mKomorowski\Config\Loader(APPPATH.'config'.S.'env'.S);
 
 // Return array of environment data
 if (!file_exists($env = APPPATH.'config'.S.'env.php')) {
@@ -22,29 +17,41 @@ if (!file_exists($env = APPPATH.'config'.S.'env.php')) {
 }
 
 // Load all environments
-$getenvs = require_once $env;
-$environments = new mKomorowski\Config\Environments($getenvs);
+$environments = require_once $env;
 
-// Retrieve all configs
-$config = new mKomorowski\Config\Config($loader, $environments, 'dev');
+// Retrieve all configs and merge them with defaults
+$config = array_merge([
+    'database' => [
+        'host' => '127.0.0.1',
+        'name' => 'wordpress',
+        'user' => 'root',
+        'pass' => 'password',
+    ],
+    'wordpress' => [
+        'home' => 'http://www.domain.tld',
+        'siteurl' => 'http://www.domain.tld/cms',
+    ],
+    'https' => false,
+    'debug' => false,
+], $environments);
 
 /**
  * Define environment constants.
  */
 // Database
-define('DB_HOST',           $config->has('database.host') ? $config->get('database.host') : '127.0.0.1');
-define('DB_NAME',           $config->has('database.name') ? $config->get('database.name') : 'wordpress');
-define('DB_USER',           $config->has('database.user') ? $config->get('database.user') : 'root');
-define('DB_PASSWORD',       $config->has('database.pass') ? $config->get('database.pass') : 'password');
+define('DB_HOST',           $config['database']['host'];
+define('DB_NAME',           $config['database']['name'];
+define('DB_USER',           $config['database']['user'];
+define('DB_PASSWORD',       $config['database']['pass'];
 
 // WordPress URLs
-$home = $config->has('wordpress.home') ? $config->get('wordpress.home') : 'http://staging.domain.tld';
-$siteurl = $config->has('wordpress.siteurl') ? $config->get('wordpress.siteurl') : 'http://staging.domain.tld/cms';
+$home = $config['wordpress']['home'];
+$siteurl = $config['wordpress']['siteurl'];
 
 // CHeck home and siteurl
 if ($home === $siteurl) {
     die('
-        <h1>Your home and site url values cannot be identical.</h1>
+        <h1>For your security, your home and site url values cannot be identical.</h1>
         Please define your environments properly.
     ');
 }
@@ -53,7 +60,7 @@ define('WP_HOME',           $home);
 define('WP_SITEURL',        $siteurl);
 
 // Debug
-if (!$config->has('debug') || false === $config->get('debug')) {
+if (false === $config->get('debug')) {
     // Development
     define('SAVEQUERIES',       false);
     define('SCRIPT_DEBUG',      false);
@@ -63,11 +70,11 @@ if (!$config->has('debug') || false === $config->get('debug')) {
 }
 else {
     // Development
-    define('SAVEQUERIES',       $config->has('debug.savequeries') ? $config->get('debug.savequeries') : false);
-    define('SCRIPT_DEBUG',      $config->has('debug.script_debug') ? $config->get('debug.script_debug') : false);
-    define('WP_DEBUG_DISPLAY',  $config->has('debug.wp_debug_display') ? $config->get('debug.wp_debug_display') : false);
-    define('WP_DEBUG_LOG',      $config->has('debug.wp_debug_log') ? $config->get('debug.wp_debug_log') : false);
-    define('WP_DEBUG',          $config->has('debug.wp_debug') ? $config->get('debug.wp_debug') : false);
+    define('SAVEQUERIES',       isset($config['debug']['savequeries']) ? $config['debug']['savequeries'] : false);
+    define('SCRIPT_DEBUG',      isset($config['debug']['script_debug']) ? $config['debug']['script_debug'] : false);
+    define('WP_DEBUG_DISPLAY',  isset($config['debug']['wp_debug_display']) ? $config['debug']['wp_debug_display'] : false);
+    define('WP_DEBUG_LOG',      isset($config['debug']['wp_debug_log']) ? $config['debug']['wp_debug_log'] : false);
+    define('WP_DEBUG',          isset($config['debug']['wp_debug']) ? $config['debug']['wp_debug'] : false);
 }
 
 /**

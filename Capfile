@@ -9,8 +9,8 @@ require 'capistrano/setup'
 # Include default deployment tasks
 require 'capistrano/deploy'
 
-# Include wp-cli tool
-require 'capistrano/wpcli'
+# Include sshkit-sudo tool
+require 'sshkit/sudo'
 
 # Load custom tasks if needed
 Dir.glob('app/deploy/tasks/*.rake').each { |r| import r }

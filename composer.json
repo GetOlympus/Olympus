@@ -38,12 +38,11 @@
     "crewstyle/olympus-zeus": ">=4.0",
     "jarednova/timber": "^0.22.4",
     "johnpbloch/wordpress": ">=4.3",
-    "mkomorowski/php-config": "1.0",
     "wpackagist-theme/twentysixteen": "*"
   },
   "scripts": {
     "pre-autoload-dump": [
-      "mkdir web/medias/zeus && cp -r vendor/crewstyle/olympus-zeus/assets web/medias/zeus"
+      "mkdir -p web/medias/zeus && cp -r vendor/crewstyle/olympus-zeus/assets web/medias/zeus"
     ]
   }
 }

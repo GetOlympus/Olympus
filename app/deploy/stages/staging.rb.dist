@@ -18,7 +18,7 @@ server 'staging',
   hostname: 'ssh_hostname',
   ssh_options: {
     user: 'ssh_user',
-    keys: %w(/path/to/file/id_rsa), # ~/.ssh/id_rsa
+    keys: %w(/path/to/file/id_rsa),
     forward_agent: true,
     auth_methods: %w(publickey)
   }

@@ -25,9 +25,6 @@ Thumbs.db
 /app/config/*
 !/app/config/common.php.dist
 !/app/config/env.php.dist
-/app/config/env/*
-!/app/config/env/production.php.dist
-!/app/config/env/staging.php.dist
 /app/cache/*
 !/app/cache/.gitkeep
 /app/logs/*
@@ -43,6 +40,7 @@ Thumbs.db
 
 # WordPress languages
 /web/statics/languages/
+!/web/statics/languages/.gitkeep
 
 # WordPress must use plugins
 /web/statics/mu-plugins/*

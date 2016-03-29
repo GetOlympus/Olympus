@@ -7,5 +7,5 @@ gem 'capistrano', github: 'capistrano/capistrano', branch: 'master'
 # https://github.com/capistrano/composer
 gem 'capistrano-composer'
 
-# https://github.com/lavmeiker/capistrano-wpcli
-gem 'capistrano-wpcli'
+# https://github.com/kentaroi/sshkit-sudo
+gem 'sshkit-sudo'

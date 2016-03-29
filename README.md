@@ -39,7 +39,11 @@ Just follow the instructions to install it in your working environments.
 
 ### Installation
 
-_In progress_
+_I'll work on the README's layout after ;)_  
+```
+composer install
+```
+
 
 ---
 

@@ -1,17 +1,17 @@
-# Robots.txt
+# Robots
 namespace :robots do
 
-  desc "Creates robots.txt"
-  task :create do
-    on roles(:app) do
+  desc "Creates files"
+  task :do_actions do
+    on roles(:web) do
 
-      if fetch(:stage) == :staging then
-        io = StringIO.new('User-agent: *
-Disallow: /
-')
-
-      elsif fetch(:stage) == :production then
-        io = StringIO.new('Sitemap: #{fetch(:localurl)}/sitemap.xml
+      if File.exists?("#{release_path}/web/robots.txt")
+        puts "Copy robots.txt file"
+        upload! StringIO.new(File.read("#{release_path}/web/robots.txt")), "#{shared_path}/web/robots.txt"
+      else
+        puts "Create robots.txt file"
+        if fetch(:stage) == :production then
+          io = StringIO.new("Sitemap: #{fetch(:localurl)}/sitemap.xml
 
 User-agent: *
 Disallow: /*?
@@ -42,15 +42,17 @@ Crawl-delay: 10
 
 User-agent: ia_archiver
 Crawl-delay: 10
-')
+")
+        else
+          io = StringIO.new("User-agent: *
+Disallow: /
+")
+        end
 
-      else
-        io = StringIO.new('# Nothing to do')
+        upload! io, File.join(shared_path, "robots.txt")
+        execute :chmod, "644 #{shared_path}/robots.txt"
+        execute :mv, "#{shared_path}/robots.txt", "#{shared_path}/web/robots.txt"
       end
-
-      upload! io, File.join(shared_path, 'robots.txt')
-      execute :chmod, '644 #{shared_path}/robots.txt'
-      execute :mv, '#{shared_path}/robots.txt', '#{shared_path}/web/robots.txt'
 
     end
   end
