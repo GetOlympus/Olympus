@@ -39,8 +39,9 @@ Thumbs.db
 !/web/cms/.gitkeep
 
 # WordPress languages
-/web/statics/languages/
+/web/statics/languages/*
 !/web/statics/languages/.gitkeep
+!/web/statics/languages/index.php
 
 # WordPress must use plugins
 /web/statics/mu-plugins/*
