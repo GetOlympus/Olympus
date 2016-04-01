@@ -5,4 +5,4 @@ gem 'capistrano', github: 'capistrano/capistrano', branch: 'master'
 # OR: gem 'capistrano', '~> 3.4'
 
 # https://github.com/crewstyle/capistrano-olympus
-gem 'capistrano-olympus', '~> 0.0.1'
+gem 'capistrano-olympus', '~> 0.0.2'
