@@ -4,8 +4,5 @@ source "https://rubygems.org"
 gem 'capistrano', github: 'capistrano/capistrano', branch: 'master'
 # OR: gem 'capistrano', '~> 3.4'
 
-# https://github.com/capistrano/composer
-gem 'capistrano-composer'
-
-# https://github.com/kentaroi/sshkit-sudo
-gem 'sshkit-sudo'
+# https://github.com/crewstyle/capistrano-olympus
+gem 'capistrano-olympus', '~> 0.0.1'

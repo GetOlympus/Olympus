@@ -1,5 +1,5 @@
 ##############################################
-# @package Olympus
+# @package olympus
 # @author Achraf Chouk <achrafchouk@gmail.com>
 # @since 0.0.1
 ##############################################
@@ -10,7 +10,6 @@ vendor/
 
 # Capistrano
 .bundle
-Gemfile.lock
 
 # Useless auto-generated files
 .DS_Store
