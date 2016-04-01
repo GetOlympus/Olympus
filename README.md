@@ -51,8 +51,8 @@ _I'll work on the README's layout after ;)_
 composer install
 
 # Creates your own configuration files
-cp app/config/common.php.dist app/config/common.php
 cp app/config/env.php.dist app/config/env.php
+cp app/config/salt.php.dist app/config/salt.php # Optional
 
 # Creates your own deployment files if you intend to use Capistrano
 cp app/deploy/stages/production.rb.dist app/deploy/stages/production.rb
