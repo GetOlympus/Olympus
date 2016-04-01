@@ -30,23 +30,6 @@ Just follow the instructions to install it in your working environments.
 
 ---
 
-### Optional
-
-The **Olympus framework** also works with [**capistrano**](http://capistranorb.com/) if you need it.  
-Just follow the instructions to install it in your working environments.
-
----
-
-### Installation
-
-_I'll work on the README's layout after ;)_  
-```
-composer install
-```
-
-
----
-
 ### What's inside?
 
 [**Olympus Zeus**](https://github.com/crewstyle/OlympusZeus)  
@@ -56,6 +39,52 @@ A library allows you to easily add professional looking theme options panels to 
 [**Olympus Hera**](https://github.com/crewstyle/OlympusHera)  
 The framework core system used to make all libraries work efficiently.  
 [![Build Status](https://img.shields.io/travis/crewstyle/OlympusHera.svg?style=flat-square)](https://travis-ci.org/crewstyle/OlympusHera)
+
+---
+
+### Installation
+
+_I'll work on the README's layout after ;)_  
+
+```bash
+# Installs all framework dependancies
+composer install
+
+# Creates your own configuration files
+cp app/config/common.php.dist app/config/common.php
+cp app/config/env.php.dist app/config/env.php
+
+# Creates your own deployment files if you intend to use Capistrano
+cp app/deploy/stages/production.rb.dist app/deploy/stages/production.rb
+cp app/deploy/stages/staging.rb.dist app/deploy/stages/staging.rb
+```
+
+---
+
+### Customization
+
+Please, edit your own configuration files to make the **Olympus framework** works properly.
+
++ `app/config/common.php` contains all servers common definitions
++ `app/config/env.php` contains all servers configurable definitions
++ `app/deploy/config.rb` contains all capistrano deploy definitions
+
+That's all to work properly.
+
+---
+
+### Vhost
+
+Please, edit your vhost file to make the `web/` folder as your docroot.  
+The `index.php` file will bootstrap WordPress with all your configuration files.
+
+---
+
+### Deployment process
+
+The **Olympus framework** also works with [**capistrano**](http://capistranorb.com/) if you need it.  
+Edit your `app/deploy/stages/:stage.rb` file (`:stage` can be `staging` or `production`), or create your own deployment file, and update settings.  
+Please, read the `README.md` file to know more: [**Capistrano Olympus**](https://github.com/crewstyle/capistrano-olympus)
 
 ---
 
