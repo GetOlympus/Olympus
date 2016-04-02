@@ -32,6 +32,10 @@ Just follow the instructions to install it in your working environments.
 
 ### What's inside?
 
+[**Capistrano Olympus**](https://github.com/crewstyle/capistrano-olympus)  
+Capistrano tasks for deploying WordPress website easily with the Olympus framework.  
+[![RubyGem version](https://img.shields.io/gem/v/capistrano-olympus.svg?style=flat-square)](https://rubygems.org/gems/capistrano-olympus)
+
 [**Olympus Zeus**](https://github.com/crewstyle/OlympusZeus)  
 A library allows you to easily add professional looking theme options panels to your WordPress website.  
 [![Packagist version](https://img.shields.io/packagist/v/crewstyle/olympus-zeus.svg?style=flat-square)](https://packagist.org/packages/crewstyle/olympus-zeus)
@@ -44,17 +48,21 @@ The framework core system used to make all libraries work efficiently.
 
 ### Installation
 
-_I'll work on the README's layout after ;)_  
+You can easily install the **Olympus framework** in 3 steps:
 
 ```bash
-# Installs all framework dependancies
+# Install all framework dependancies
 composer install
+```
 
-# Creates your own configuration files
+```bash
+# Create your own configuration files
 cp app/config/env.php.dist app/config/env.php
 cp app/config/salt.php.dist app/config/salt.php # Optional
+```
 
-# Creates your own deployment files if you intend to use Capistrano
+```bash
+# Create your own deployment files if you intend to use Capistrano
 cp app/deploy/stages/production.rb.dist app/deploy/stages/production.rb
 cp app/deploy/stages/staging.rb.dist app/deploy/stages/staging.rb
 ```
@@ -65,8 +73,8 @@ cp app/deploy/stages/staging.rb.dist app/deploy/stages/staging.rb
 
 Please, edit your own configuration files to make the **Olympus framework** works properly.
 
-+ `app/config/common.php` contains all servers common definitions
 + `app/config/env.php` contains all servers configurable definitions
++ `app/config/salt.php` contains all salt secret keys for WordPress
 + `app/deploy/config.rb` contains all capistrano deploy definitions
 
 That's all to work properly.
@@ -75,7 +83,11 @@ That's all to work properly.
 
 ### Vhost
 
-Please, edit your vhost file to make the `web/` folder as your docroot.  
+There are 2 ways to edit your vhost file:
+
++ if you use **Capistrano Olympus** as process deployment, make the `current/web/` folder as your docroot
++ if you **do not** use **Capistrano Olympus**, make the `web/` folder as your docroot. Do not forget to create your own `.htaccess` and `robots.txt` files in the `web` folder.
+
 The `index.php` file will bootstrap WordPress with all your configuration files.
 
 ---
