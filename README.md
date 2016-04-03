@@ -63,6 +63,7 @@ cp app/config/salt.php.dist app/config/salt.php # Optional
 
 ```bash
 # Create your own deployment files if you intend to use Capistrano
+cp app/deploy/config.rb.dist app/deploy/config.rb
 cp app/deploy/stages/production.rb.dist app/deploy/stages/production.rb
 cp app/deploy/stages/staging.rb.dist app/deploy/stages/staging.rb
 ```

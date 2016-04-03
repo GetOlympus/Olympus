@@ -36,7 +36,6 @@
   "require": {
     "php": ">=5.4",
     "crewstyle/olympus-zeus": ">=4.0",
-    "jarednova/timber": "^0.22.4",
     "johnpbloch/wordpress": ">=4.3",
     "wpackagist-theme/twentysixteen": "*"
   },

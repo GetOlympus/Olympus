@@ -1,7 +1,7 @@
 ##############################################
 # @package olympus
 # @author Achraf Chouk <achrafchouk@gmail.com>
-# @since 0.0.1
+# @since 0.0.2
 ##############################################
 
 # Composer
@@ -17,6 +17,8 @@ vendor/
 Thumbs.db
 
 # Capistrano dist files
+/app/deploy/*
+!/app/deploy/config.rb.dist
 /app/deploy/stages/*
 !/app/deploy/stages/production.rb.dist
 !/app/deploy/stages/staging.rb.dist
