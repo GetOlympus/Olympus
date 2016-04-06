@@ -32,10 +32,10 @@ $table_prefix = $config['database']['prefix'];
  * Define environment constants.
  */
 // Database
-define('DB_HOST',           $config['database']['host'];
-define('DB_NAME',           $config['database']['name'];
-define('DB_USER',           $config['database']['user'];
-define('DB_PASSWORD',       $config['database']['pass'];
+define('DB_HOST',           $config['database']['host']);
+define('DB_NAME',           $config['database']['name']);
+define('DB_USER',           $config['database']['user']);
+define('DB_PASSWORD',       $config['database']['pass']);
 define('DB_CHARSET',        $config['database']['charset']);
 define('DB_COLLATE',        $config['database']['collate']);
 
