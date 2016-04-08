@@ -5,7 +5,6 @@
 ##############################################
 
 # Composer
-composer.lock
 vendor/
 
 # Capistrano
