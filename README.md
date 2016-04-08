@@ -1,121 +1,100 @@
 # Olympus [![Packagist version](https://img.shields.io/packagist/v/crewstyle/olympus.svg?style=flat-square)](https://packagist.org/packages/crewstyle/olympus)  
 
----
-
-_**Olympus** is a simple, easy to use and powerfull **framework** to deploy and work with **WordPress**. An awesome framework build with ♥ for **WordPress developers**._  
-
----
-
-[![Total Downloads](https://img.shields.io/packagist/dt/crewstyle/olympus.svg?style=flat-square)](https://packagist.org/packages/crewstyle/olympus) 
-[![GitHub version](https://img.shields.io/github/tag/crewstyle/Olympus.svg?style=flat-square)](https://github.com/crewstyle/Olympus) 
-![For WordPress](https://img.shields.io/badge/for-WordPress-00aadc.svg?style=flat-square) 
-~ ![With Composer](https://img.shields.io/badge/with-Composer-885630.svg?style=flat-square) 
-![With Capistrano](https://img.shields.io/badge/with-Capistrano-52c1db.svg?style=flat-square)  
+_**Olympus** is a simple, easy to use and powerfull **framework** to deploy and work with **WordPress**.  
+An awesome framework build with ♥ for **WordPress developers**._  
 
 ---
 
-To follow more about the project and help if you want:
+## Features
 
-[Github project repository](https://github.com/crewstyle/Olympus)  
-[Salt Bountysource page](https://salt.bountysource.com/teams/olympus)  
-[Bountysource page](https://www.bountysource.com/teams/olympus)  
-[Documentation](https://olympus.readme.io/)
++ Better and secure folder structure
++ Autoloader for mu-plugins
++ Auto-generated configuration files with `composer install`
++ Dependency management with [**Composer**](https://getcomposer.org)
++ Remote server automation tool with [**Capistrano**](http://capistranorb.com/)
 
----
-
-### Requirements
-
-The **Olympus framework** needs [**composer**](https://getcomposer.org/) to be installed.  
-Just follow the instructions to install it in your working environments.
+![With Composer](https://img.shields.io/badge/with-Composer-885630.svg?style=flat-square) 
+![With Capistrano](https://img.shields.io/badge/with-Capistrano-52c1db.svg?style=flat-square)
 
 ---
 
-### What's inside?
+## Requirements
 
-[**Capistrano Olympus**](https://github.com/crewstyle/capistrano-olympus)  
-Capistrano tasks for deploying WordPress website easily with the Olympus framework.  
-[![RubyGem version](https://img.shields.io/gem/v/capistrano-olympus.svg?style=flat-square)](https://rubygems.org/gems/capistrano-olympus)
-
-[**Olympus Zeus**](https://github.com/crewstyle/OlympusZeus)  
-A library allows you to easily add professional looking theme options panels to your WordPress website.  
-[![Packagist version](https://img.shields.io/packagist/v/crewstyle/olympus-zeus.svg?style=flat-square)](https://packagist.org/packages/crewstyle/olympus-zeus)
-
-[**Olympus Hera**](https://github.com/crewstyle/OlympusHera)  
-The framework core system used to make all libraries work efficiently.  
-[![Build Status](https://img.shields.io/travis/crewstyle/OlympusHera.svg?style=flat-square)](https://travis-ci.org/crewstyle/OlympusHera)
++ PHP >= 5.4
++ [**Composer**](https://getcomposer.org/)
++ [**Capistrano**](http://capistranorb.com/)
 
 ---
 
-### Installation
+## Installation
 
-You can easily install the **Olympus framework** in 3 steps:
+You can easily install the **Olympus framework** in 2 steps (and a 3rd optional one):
 
 ```bash
-# Install all framework dependancies
+# Clone the repository (use SSH key if you want: git@github.com:crewstyle/Olympus.git)
+git clone https://github.com/crewstyle/Olympus.git projectname
+```
+
+```bash
+# Install framework dependancies via Composer and set your parameters when it's asked
 composer install
 ```
 
 ```bash
-# Create your own configuration files
-cp app/config/env.php.dist app/config/env.php
-cp app/config/salt.php.dist app/config/salt.php # Optional
-```
-
-```bash
-# Create your own deployment files if you intend to use Capistrano
-cp app/deploy/config.rb.dist app/deploy/config.rb
+# [optional] Create your own deployment files if you intend to use Capistrano
 cp app/deploy/stages/production.rb.dist app/deploy/stages/production.rb
 cp app/deploy/stages/staging.rb.dist app/deploy/stages/staging.rb
 ```
 
 ---
 
-### Customization
-
-Please, edit your own configuration files to make the **Olympus framework** works properly.
-
-+ `app/config/env.php` contains all servers configurable definitions
-+ `app/config/salt.php` contains all salt secret keys for WordPress
-+ `app/deploy/config.rb` contains all capistrano deploy definitions
-
-That's all to work properly.
-
----
-
-### Vhost
+## Vhost
 
 There are 2 ways to edit your vhost file:
 
-+ if you use **Capistrano Olympus** as process deployment, make the `current/web/` folder as your docroot
-+ if you **do not** use **Capistrano Olympus**, make the `web/` folder as your docroot. Do not forget to create your own `.htaccess` and `robots.txt` files in the `web` folder.
++ in your remote(s) server(s):
+  + if you use **Capistrano** as process deployment, make the `current/web/` folder as your docroot
+  + if you **do not** use **Capistrano**, make the `web/` folder as your docroot and create your own `web/robots.txt` file
++ in your local environment:
+  + make the `web/` folder as your docroot
 
-The `index.php` file will bootstrap WordPress with all your configuration files.
-
----
-
-### Deployment process
-
-The **Olympus framework** also works with [**capistrano**](http://capistranorb.com/) if you need it.  
-Edit your `app/deploy/stages/:stage.rb` file (`:stage` can be `staging` or `production`), or create your own deployment file, and update settings.  
-Please, read the `README.md` file to know more: [**Capistrano Olympus**](https://github.com/crewstyle/capistrano-olympus)
+The `web/index.php` file will bootstrap WordPress with all your configuration files.
 
 ---
 
-### Documentation
+## Deployment process
+
+The **Olympus framework** also works with [**Capistrano**](http://capistranorb.com/) if you need it.  
+Please, read the `README.md` file of the [**Capistrano Olympus**](https://github.com/crewstyle/capistrano-olympus) to know more.  
+Here are the file to edit:
++ `app/deploy/config.rb`
++ `app/deploy/stages/:stage.rb` (`:stage` can be `staging` or `production`) - _you can also create your own deployment file_ -
+
+---
+
+## In this package ![For WordPress](https://img.shields.io/badge/for-WordPress-00aadc.svg?style=flat-square)
+
++ [**Capistrano Olympus**](https://github.com/crewstyle/capistrano-olympus): _Capistrano tasks for deploying WordPress website easily with the Olympus framework_
++ [**Olympus Hera**](https://github.com/crewstyle/OlympusHera): _the framework core system used to make all libraries work efficiently **(in beta now)**_
++ [**Olympus Zeus**](https://github.com/crewstyle/OlympusZeus): _a library allows you to easily add professional looking theme options panels to your WordPress website_
+
+---
+
+## Documentation
 
 [To learn more about the **Olympus WordPress framework**, read the docs](https://olympus.readme.io/).  
 The **Olympus WordPress framework** uses [ReadMe.io](https://readme.io) which was built entirely on Open Source projects.
 
 ---
 
-### All we need is looooooooooooove :)
+## All we need is looooooooooooove :)
 
 [![Salt Bountysource page](https://img.shields.io/badge/Salt%20Bountysource-♥-brightgreen.svg?style=flat-square)](https://salt.bountysource.com/teams/olympus) [![Bountysource page](https://img.shields.io/badge/Bountysource-♥-brightgreen.svg?style=flat-square)](https://www.bountysource.com/teams/olympus)  
 Guys, do **not** hesitate to spread your love about the **Olympus WordPress framework** and **all its packages** ;)
 
 ---
 
-### Authors and Copyright
+## Authors and Copyright
 
 **Achraf Chouk**
 

@@ -12,6 +12,11 @@
       "homepage": "https://github.com/crewstyle"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "Olympus\\Handler\\": "app/handler/"
+    }
+  },
   "config": {
     "preferred-install": "dist"
   },
@@ -39,8 +44,16 @@
     "johnpbloch/wordpress": ">=4.3",
     "wpackagist-theme/twentysixteen": "*"
   },
+  "require-dev": {
+    "composer/composer": "^1.0"
+  },
   "scripts": {
-    "pre-autoload-dump": [
+    "post-install-cmd": [
+      "Olympus\\Handler\\Configurator::build",
+      "mkdir -p web/medias/zeus && cp -r vendor/crewstyle/olympus-zeus/assets web/medias/zeus"
+    ],
+    "post-update-cmd": [
+      "Olympus\\Handler\\Configurator::build",
       "mkdir -p web/medias/zeus && cp -r vendor/crewstyle/olympus-zeus/assets web/medias/zeus"
     ]
   }
