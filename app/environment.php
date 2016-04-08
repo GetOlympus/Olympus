@@ -56,6 +56,9 @@ if (-1 < $config['wordpress']['revisions']) {
     define('WP_POST_REVISIONS', $config['wordpress']['revisions']);
 }
 
+// Automatic updater
+define('AUTOMATIC_UPDATER_DISABLED',    !$config['wordpress']['updater']);
+
 // If Secure protocol is defined, in a several servers environment with a loadbalancer,
 // the $_SERVER array is not properly defined. So we have to explicitly define HTTPS to 'on'
 // to make WordPress works within it.

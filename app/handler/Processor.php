@@ -11,7 +11,7 @@ use Composer\IO\IOInterface;
  * @package Olympus
  * @subpackage Handler\Processor
  * @author Achraf Chouk <achrafchouk@gmail.com>
- * @since 0.0.3
+ * @since 0.0.4
  *
  */
 
@@ -93,7 +93,7 @@ class Processor
         $this->io->write(sprintf("<comment>All parameters are defined now in your '%s' file</comment>", $realFile));
 
         // Merge values
-        $actualValues = array_merge($actualValues, $userValues);
+        $actualValues = array_merge_recursive($actualValues, $userValues);
 
         // Write in file
         file_put_contents($realFile, "<?php\n\n// This file is auto-generated during the composer install\n\nreturn ".var_export($actualValues, true).";\n");
@@ -169,7 +169,7 @@ class Processor
      * @param array $expectedParams
      * @param array $actualValues
      *
-     * @since 0.0.3
+     * @since 0.0.4
      */
     private function getParams(array $expectedParams, array $actualValues)
     {
@@ -179,10 +179,41 @@ class Processor
         }
 
         // Get forgotten keys
-        $keys = array_diff_key($expectedParams, $actualValues);
+        $keys = $this->keyMatch($expectedParams, $actualValues);
 
         // Iterate on expectedParams and display Q&A
         return $this->treatParams($keys);
+    }
+
+    /**
+     * Return an array that contains keys do not match between $array and $compare.
+     *
+     * @param array $array
+     * @param array $compare
+     * @return array $diffs
+     *
+     * @since 0.0.4
+     */
+    private function keyMatch(array $array, array $compare)
+    {
+        $diffs = [];
+
+        foreach ($array as $k => $value) {
+            if (!array_key_exists($k, $compare)) {
+                $diffs[$k] = $value;
+                continue;
+            }
+
+            if (is_array($value)) {
+                $diff = $this->keyMatch($value, $compare[$k]);
+
+                if (count($diff)) {
+                    $diffs[$k] = $diff;
+                }
+            }
+        }
+
+        return $diffs;
     }
 
     /**
