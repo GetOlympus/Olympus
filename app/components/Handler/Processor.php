@@ -44,7 +44,7 @@ class Processor
     private function _start($realFile)
     {
         // Check file
-        $exists = file_exists($realFile) && is_file($realFile);
+        $exists = is_file($realFile) && !is_link($realFile);
         $action = $exists ? 'Updating' : 'Creating';
 
         # Write
