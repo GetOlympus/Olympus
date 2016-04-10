@@ -11,7 +11,7 @@ use Composer\IO\IOInterface;
  * @package Olympus
  * @subpackage Handler\Processor
  * @author Achraf Chouk <achrafchouk@gmail.com>
- * @since 0.0.4
+ * @since 0.0.3
  *
  */
 
@@ -169,7 +169,7 @@ class Processor
      * @param array $expectedParams
      * @param array $actualValues
      *
-     * @since 0.0.4
+     * @since 0.0.3
      */
     private function getParams(array $expectedParams, array $actualValues)
     {

@@ -14,7 +14,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Olympus\\Handler\\": "app/handler/"
+      "Olympus\\Handler\\": "app/components/Handler/"
     }
   },
   "config": {

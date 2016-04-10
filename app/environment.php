@@ -107,6 +107,7 @@ else {
 define('CONTENT_DIR',       STATICS_DIR);
 define('WP_CONTENT_DIR',    WEBPATH.CONTENT_DIR);
 define('WP_CONTENT_URL',    WP_HOME.S.CONTENT_DIR);
+define('WPMU_PLUGIN_DIR',   WEBPATH.CONTENT_DIR.S.'mu-plugins');
 
 /**
  * Define salt constants.
