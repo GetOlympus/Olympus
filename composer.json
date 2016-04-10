@@ -50,8 +50,7 @@
       "mkdir -p web/medias/zeus && cp -r vendor/crewstyle/olympus-zeus/assets web/medias/zeus"
     ],
     "post-update-cmd": [
-      "Olympus\\Handler\\Configurator::build",
-      "mkdir -p web/medias/zeus && cp -r vendor/crewstyle/olympus-zeus/assets web/medias/zeus"
+      "Olympus\\Handler\\Configurator::build"
     ],
     "test": [
       "vendor/bin/phpcs --ignore=web/cms/,vendor/ -n -s ."
