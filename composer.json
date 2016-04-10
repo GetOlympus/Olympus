@@ -48,11 +48,7 @@
     "composer/composer": "^1.0"
   },
   "scripts": {
-    "post-install-cmd": [
-      "Olympus\\Handler\\Configurator::build",
-      "mkdir -p web/medias/zeus && cp -r vendor/crewstyle/olympus-zeus/assets web/medias/zeus"
-    ],
-    "post-update-cmd": [
+    "build-files": [
       "Olympus\\Handler\\Configurator::build",
       "mkdir -p web/medias/zeus && cp -r vendor/crewstyle/olympus-zeus/assets web/medias/zeus"
     ],
