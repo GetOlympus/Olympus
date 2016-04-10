@@ -6,9 +6,11 @@
 
 # Composer
 vendor/
+composer.lock
 
 # Capistrano
 .bundle
+Gemfile.lock
 
 # Useless auto-generated files
 .DS_Store
