@@ -174,9 +174,9 @@ class Processor
     private function getParams(array $expectedParams, array $actualValues)
     {
         // Simply use the expectedParams value as default for the missing params.
-        //if (!$this->io->isInteractive()) {
-            //return array_replace($expectedParams, $actualValues);
-        //}
+        if (!$this->io->isInteractive()) {
+            return array_replace($expectedParams, $actualValues);
+        }
 
         // Get forgotten keys
         $keys = $this->keyMatch($expectedParams, $actualValues);
