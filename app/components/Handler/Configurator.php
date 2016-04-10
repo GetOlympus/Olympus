@@ -24,6 +24,9 @@ class Configurator
      */
     public static function build(Event $event)
     {
+        // Update env
+        putenv("COMPOSER_NO_INTERACTION=0");
+
         // Instanciate Processor
         $processor = new Processor($event->getIO());
         $vendor = $event->getComposer()->getConfig()->get('vendor-dir');
