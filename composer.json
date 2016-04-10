@@ -44,9 +44,6 @@
     "johnpbloch/wordpress": ">=4.3",
     "wpackagist-theme/twentysixteen": "*"
   },
-  "require-dev": {
-    "composer/composer": "^1.0"
-  },
   "scripts": {
     "post-install-cmd": [
       "Olympus\\Handler\\Configurator::build",
