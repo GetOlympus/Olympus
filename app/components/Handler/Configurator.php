@@ -26,14 +26,15 @@ class Configurator
     {
         // Instanciate Processor
         $processor = new Processor($event->getIO());
+        $vendor = $event->getComposer()->getConfig()->get('vendor-dir');
 
         // Build `env.php` file
-        $processor->processEnv('app/config/env.php');
+        $processor->processEnv(dirname($vendor).'/app/config/env.php');
 
         // Build `salt.php` file
-        $processor->processSalt('app/config/salt.php');
+        $processor->processSalt(dirname($vendor).'/app/config/salt.php');
 
         // Build `config.rb` file
-        $processor->processConfig('app/deploy/config.rb');
+        $processor->processConfig(dirname($vendor).'/app/deploy/config.rb');
     }
 }
