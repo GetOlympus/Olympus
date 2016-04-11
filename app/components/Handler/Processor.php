@@ -176,7 +176,7 @@ class Processor
     {
         // Simply use the expectedParams value as default for the missing params.
         if (!$this->io->isInteractive()) {
-            $this->io->write(sprintf("\n<comment>Interactions are not permitted. Please, edit your \"%s\" file manually to define properly your parameters.</comment>\n", $realFile));
+            $this->io->write(sprintf("<comment>Interactions are not permitted.\nPlease, edit your \"%s\" file manually to define properly your parameters.</comment>\n", $realFile));
             return array_replace($expectedParams, $actualValues);
         }
 
