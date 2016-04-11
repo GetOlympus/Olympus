@@ -81,5 +81,5 @@ add_action('setup_theme', function (){
     define('OL_BLOG_RSS', get_bloginfo('rss_url'));
 
     // Memory free
-    unset($name, $description)
+    unset($name, $description);
 });
