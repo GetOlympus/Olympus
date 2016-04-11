@@ -13,8 +13,8 @@ role :db,  %w{production1 production2}
 # ~~~~
 
 # Setup Git
-set :branch, 'master'
-set :deploy_to, '/path/to/#{stage_app}'
+set :branch, "master"
+set :deploy_to, "/path/to/#{fetch(:stage_app)}"
 
 # ~~~~
 

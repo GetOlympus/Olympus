@@ -7,8 +7,8 @@ server 'staging', roles: %w{web app db}
 # ~~~~
 
 # Setup Git
-set :branch, 'master'
-set :deploy_to, '/path/to/#{stage_app}'
+set :branch, "master"
+set :deploy_to, "/path/to/#{fetch(:stage_app)}"
 
 # ~~~~
 
