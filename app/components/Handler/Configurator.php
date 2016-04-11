@@ -24,9 +24,11 @@ class Configurator
      */
     public static function build(Event $event)
     {
+        // Get vendor path
+        $vendor = $event->getComposer()->getConfig()->get('vendor-dir');
+
         // Instanciate Processor
         $processor = new Processor($event->getIO());
-        $vendor = $event->getComposer()->getConfig()->get('vendor-dir');
 
         // Build `env.php` file
         $processor->processEnv(dirname($vendor).'/app/config/env.php');
