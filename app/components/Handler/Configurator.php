@@ -24,9 +24,13 @@ class Configurator
      */
     public static function build(Event $event)
     {
+        // Remove composer no interaction
+        putenv("COMPOSER_NO_INTERACTION");
+        unset($_ENV['COMPOSER_NO_INTERACTION'], $_SERVER['COMPOSER_NO_INTERACTION']);
+
         // Get vendor path
         $vendor = $event->getComposer()->getConfig()->get('vendor-dir');
-
+var_dump($event->getIO());
         // Instanciate Processor
         $processor = new Processor($event->getIO());
 

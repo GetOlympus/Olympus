@@ -32,15 +32,6 @@ class Processor
     public function __construct(IOInterface $io)
     {
         $this->io = $io;
-
-        // Update XDebug warning
-        putenv("COMPOSER_DISABLE_XDEBUG_WARN=1");
-        $_ENV['COMPOSER_DISABLE_XDEBUG_WARN'] = '1';
-        $_SERVER['COMPOSER_DISABLE_XDEBUG_WARN'] = '1';
-
-        // Remove composer no interaction
-        putenv("COMPOSER_NO_INTERACTION");
-        unset($_ENV['COMPOSER_NO_INTERACTION'], $_SERVER['COMPOSER_NO_INTERACTION']);
     }
 
     /**
