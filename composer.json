@@ -41,6 +41,7 @@
   "require": {
     "php": ">=5.4",
     "crewstyle/olympus-zeus": ">=4.0",
+    "composer/composer": "~1.0.0",
     "johnpbloch/wordpress": ">=4.3",
     "wpackagist-theme/twentysixteen": "*"
   },

@@ -4,4 +4,5 @@ source "https://rubygems.org"
 gem 'capistrano', '~> 3.4'
 
 # https://github.com/crewstyle/capistrano-olympus
-gem 'capistrano-olympus', '~> 0.0.6'
+#gem 'capistrano-olympus', '~> 0.0.6'
+gem 'capistrano-olympus', :path => '/Users/ach/Olympus/capistrano-olympus'
