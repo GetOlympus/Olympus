@@ -1,6 +1,6 @@
 # Setup Server and Project
+set :application, 'olympus'
 set :stage, :production
-set :stage_app, 'olympus'
 set :stage_url, 'http://www.domain.tld'
 
 # ~~~~
@@ -14,7 +14,7 @@ role :db,  %w{production1 production2}
 
 # Setup Git
 set :branch, "master"
-set :deploy_to, "/path/to/#{fetch(:stage_app)}"
+set :deploy_to, "/path/to/#{fetch(:application)}"
 
 # ~~~~
 

@@ -1,6 +1,6 @@
 # Setup Server and Project
+set :application, 'olympus-test'
 set :stage, :staging
-set :stage_app, 'olympus-test'
 set :stage_url, 'http://staging.domain.tld'
 server 'staging', roles: %w{web app db}
 
@@ -8,7 +8,7 @@ server 'staging', roles: %w{web app db}
 
 # Setup Git
 set :branch, "master"
-set :deploy_to, "/path/to/#{fetch(:stage_app)}"
+set :deploy_to, "/path/to/#{fetch(:application)}"
 
 # ~~~~
 
