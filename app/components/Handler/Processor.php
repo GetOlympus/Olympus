@@ -87,7 +87,7 @@ class Processor
         }
 
         // Build Q&A
-        $userValues = $this->getParams($expectedParams, $actualValues);
+        $userValues = $this->getParams($expectedParams, $actualValues, $realFile);
 
         # Write
         $this->io->write(sprintf("<comment>All parameters are defined now in your '%s' file</comment>", $realFile));
@@ -168,13 +168,15 @@ class Processor
      *
      * @param array $expectedParams
      * @param array $actualValues
+     * @param string $realFile
      *
      * @since 0.0.3
      */
-    private function getParams(array $expectedParams, array $actualValues)
+    private function getParams(array $expectedParams, array $actualValues, $realFile)
     {
         // Simply use the expectedParams value as default for the missing params.
         if (!$this->io->isInteractive()) {
+            $this->io->write(sprintf("\n<comment>Interactions are not permitted. Please, edit your \"%s\" file manually to define properly your parameters.</comment>", $realFile));
             return array_replace($expectedParams, $actualValues);
         }
 
