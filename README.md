@@ -32,7 +32,7 @@ You can easily install the **Olympus framework** in 2 steps (and a 3rd optional 
 
 ```bash
 # Clone the repository (use SSH key if you want: git@github.com:crewstyle/Olympus.git)
-git clone https://github.com/crewstyle/Olympus.git projectname
+git clone https://github.com/crewstyle/Olympus.git projectname && cd $_
 ```
 
 ```bash
