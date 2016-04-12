@@ -26,8 +26,10 @@
       "dev-master": "0.x-dev"
     },
     "installer-paths":{
-      "web/statics/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
-      "web/statics/mu-plugins/{$name}/": ["wp-api/wp-api"],
+      "web/statics/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin",
+        "wp-api/wp-api"
+      ],
       "web/statics/plugins/{$name}/": ["type:wordpress-plugin"],
       "web/statics/themes/{$name}/": ["type:wordpress-theme"]
     },
