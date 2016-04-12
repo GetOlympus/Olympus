@@ -1,24 +1,24 @@
 <?php
 
 /**
- *
- * @package Olympus
- * @author Achraf Chouk <achrafchouk@gmail.com>
- * @since 0.0.2
- *
+ * Autoload vendors and set all defined WordPress constants.
+ * 
+ * @category PHP
+ * @package  Olympus
+ * @author   Achraf Chouk <achrafchouk@gmail.com>
+ * @license  https://github.com/crewstyle/Olympus/blob/master/LICENSE MIT
+ * @link     https://github.com/crewstyle/Olympus
+ * @since    0.0.2
  */
 
 // Return array of environment data
 if (!file_exists($env = APPPATH.'config'.S.'env.php')) {
-    die('
-        <h1>Unable to load environment data.</h1>
-        Please define your environments properly in <code>'.$env.'</code> file.
-    ');
+    die('<h1>Unable to load environment data.</h1> Please define your environments properly in <code>'.$env.'</code> file.');
 }
 
 // Load all environments
-$environments = require_once $env;
-$defaults = require_once APPPATH.'config'.S.'env.php.dist';
+$environments = include_once $env;
+$defaults = include_once APPPATH.'config'.S.'env.php.dist';
 
 // Retrieve all configs and merge them with defaults
 $config = array_merge($defaults, $environments);
@@ -41,10 +41,7 @@ define('DB_COLLATE',        $config['database']['collate']);
 
 // CHeck home and siteurl
 if ($config['wordpress']['home'] === $config['wordpress']['siteurl']) {
-    die('
-        <h1>For your own security, your home and site url values cannot be identical.</h1>
-        Please define your environments properly.
-    ');
+    die('<h1>For your own security, your home and site url values cannot be identical.</h1> Please define your environments properly.');
 }
 
 // Define home as domain.tld and siteurl as domain.tld/cms_or_whatever_you_want
@@ -91,8 +88,7 @@ if (!is_array($config['debug']) && false === $config['debug']) {
     define('WP_DEBUG_DISPLAY',  false);
     define('WP_DEBUG_LOG',      false);
     define('WP_DEBUG',          false);
-}
-else {
+} else {
     // Development environment
     define('SAVEQUERIES',       isset($config['debug']['savequeries']) ? $config['debug']['savequeries'] : true);
     define('SCRIPT_DEBUG',      isset($config['debug']['script_debug']) ? $config['debug']['script_debug'] : true);
@@ -113,10 +109,7 @@ define('WPMU_PLUGIN_DIR',   WEBPATH.CONTENT_DIR.S.'mu-plugins');
  * Define salt constants.
  */
 if (!file_exists($salt = APPPATH.'config'.S.'salt.php')) {
-    die('
-        <h1>Unable to load salt constants.</h1>
-        Please define your constants properly in <code>'.$salt.'</code> file.
-    ');
+    die('<h1>Unable to load salt constants.</h1> Please define your constants properly in <code>'.$salt.'</code> file.');
 }
 
 require_once $salt;

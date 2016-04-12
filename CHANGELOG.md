@@ -1,3 +1,10 @@
+## v0.0.4 (April 12, 2016)
+Please welcome Must Use Plugins :)
+In this new version, PHPCS recommandations have been followed.
+A new MuPlugins Autoloader class has been written.
+The wonderful WP-API Rest plugin is included as a mu-plugins.
+And capistrano processes has been written.
+
 ## v0.0.3 (April 08, 2016)
 I've been working hard to make Composer install more efficient for developers :)
 Configuration files are auto-generated via composer install command.

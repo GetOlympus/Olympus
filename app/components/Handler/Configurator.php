@@ -6,19 +6,24 @@ use Composer\Script\Event;
 
 /**
  * Gets its own config via composer, inspired from Incenteev ParameterHandler script.
- * @see https://github.com/Incenteev/ParameterHandler
- *
- * @package Olympus
+ * 
+ * @category   PHP
+ * @package    Olympus
  * @subpackage Handler\Configurator
- * @author Achraf Chouk <achrafchouk@gmail.com>
- * @since 0.0.3
- *
+ * @author     Achraf Chouk <achrafchouk@gmail.com>
+ * @license    https://github.com/crewstyle/Olympus/blob/master/LICENSE MIT
+ * @link       https://github.com/crewstyle/Olympus
+ * @see        https://github.com/Incenteev/ParameterHandler
+ * @since      0.0.3
  */
 
 class Configurator
 {
     /**
      * Build files on Composer install / update.
+     *
+     * @param  Event $event
+     * @return 
      *
      * @since 0.0.3
      */

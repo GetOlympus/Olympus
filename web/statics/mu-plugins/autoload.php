@@ -1,4 +1,18 @@
 <?php
+
+use Olympus\Autoloader\MuPlugins;
+
+/**
+ * This autoloader initialize all details for Olympus Hera and Zeus. It brings all necessary statics for plugins and themes.
+ * 
+ * @category PHP
+ * @package  Olympus
+ * @author   Achraf Chouk <achrafchouk@gmail.com>
+ * @license  https://github.com/crewstyle/Olympus/blob/master/LICENSE MIT
+ * @link     https://github.com/crewstyle/Olympus
+ * @since    0.0.1
+ */
+
 /**
  * Plugin Name: Olympus Autoload
  * Plugin URI: https://github.com/crewstyle/Olympus
@@ -8,17 +22,6 @@
  * Author URI: https://github.com/crewstyle
  * License: MIT License
  */
-
-/**
- *
- * @package Olympus
- * @author Achraf Chouk <achrafchouk@gmail.com>
- * @since 0.0.1
- *
- * @see https://codex.wordpress.org/Must_Use_Plugins
- *
- */
-
 
 /**
  * Usefull hoook to start working.
@@ -82,4 +85,7 @@ add_action('setup_theme', function (){
 
     // Memory free
     unset($name, $description);
+
+    // Autoload all
+    new MuPlugins(OL_ISADMIN);
 });

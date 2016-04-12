@@ -6,13 +6,15 @@ use Composer\IO\IOInterface;
 
 /**
  * Gets its own config via composer, inspired from Incenteev ParameterHandler script.
- * @see https://github.com/Incenteev/ParameterHandler
- *
- * @package Olympus
+ * 
+ * @category   PHP
+ * @package    Olympus
  * @subpackage Handler\Processor
- * @author Achraf Chouk <achrafchouk@gmail.com>
- * @since 0.0.3
- *
+ * @author     Achraf Chouk <achrafchouk@gmail.com>
+ * @license    https://github.com/crewstyle/Olympus/blob/master/LICENSE MIT
+ * @link       https://github.com/crewstyle/Olympus
+ * @see        https://github.com/Incenteev/ParameterHandler
+ * @since      0.0.3
  */
 
 class Processor
@@ -37,11 +39,12 @@ class Processor
     /**
      * Starts creating file.
      *
-     * @param string $realFile
+     * @param  string $realFile Contains real file path
+     * @return boolean $exists
      *
      * @since 0.0.3
      */
-    private function _start($realFile)
+    private function isExists($realFile)
     {
         // Check file
         $exists = is_file($realFile);
@@ -63,7 +66,7 @@ class Processor
     public function processEnv($realFile)
     {
         // Check if file exists and display headers
-        $exists = $this->_start($realFile);
+        $exists = $this->isExists($realFile);
 
         // Find the expected params from dist file
         $expectedParams = (array) require_once $realFile.'.dist';
@@ -96,7 +99,7 @@ class Processor
         $actualValues = array_merge_recursive($actualValues, $userValues);
 
         // Write in file
-        file_put_contents($realFile, "<?php\n\n// This file is auto-generated during the composer install\n\nreturn ".var_export($actualValues, true).";\n");
+        file_put_contents($realFile, "<?php\n\n/**\n * This file is auto-generated during the composer install\n */\n\nreturn ".var_export($actualValues, true).";\n");
     }
 
     /**
@@ -109,7 +112,7 @@ class Processor
     public function processSalt($realFile)
     {
         // Check if file exists and display headers
-        $exists = $this->_start($realFile);
+        $exists = $this->isExists($realFile);
 
         // Check file and rebuild it
         if ($exists) {
@@ -130,7 +133,7 @@ class Processor
         curl_close($ch);
 
         // Write in file
-        file_put_contents($realFile, "<?php\n\n// This file is auto-generated during the composer install\n\n".$salt."\n");
+        file_put_contents($realFile, "<?php\n\n/**\n * This file is auto-generated during the composer install\n */\n\n".$salt."\n");
     }
 
     /**
@@ -143,7 +146,7 @@ class Processor
     public function processConfig($realFile)
     {
         // Check if file exists and display headers
-        $exists = $this->_start($realFile);
+        $exists = $this->isExists($realFile);
 
         // Check file and rebuild it
         if ($exists) {
@@ -166,9 +169,10 @@ class Processor
     /**
      * Get actual params and display Q&A.
      *
-     * @param array $expectedParams
-     * @param array $actualValues
-     * @param string $realFile
+     * @param  array $expectedParams
+     * @param  array $actualValues
+     * @param  string $realFile
+     * @return array $values
      *
      * @since 0.0.3
      */

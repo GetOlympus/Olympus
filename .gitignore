@@ -33,6 +33,10 @@ Thumbs.db
 /app/logs/*
 !/app/logs/.gitkeep
 
+# Olympus auto-generated files
+/web/.htaccess
+/web/robots.txt
+
 # Olympus packages assets
 /web/medias/*
 !/web/medias/.gitkeep
@@ -40,6 +44,9 @@ Thumbs.db
 # WordPress core
 /web/cms/*
 !/web/cms/.gitkeep
+
+# WordPress debug file
+/web/statics/debug.log
 
 # WordPress languages
 /web/statics/languages/*
