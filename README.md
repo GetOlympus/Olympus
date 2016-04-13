@@ -58,7 +58,7 @@ There are 2 ways to edit your vhost file:
 
 + in your remote(s) server(s):
   + if you use **Capistrano** as process deployment, make the `current/web/` folder as your docroot
-  + if you **do not** use **Capistrano**, make the `web/` folder as your docroot and create your own `web/robots.txt` file
+  + if you **do not** use **Capistrano**, make the `web/` folder as your docroot and create your own `web/robots.txt` file (`cp web/robots.txt.dist web/robots.txt`)
 + in your local environment:
   + make the `web/` folder as your docroot
 
