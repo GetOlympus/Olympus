@@ -1,3 +1,6 @@
+## v0.0.5 (April 13, 2016)
+Travis and PHP CS integration.
+
 ## v0.0.4 (April 12, 2016)
 Please welcome Must Use Plugins :)
 In this new version, PHPCS recommandations have been followed.
