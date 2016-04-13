@@ -39,7 +39,7 @@
   "repositories": [
     {
       "type": "composer",
-      "url": "http://wpackagist.org"
+      "url": "https://wpackagist.org"
     }
   ],
   "require": {
@@ -48,7 +48,7 @@
     "composer/composer": "~1.0.0",
     "johnpbloch/wordpress": ">=4.3",
     "wp-api/wp-api": "2.*",
-    "wpackagist-theme/twentysixteen": "*"
+    "wpackagist-theme/twentysixteen": ">=1.2"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "2.*"
