@@ -1,7 +1,8 @@
-# Olympus [![Packagist version](https://img.shields.io/packagist/v/crewstyle/olympus.svg?style=flat-square)](https://packagist.org/packages/crewstyle/olympus)  
+# Olympus [![Build Status](https://travis-ci.org/crewstyle/Olympus.svg?branch=master)](https://travis-ci.org/crewstyle/Olympus)  
 
 _**Olympus** is a simple, easy to use and powerfull **framework** to deploy and work with **WordPress**.  
 An awesome framework build with ♥ for **WordPress developers**._  
+[![Packagist version](https://img.shields.io/packagist/v/crewstyle/olympus.svg?style=flat-square)](https://packagist.org/packages/crewstyle/olympus)  
 
 ---
 
