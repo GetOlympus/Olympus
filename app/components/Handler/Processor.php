@@ -6,7 +6,7 @@ use Composer\IO\IOInterface;
 
 /**
  * Gets its own config via composer, inspired from Incenteev ParameterHandler script.
- * 
+ *
  * @category   PHP
  * @package    Olympus
  * @subpackage Handler\Processor
@@ -39,7 +39,7 @@ class Processor
     /**
      * Starts creating file.
      *
-     * @param  string $realFile Contains real file path
+     * @param  string $realFile
      * @return boolean $exists
      *
      * @since 0.0.3
@@ -125,10 +125,10 @@ class Processor
         // Get salt keys
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, 'http://api.wordpress.org/secret-key/1.1/salt/');
-        curl_setopt($ch, CURLOPT_HEADER, FALSE);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-        curl_setopt($ch, CURLOPT_AUTOREFERER, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_AUTOREFERER, true);
         $salt = curl_exec($ch);
         curl_close($ch);
 
@@ -239,8 +239,7 @@ class Processor
         foreach ($expectedKeys as $key => $message) {
             if (is_array($message)) {
                 $params[$key] = $this->treatParams($message, $isStarted, $key);
-            }
-            else {
+            } else {
                 // Display a first message before treating params
                 if (!$isStarted) {
                     $isStarted = true;
@@ -265,8 +264,7 @@ class Processor
                         'wp_debug_display' => true,
                         'wp_debug' => true,
                     ], false, $key);
-                }
-                else {
+                } else {
                     $params[$key] = $value;
                 }
             }

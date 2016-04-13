@@ -4,7 +4,7 @@ use Olympus\Autoloader\MuPlugins;
 
 /**
  * This autoloader initialize all details for Olympus Hera and Zeus. It brings all necessary statics for plugins and themes.
- * 
+ *
  * @category PHP
  * @package  Olympus
  * @author   Achraf Chouk <achrafchouk@gmail.com>
@@ -26,7 +26,7 @@ use Olympus\Autoloader\MuPlugins;
 /**
  * Usefull hoook to start working.
  */
-add_action('setup_theme', function (){
+add_action('setup_theme', function () {
     /**
      * Template configurations.
      */

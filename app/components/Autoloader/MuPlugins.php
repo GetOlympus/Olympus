@@ -4,7 +4,7 @@ namespace Olympus\Autoloader;
 
 /**
  * Autoload all plugins from the mu-plugins folder.
- * 
+ *
  * @category   PHP
  * @package    Olympus
  * @subpackage Autoloader\MuPlugins
@@ -104,6 +104,8 @@ class MuPlugins
      * Gets the value of cache.
      *
      * @return array $cache
+     *
+     * @since 0.0.4
      */
     public function getCache()
     {
@@ -119,9 +121,10 @@ class MuPlugins
     /**
      * Sets the value of cache.
      *
-     * @param array $cache the cache
-     *
+     * @param array $cache
      * @return self
+     *
+     * @since 0.0.4
      */
     private function _setCache($cache)
     {
@@ -133,9 +136,10 @@ class MuPlugins
     /**
      * Sets the value of cache.
      *
-     * @param boolean $force force cache file creation
-     *
+     * @param boolean $force
      * @return self
+     *
+     * @since 0.0.4
      */
     private function _updateCache($force = false)
     {
@@ -147,7 +151,7 @@ class MuPlugins
             return $cache;
         }
 
-        require_once ABSPATH.'wp-admin'.S.'includes'.S.'plugin.php';
+        include_once ABSPATH.'wp-admin'.S.'includes'.S.'plugin.php';
 
         // Get auto-loaded <or to autoload> mu-plugins
         $cache = get_plugins(S.'..'.S.basename(WPMU_PLUGIN_DIR));

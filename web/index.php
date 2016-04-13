@@ -2,7 +2,7 @@
 
 /**
  * Bootstrap all WordPress context.
- * 
+ *
  * @category PHP
  * @package  Olympus
  * @author   Achraf Chouk <achrafchouk@gmail.com>

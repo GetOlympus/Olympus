@@ -63,7 +63,7 @@
       "mkdir -p web/medias/zeus && cp -r vendor/crewstyle/olympus-zeus/assets web/medias/zeus"
     ],
     "test": [
-      "vendor/bin/phpcs --ignore=.git/,web/cms/,web/medias/,web/statics/languages/,web/statics/plugins/,web/statics/themes/,web/statics/uploads/,vendor/ -n -s ."
+      "vendor/bin/phpcs --standard=phpcs.xml ."
     ]
   }
 }

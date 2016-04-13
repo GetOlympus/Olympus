@@ -2,7 +2,7 @@
 
 /**
  * Autoload vendors and set all defined WordPress constants.
- * 
+ *
  * @category PHP
  * @package  Olympus
  * @author   Achraf Chouk <achrafchouk@gmail.com>

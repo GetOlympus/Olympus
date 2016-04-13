@@ -1,0 +1,29 @@
+language: php
+sudo: false
+php:
+  - 5.5
+  - 5.6
+  - 7.0
+  - nightly
+  - HHVM
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: HHVM
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - app/cache
+    - vendor
+
+before_install:
+  - phpenv config-rm xdebug.ini
+  - composer self-update
+
+install:
+  - composer install -o --prefer-dist --no-interaction
+
+script:
+  - composer test

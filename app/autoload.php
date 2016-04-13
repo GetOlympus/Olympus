@@ -2,7 +2,7 @@
 
 /**
  * Register the composer autoloader.
- * 
+ *
  * @category PHP
  * @package  Olympus
  * @author   Achraf Chouk <achrafchouk@gmail.com>
