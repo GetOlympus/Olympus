@@ -15,6 +15,7 @@
   "autoload": {
     "psr-4": {
       "Olympus\\Autoloader\\": "app/components/Autoloader/",
+      "Olympus\\Error\\": "app/components/Error/",
       "Olympus\\Handler\\": "app/components/Handler/"
     }
   },
@@ -35,7 +36,7 @@
     },
     "wordpress-install-dir": "web/cms"
   },
-  "minimum-stability": "beta",
+  "minimum-stability": "dev",
   "repositories": [
     {
       "type": "composer",
@@ -44,11 +45,14 @@
   ],
   "require": {
     "php": ">=5.4",
-    "crewstyle/olympus-zeus": ">=4.0",
     "composer/composer": "~1.0.0",
-    "johnpbloch/wordpress": ">=4.3",
+    "crewstyle/olympus-hera": ">=0.0.1",
+    "crewstyle/olympus-zeus": ">=4",
+    "johnpbloch/wordpress": ">=4",
     "wp-api/wp-api": "2.*",
-    "wpackagist-theme/twentysixteen": ">=1.2"
+    "wpackagist-theme/twentysixteen": ">=1.2",
+    "filp/whoops": "^2.1",
+    "monolog/monolog": "^1.19"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "2.*"
@@ -56,11 +60,11 @@
   "scripts": {
     "post-install-cmd": [
       "Olympus\\Handler\\Configurator::build",
-      "mkdir -p web/medias/zeus && cp -r vendor/crewstyle/olympus-zeus/assets web/medias/zeus"
+      "ln -s vendor/crewstyle/olympus-zeus/assets web/medias/zeus"
     ],
     "post-update-cmd": [
       "Olympus\\Handler\\Configurator::build",
-      "mkdir -p web/medias/zeus && cp -r vendor/crewstyle/olympus-zeus/assets web/medias/zeus"
+      "ln -s vendor/crewstyle/olympus-zeus/assets web/medias/zeus"
     ],
     "test": [
       "vendor/bin/phpcs --standard=phpcs.xml ."

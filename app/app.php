@@ -12,6 +12,14 @@
  */
 
 /**
+ * Olympus configs.
+ */
+$olympus_configs = [
+    'debug' => true,
+    'log' => true,
+];
+
+/**
  * Path to WordPress.
  */
 defined('ABSPATH') or define('ABSPATH', WEBPATH.'cms'.S);
@@ -22,6 +30,17 @@ defined('ABSPATH') or define('ABSPATH', WEBPATH.'cms'.S);
 $loader = include_once APPPATH.'autoload.php';
 
 /**
+ * Load error catcher.
+ */
+require_once APPPATH.'error.php';
+
+/**
  * Load environment configuration.
  */
 require_once APPPATH.'environment.php';
+
+/**
+ * Update olympus globals.
+ */
+$olympus_configs['debug'] = WP_DEBUG;
+$olympus_configs['log'] = WP_DEBUG_LOG;

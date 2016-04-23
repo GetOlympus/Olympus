@@ -1,3 +1,8 @@
+## v0.0.6 (April 23, 2016)
+Travis and PHP CS integration.
+New Error debugger with Whoops and File logger with Monolog.
+New Olympus Hera mu-plugin integration.
+
 ## v0.0.5 (April 13, 2016)
 Travis and PHP CS integration.
 

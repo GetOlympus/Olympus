@@ -1,5 +1,6 @@
 <?php
 
+use crewstyle\Hera\Hera;
 use Olympus\Autoloader\MuPlugins;
 
 /**
@@ -86,6 +87,32 @@ add_action('setup_theme', function () {
     // Memory free
     unset($name, $description);
 
+
+    /**
+     * Olympus Hera definitions.
+     */
+
+    // The value defining if we are in admin panel or not
+    define('OLH_ISADMIN', OL_ISADMIN);
+    // The nonce ajax value
+    define('OLH_NONCE', OL_NONCE);
+    // The blog home url
+    define('OLH_HOME', OL_BLOG_HOME);
+    // The language blog
+    define('OLH_LOCAL', OL_BLOG_LANGUAGE);
+    // The URI
+    define('OLH_URI', OL_TPL_DIR_URI.S.'vendor'.S.'crewstyle'.S.'olympus-hera');
+    // The Twig cache folder
+    define('OLH_CACHE', APPPATH.S.'cache');
+
+
+    /**
+     * Class initialization.
+     */
+
     // Autoload all
     new MuPlugins(OL_ISADMIN);
+
+    // Olympus Hera
+    $GLOBALS['Hera'] = Hera::getInstance();
 });

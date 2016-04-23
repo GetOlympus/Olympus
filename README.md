@@ -15,6 +15,8 @@ An awesome framework build with ♥ for **WordPress developers**._
 + Remote server automation tool with [**Capistrano**](http://capistranorb.com/)
 
 And more:
++ [Monolog](https://github.com/Seldaek/monolog) as an extensible powerful file logger
++ [Whoops](https://github.com/filp/whoops) as the best PHP debugger "for cool kids"
 + [WP Rest API](http://v2.wp-api.org/) as your official JSON Rest API: all your posts with a simple `GET` request: `/wp-json/wp/v2/posts`
 
 ![With Composer](https://img.shields.io/badge/with-Composer-885630.svg?style=flat-square) 
@@ -79,8 +81,8 @@ Here are the file to edit:
 ## In this package ![For WordPress](https://img.shields.io/badge/for-WordPress-00aadc.svg?style=flat-square)
 
 + [**Capistrano Olympus**](https://github.com/crewstyle/capistrano-olympus): _Capistrano tasks for deploying WordPress website easily with the Olympus framework_
-+ [**Olympus Hera**](https://github.com/crewstyle/OlympusHera): _the framework core system used to make all libraries work efficiently **(in beta now)**_
-+ [**Olympus Zeus**](https://github.com/crewstyle/OlympusZeus): _a library allows you to easily add professional looking theme options panels to your WordPress website_
++ [**Olympus Hera**](https://github.com/crewstyle/OlympusHera): _the framework core system used to make all libraries work efficiently **(in alpha now)**_
++ [**Olympus Zeus**](https://github.com/crewstyle/OlympusZeus): _a library allows you to easily add professional looking theme options panels to your WordPress website **(in alpha now)**_
 
 ---
 

@@ -15,7 +15,7 @@
  * Register the composer autoloader.
  */
 if (!file_exists($autoload = VENDORPATH.'autoload.php')) {
-    die('<h1>Unable to find composer autoloader.</h1> Please use: <code>curl -s http://getcomposer.org/installer | php</code> and <code>php composer.phar install</code>');
+    _error('Unable to find composer autoloader.', 'Please use <code>curl -s http://getcomposer.org/installer | php</code> and <code>php composer.phar install</code> command lines from your project folder.', 'File not found');
 }
 
 $loader = include $autoload;

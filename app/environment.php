@@ -13,7 +13,7 @@
 
 // Return array of environment data
 if (!file_exists($env = APPPATH.'config'.S.'env.php')) {
-    die('<h1>Unable to load environment data.</h1> Please define your environments properly in <code>'.$env.'</code> file.');
+    _error('Unable to load your environment data.', 'Please define your environments properly in <code>'.$env.'</code> file.', 'File not found');
 }
 
 // Load all environments
@@ -41,7 +41,7 @@ define('DB_COLLATE', $config['database']['collate']);
 
 // CHeck home and siteurl
 if ($config['wordpress']['home'] === $config['wordpress']['siteurl']) {
-    die('<h1>For your own security, your home and site url values cannot be identical.</h1> Please define your environments properly.');
+    _error('Security issue!', '<strong>For your own security, your <code>home</code> and <code>siteurl</code> values cannot be identical.</strong> Please define your environments properly.', 'Security');
 }
 
 // Define home as domain.tld and siteurl as domain.tld/cms_or_whatever_you_want
@@ -109,7 +109,7 @@ define('WPMU_PLUGIN_DIR', WEBPATH.CONTENT_DIR.S.'mu-plugins');
  * Define salt constants.
  */
 if (!file_exists($salt = APPPATH.'config'.S.'salt.php')) {
-    die('<h1>Unable to load salt constants.</h1> Please define your constants properly in <code>'.$salt.'</code> file.');
+    _error('Unable to load your salt constants.', 'Please define your constants properly in <code>'.$salt.'</code> file.', 'File not found');
 }
 
 require_once $salt;
