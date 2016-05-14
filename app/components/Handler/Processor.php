@@ -1,6 +1,6 @@
 <?php
 
-namespace Olympus\Handler;
+namespace GetOlympus\Components\Handler;
 
 use Composer\IO\IOInterface;
 
@@ -8,11 +8,11 @@ use Composer\IO\IOInterface;
  * Gets its own config via composer, inspired from Incenteev ParameterHandler script.
  *
  * @category   PHP
- * @package    Olympus
- * @subpackage Handler\Processor
+ * @package    GetOlympus
+ * @subpackage Components\Handler\Processor
  * @author     Achraf Chouk <achrafchouk@gmail.com>
- * @license    https://github.com/crewstyle/Olympus/blob/master/LICENSE MIT
- * @link       https://github.com/crewstyle/Olympus
+ * @license    https://github.com/GetOlympus/Olympus/blob/master/LICENSE MIT
+ * @link       https://github.com/GetOlympus/Olympus
  * @see        https://github.com/Incenteev/ParameterHandler
  * @since      0.0.3
  */
@@ -123,17 +123,21 @@ class Processor
         $this->io->write("<comment>Get values directly from 'http://api.wordpress.org/secret-key/1.1/salt/'</comment>");
 
         // Get salt keys
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'http://api.wordpress.org/secret-key/1.1/salt/');
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_AUTOREFERER, true);
-        $salt = curl_exec($ch);
-        curl_close($ch);
+        if (function_exists('curl_init')) {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, 'http://api.wordpress.org/secret-key/1.1/salt/');
+            curl_setopt($ch, CURLOPT_HEADER, false);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+            $salt = curl_exec($ch);
+            curl_close($ch);
 
-        // Write in file
-        file_put_contents($realFile, "<?php\n\n/**\n * This file is auto-generated during the composer install\n */\n\n".$salt."\n");
+            // Write in file
+            file_put_contents($realFile, "<?php\n\n/**\n * This file is auto-generated during the composer install\n */\n\n".$salt."\n");
+        } else {
+            $this->io->write("<comment>curl module is not installed. Please, install it first or get values manually.</comment>\n");
+        }
     }
 
     /**

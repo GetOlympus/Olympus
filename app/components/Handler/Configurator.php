@@ -1,6 +1,6 @@
 <?php
 
-namespace Olympus\Handler;
+namespace GetOlympus\Components\Handler;
 
 use Composer\Script\Event;
 
@@ -8,11 +8,11 @@ use Composer\Script\Event;
  * Gets its own config via composer, inspired from Incenteev ParameterHandler script.
  *
  * @category   PHP
- * @package    Olympus
- * @subpackage Handler\Configurator
+ * @package    GetOlympus
+ * @subpackage Components\Handler\Configurator
  * @author     Achraf Chouk <achrafchouk@gmail.com>
- * @license    https://github.com/crewstyle/Olympus/blob/master/LICENSE MIT
- * @link       https://github.com/crewstyle/Olympus
+ * @license    https://github.com/GetOlympus/Olympus/blob/master/LICENSE MIT
+ * @link       https://github.com/GetOlympus/Olympus
  * @see        https://github.com/Incenteev/ParameterHandler
  * @since      0.0.3
  */

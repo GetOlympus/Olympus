@@ -37,8 +37,8 @@ Thumbs.db
 /web/robots.txt
 
 # Olympus packages assets
-/web/medias/*
-!/web/medias/.gitkeep
+/web/resources/*
+!/web/resources/.gitkeep
 
 # WordPress core
 /web/cms/*

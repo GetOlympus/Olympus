@@ -1,6 +1,6 @@
 <?php
 
-namespace Olympus\Error;
+namespace GetOlympus\Components\Error;
 
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Handler\JsonResponseHandler;
@@ -11,11 +11,11 @@ use Whoops\Util\Misc;
  * Log all errors in log file
  *
  * @category   PHP
- * @package    Olympus
- * @subpackage Error\ErrorDebugger
+ * @package    GetOlympus
+ * @subpackage Components\Error\ErrorDebugger
  * @author     Achraf Chouk <achrafchouk@gmail.com>
- * @license    https://github.com/crewstyle/Olympus/blob/master/LICENSE MIT
- * @link       https://github.com/crewstyle/Olympus
+ * @license    https://github.com/GetOlympus/Olympus/blob/master/LICENSE MIT
+ * @link       https://github.com/GetOlympus/Olympus
  * @since      0.0.6
  */
 

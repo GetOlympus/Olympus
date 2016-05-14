@@ -1,6 +1,6 @@
 <?php
 
-namespace Olympus\Error;
+namespace GetOlympus\Components\Error;
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
@@ -9,11 +9,11 @@ use Monolog\Handler\StreamHandler;
  * Log all errors in log file
  *
  * @category   PHP
- * @package    Olympus
- * @subpackage Error\FileLogger
+ * @package    GetOlympus
+ * @subpackage Components\Error\FileLogger
  * @author     Achraf Chouk <achrafchouk@gmail.com>
- * @license    https://github.com/crewstyle/Olympus/blob/master/LICENSE MIT
- * @link       https://github.com/crewstyle/Olympus
+ * @license    https://github.com/GetOlympus/Olympus/blob/master/LICENSE MIT
+ * @link       https://github.com/GetOlympus/Olympus
  * @since      0.0.6
  */
 

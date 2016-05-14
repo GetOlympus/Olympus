@@ -14,7 +14,7 @@
 /**
  * Olympus configs.
  */
-$olympus_configs = [
+$olympus_data = [
     'debug' => true,
     'log' => true,
 ];
@@ -42,5 +42,5 @@ require_once APPPATH.'environment.php';
 /**
  * Update olympus globals.
  */
-$olympus_configs['debug'] = WP_DEBUG;
-$olympus_configs['log'] = WP_DEBUG_LOG;
+$olympus_data['debug'] = WP_DEBUG;
+$olympus_data['log'] = WP_DEBUG_LOG;

@@ -1,9 +1,9 @@
 {
-  "name": "crewstyle/olympus",
+  "name": "getolympus/olympus",
   "type": "project",
   "description": "The Olympus framework, Your simple, easy to use and powerfull framework to deploy and work with WordPress. An awesome framework build with ♥ for WordPress developers.",
   "keywords": ["olympus", "wordpress", "framework", "php"],
-  "homepage": "https://github.com/crewstyle/Olympus",
+  "homepage": "https://github.com/GetOlympus/Olympus",
   "license": "MIT",
   "authors": [
     {
@@ -14,9 +14,9 @@
   ],
   "autoload": {
     "psr-4": {
-      "Olympus\\Autoloader\\": "app/components/Autoloader/",
-      "Olympus\\Error\\": "app/components/Error/",
-      "Olympus\\Handler\\": "app/components/Handler/"
+      "GetOlympus\\Components\\Autoloader\\": "app/components/Autoloader/",
+      "GetOlympus\\Components\\Error\\": "app/components/Error/",
+      "GetOlympus\\Components\\Handler\\": "app/components/Handler/"
     }
   },
   "config": {
@@ -46,8 +46,7 @@
   "require": {
     "php": ">=5.4",
     "composer/composer": "~1.0.0",
-    "crewstyle/olympus-hera": ">=0.0.1",
-    "crewstyle/olympus-zeus": ">=4",
+    "getolympus/olympus-hera": "~0.0.1",
     "johnpbloch/wordpress": ">=4",
     "wp-api/wp-api": "2.*",
     "wpackagist-theme/twentysixteen": ">=1.2",
@@ -59,12 +58,12 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "Olympus\\Handler\\Configurator::build",
-      "ln -s vendor/crewstyle/olympus-zeus/assets web/medias/zeus"
+      "GetOlympus\\Components\\Handler\\Configurator::build",
+      "cd web/resources && ln -s ../../vendor/getolympus/olympus-hera/app/assets hera && cd ../../"
     ],
     "post-update-cmd": [
-      "Olympus\\Handler\\Configurator::build",
-      "ln -s vendor/crewstyle/olympus-zeus/assets web/medias/zeus"
+      "GetOlympus\\Components\\Handler\\Configurator::build",
+      "cd web/resources && ln -s ../../vendor/getolympus/olympus-hera/app/assets hera && cd ../../"
     ],
     "test": [
       "vendor/bin/phpcs --standard=phpcs.xml ."

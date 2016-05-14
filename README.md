@@ -1,8 +1,8 @@
-# Olympus [![Build Status](https://travis-ci.org/crewstyle/Olympus.svg?branch=master)](https://travis-ci.org/crewstyle/Olympus)  
+# Olympus [![Build Status](https://travis-ci.org/GetOlympus/Olympus.svg?branch=master)](https://travis-ci.org/GetOlympus/Olympus)  
 
 _**Olympus** is a simple, easy to use and powerfull **framework** to deploy and work with **WordPress**.  
 An awesome framework build with ♥ for **WordPress developers**._  
-[![Packagist version](https://img.shields.io/packagist/v/crewstyle/olympus.svg?style=flat-square)](https://packagist.org/packages/crewstyle/olympus)  
+[![Packagist version](https://img.shields.io/packagist/v/getolympus/olympus.svg?style=flat-square)](https://packagist.org/packages/getolympus/olympus)  
 
 ---
 
@@ -37,8 +37,8 @@ And more:
 You can easily install the **Olympus framework** in 2 steps (and a 3rd optional one):
 
 ```bash
-# Clone the repository (use SSH key if you want: git@github.com:crewstyle/Olympus.git)
-git clone https://github.com/crewstyle/Olympus.git projectname && cd $_
+# Clone the repository (use SSH key if you want: git@github.com:GetOlympus/Olympus.git)
+git clone https://github.com/GetOlympus/Olympus.git projectname && cd $_
 ```
 
 ```bash
@@ -71,7 +71,7 @@ The `web/index.php` file will bootstrap WordPress with all your configuration fi
 ## Deployment process
 
 The **Olympus framework** also works with [**Capistrano**](http://capistranorb.com/) if you need it.  
-Please, read the `README.md` file of the [**Capistrano Olympus**](https://github.com/crewstyle/capistrano-olympus) to know more.  
+Please, read the `README.md` file of the [**Capistrano Olympus**](https://github.com/GetOlympus/capistrano-olympus) to know more.  
 Here are the file to edit:
 + `app/deploy/config.rb`
 + `app/deploy/stages/:stage.rb` (`:stage` can be `staging` or `production`) - _you can also create your own deployment file_ -
@@ -80,9 +80,9 @@ Here are the file to edit:
 
 ## In this package ![For WordPress](https://img.shields.io/badge/for-WordPress-00aadc.svg?style=flat-square)
 
-+ [**Capistrano Olympus**](https://github.com/crewstyle/capistrano-olympus): _Capistrano tasks for deploying WordPress website easily with the Olympus framework_
-+ [**Olympus Hera**](https://github.com/crewstyle/OlympusHera): _the framework core system used to make all libraries work efficiently **(in alpha now)**_
-+ [**Olympus Zeus**](https://github.com/crewstyle/OlympusZeus): _a library allows you to easily add professional looking theme options panels to your WordPress website **(in alpha now)**_
++ [**Capistrano Olympus**](https://github.com/GetOlympus/capistrano-olympus): _Capistrano tasks for deploying WordPress website easily with the Olympus framework_
++ [**Olympus Hera**](https://github.com/GetOlympus/Hera): _the framework core system used to make all libraries work efficiently **(in alpha now)**_
++ [**Olympus Zeus**](https://github.com/GetOlympus/Zeus): _a library allows you to easily add professional looking theme options panels to your WordPress website **(in alpha now)**_
 
 ---
 
@@ -108,7 +108,7 @@ Guys, do **not** hesitate to spread your love about the **Olympus WordPress fram
 + http://twitter.com/crewstyle
 + http://github.com/crewstyle
 
-Please, read [LICENSE](https://github.com/crewstyle/Olympus/blob/master/LICENSE "LICENSE") for more details.  
+Please, read [LICENSE](https://github.com/GetOlympus/Olympus/blob/master/LICENSE "LICENSE") for more details.  
 [![MIT](https://img.shields.io/badge/license-MIT_License-blue.svg?style=flat-square)](http://opensource.org/licenses/MIT "MIT")  
 
 ---

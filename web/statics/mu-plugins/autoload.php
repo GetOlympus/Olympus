@@ -1,22 +1,21 @@
 <?php
 
-use crewstyle\Hera\Hera;
-use Olympus\Autoloader\MuPlugins;
+use GetOlympus\Components\Autoloader\MuPlugins;
 
 /**
  * This autoloader initialize all details for Olympus Hera and Zeus. It brings all necessary statics for plugins and themes.
  *
  * @category PHP
- * @package  Olympus
+ * @package  GetOlympus
  * @author   Achraf Chouk <achrafchouk@gmail.com>
- * @license  https://github.com/crewstyle/Olympus/blob/master/LICENSE MIT
- * @link     https://github.com/crewstyle/Olympus
+ * @license  https://github.com/GetOlympus/Olympus/blob/master/LICENSE MIT
+ * @link     https://github.com/GetOlympus/Olympus
  * @since    0.0.1
  */
 
 /**
- * Plugin Name: Olympus Autoload
- * Plugin URI: https://github.com/crewstyle/Olympus
+ * Plugin Name: GetOlympus Autoload
+ * Plugin URI: https://github.com/GetOlympus/Olympus
  * Description: This autoloader initialize all details for Olympus Hera and Zeus. It brings all necessary statics for plugins and themes.
  * Version: 0.0.1
  * Author: crewstyle
@@ -25,7 +24,8 @@ use Olympus\Autoloader\MuPlugins;
  */
 
 /**
- * Usefull hoook to start working.
+ * Autoload all mu-plugins.
+ * As the first autoloaded file, all useful constants are defined here.
  */
 add_action('setup_theme', function () {
     /**
@@ -101,7 +101,7 @@ add_action('setup_theme', function () {
     // The language blog
     define('OLH_LOCAL', OL_BLOG_LANGUAGE);
     // The URI
-    define('OLH_URI', OL_TPL_DIR_URI.S.'vendor'.S.'crewstyle'.S.'olympus-hera');
+    define('OLH_URI', OL_BLOG_HOME.'/medias/hera/');
     // The Twig cache folder
     define('OLH_CACHE', APPPATH.S.'cache');
 
@@ -110,9 +110,5 @@ add_action('setup_theme', function () {
      * Class initialization.
      */
 
-    // Autoload all
     new MuPlugins(OL_ISADMIN);
-
-    // Olympus Hera
-    $GLOBALS['Hera'] = Hera::getInstance();
 });
