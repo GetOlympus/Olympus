@@ -12,7 +12,7 @@ An awesome framework build with ♥ for **WordPress developers**._
 + Autoloader for mu-plugins
 + Auto-generated configuration files with `composer install`
 + Dependency management with [**Composer**](https://getcomposer.org)
-+ Remote server automation tool with [**Capistrano**](http://capistranorb.com/)
++ Remote server automation tool with [**Capistrano**](http://capistranorb.com/) and [**Capistrano Olympus**](https://github.com/GetOlympus/capistrano-olympus)
 
 And more:
 + [Monolog](https://github.com/Seldaek/monolog) as an extensible powerful file logger
