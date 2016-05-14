@@ -36,7 +36,7 @@
     },
     "wordpress-install-dir": "web/cms"
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "beta",
   "repositories": [
     {
       "type": "composer",

@@ -4,4 +4,4 @@ source "https://rubygems.org"
 gem 'capistrano', '~> 3.4'
 
 # https://github.com/GetOlympus/capistrano-olympus
-gem 'capistrano-olympus', '~> 0.0.7'
+gem 'capistrano-olympus', '~> 0.0.8'
