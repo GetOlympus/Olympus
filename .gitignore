@@ -39,6 +39,7 @@ Thumbs.db
 # Olympus packages assets
 /web/resources/*
 !/web/resources/.gitkeep
+!/web/resources/whoops
 
 # WordPress core
 /web/cms/*
