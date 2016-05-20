@@ -13,6 +13,7 @@
     <exclude-pattern>web/statics/plugins/*</exclude-pattern>
     <exclude-pattern>web/statics/themes/*</exclude-pattern>
     <exclude-pattern>web/statics/uploads/*</exclude-pattern>
+    <exclude-pattern>web/xmlrpc.php</exclude-pattern>
 
     <arg name="report-width" value="auto"/>
     <arg value="-colors"/>

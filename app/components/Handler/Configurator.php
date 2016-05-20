@@ -42,5 +42,8 @@ class Configurator
 
         // Build `config.rb` file
         $processor->processConfig(dirname($vendor).'/app/deploy/config.rb');
+
+        // Build `robots.txt` file
+        $processor->processRobots(dirname($vendor).'/web/robots.txt', dirname($vendor).'/app/config/env.php');
     }
 }

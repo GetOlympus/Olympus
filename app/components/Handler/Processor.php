@@ -171,6 +171,41 @@ class Processor
     }
 
     /**
+     * Create `robots.txt` file.
+     *
+     * @param string $realFile
+     * @param string $envFile
+     *
+     * @since 0.0.8
+     */
+    public function processRobots($realFile, $envFile)
+    {
+        // Check if file exists and display headers
+        $exists = $this->isExists($realFile);
+
+        // Check file and rebuild it
+        if ($exists) {
+            # Write
+            $this->io->write(sprintf("<comment>Your '%s' already exists</comment>", $realFile));
+
+            return;
+        }
+
+        # Write
+        $this->io->write(sprintf("<comment>Your '%s' is copied from '%s'</comment>", $realFile, $realFile.'.dist'));
+
+        // Get contents and environments, simply
+        $contents = file_get_contents($realFile.'.dist');
+        $env = include_once $envFile;
+
+        // Replace default URL by the configured one
+        $contents = str_replace('http://www.domain.tld', $env['wordpress']['home'], $contents);
+
+        // Write in file
+        file_put_contents($realFile, "# This file is auto-generated\n\n" . $contents);
+    }
+
+    /**
      * Get actual params and display Q&A.
      *
      * @param  array $expectedParams

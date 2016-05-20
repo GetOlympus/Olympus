@@ -30,6 +30,16 @@ defined('STATICS_DIR') or define('STATICS_DIR', 'statics');
  */
 require_once APPPATH.'app.php';
 
+
+/**
+ * DO NOT add any constants in this file.
+ *
+ * We recommend you to exclusively add your own constants
+ * in the `own.php` file instead of here, for more security.
+ * Please, see the `environment.php` file for more instructions.
+ */
+
+
 /**
  * Sets up WordPress vars and included files.
  */

@@ -1,3 +1,7 @@
+## v0.0.8 (May 20, 2016)
+Add an own.php file for your own custom constants.
+Add the robots.txt process into composer and sylink to xmlrpc.php file.
+
 ## v0.0.7 (May 14, 2016)
 Fix bugs via PHP CS integration.
 Adds Olympus Hera integration.

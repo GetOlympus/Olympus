@@ -25,8 +25,9 @@ Thumbs.db
 
 # Olympus dist files
 /app/config/*
-!/app/config/common.php.dist
 !/app/config/env.php.dist
+!/app/config/own.php.dist
+!/app/config/salt.php.dist
 /app/cache/*
 !/app/cache/.gitkeep
 /app/logs/*
@@ -35,6 +36,7 @@ Thumbs.db
 # Olympus auto-generated files
 /web/.htaccess
 /web/robots.txt
+/web/xmlrpc.php
 
 # Olympus packages assets
 /web/resources/*

@@ -54,7 +54,12 @@ if (-1 < $config['wordpress']['revisions']) {
 }
 
 // Automatic updater
-define('AUTOMATIC_UPDATER_DISABLED', !$config['wordpress']['updater']);
+define('AUTOMATIC_UPDATER_DISABLED', $config['wordpress']['disable_updater']);
+
+// Multisite configuration
+if (true === $config['multisite']) {
+    define('WP_ALLOW_MULTISITE', true);
+}
 
 // If Secure protocol is defined, in a several servers environment with a loadbalancer,
 // the $_SERVER array is not properly defined. So we have to explicitly define HTTPS to 'on'
@@ -113,3 +118,15 @@ if (!file_exists($salt = APPPATH.'config'.S.'salt.php')) {
 }
 
 require_once $salt;
+
+/**
+ * Define your own constants.
+ *
+ * We recommend you to exclusively add your own constants in this
+ * `app/config/own.php` file instead of `web/wp-config.php`.
+ *
+ * Create you `app/config/own.php` thanks to the `app/config/own.php.dist`.
+ */
+if (file_exists($own = APPPATH.'config'.S.'own.php')) {
+    require_once $own;
+}
