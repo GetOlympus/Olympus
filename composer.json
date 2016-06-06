@@ -46,12 +46,12 @@
   "require": {
     "php": ">=5.4",
     "composer/composer": "~1.0.0",
+    "filp/whoops": "^2.1",
     "getolympus/olympus-hera": "~0.0.1",
     "johnpbloch/wordpress": ">=4",
+    "monolog/monolog": "^1.19",
     "wp-api/wp-api": "2.*",
-    "wpackagist-theme/twentysixteen": ">=1.2",
-    "filp/whoops": "^2.1",
-    "monolog/monolog": "^1.19"
+    "wpackagist-theme/twentysixteen": ">=1.2"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "2.*"
@@ -59,13 +59,13 @@
   "scripts": {
     "post-install-cmd": [
       "GetOlympus\\Components\\Handler\\Configurator::build",
-      "cd web/ && ln -s cms/xmlrpc.php xmlrpc.php && cd ../",
-      "cd web/resources && ln -s ../../vendor/getolympus/olympus-hera/app/assets hera && cd ../../"
+      "ln -s web/cms/xmlrpc.php web/xmlrpc.php",
+      "ln -s vendor/getolympus/olympus-hera/app/assets web/resources/hera"
     ],
     "post-update-cmd": [
       "GetOlympus\\Components\\Handler\\Configurator::build",
-      "cd web/ && ln -s cms/xmlrpc.php xmlrpc.php && cd ../",
-      "cd web/resources && ln -s ../../vendor/getolympus/olympus-hera/app/assets hera && cd ../../"
+      "ln -s web/cms/xmlrpc.php web/xmlrpc.php",
+      "ln -s vendor/getolympus/olympus-hera/app/assets web/resources/hera"
     ],
     "test": [
       "vendor/bin/phpcs --standard=phpcs.xml ."
