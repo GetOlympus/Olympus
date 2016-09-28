@@ -1,3 +1,6 @@
+## v0.0.9 (September 28, 2016)
+Update composer.json file, add .gitkeep file.
+
 ## v0.0.8 (May 20, 2016)
 Add an own.php file for your own custom constants.
 Add the robots.txt process into composer and sylink to xmlrpc.php file.

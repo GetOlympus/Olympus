@@ -50,6 +50,7 @@
     "getolympus/olympus-hera": "~0.0.1",
     "johnpbloch/wordpress": ">=4",
     "monolog/monolog": "^1.19",
+    "timber/timber": "^1.0",
     "wp-api/wp-api": "2.*",
     "wpackagist-theme/twentysixteen": ">=1.2"
   },
@@ -59,13 +60,13 @@
   "scripts": {
     "post-install-cmd": [
       "GetOlympus\\Components\\Handler\\Configurator::build",
-      "ln -s web/cms/xmlrpc.php web/xmlrpc.php",
-      "ln -s vendor/getolympus/olympus-hera/app/assets web/resources/hera"
+      "ln -sf web/cms/xmlrpc.php web/xmlrpc.php",
+      "ln -sf vendor/getolympus/olympus-hera/app/assets web/resources/hera"
     ],
     "post-update-cmd": [
       "GetOlympus\\Components\\Handler\\Configurator::build",
-      "ln -s web/cms/xmlrpc.php web/xmlrpc.php",
-      "ln -s vendor/getolympus/olympus-hera/app/assets web/resources/hera"
+      "ln -sf web/cms/xmlrpc.php web/xmlrpc.php",
+      "ln -sf vendor/getolympus/olympus-hera/app/assets web/resources/hera"
     ],
     "test": [
       "vendor/bin/phpcs --standard=phpcs.xml ."
