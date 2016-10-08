@@ -103,7 +103,7 @@ add_action('setup_theme', function () {
     // The URI
     define('OLH_URI', OL_BLOG_HOME.'/resources/hera/');
     // The Twig cache folder
-    define('OLH_CACHE', APPPATH.S.'cache'.S);
+    define('OLH_CACHE', CACHEPATH);
 
 
     /**

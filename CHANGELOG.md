@@ -1,3 +1,6 @@
+## v0.0.10 (October 08, 2016)
+Add new Cache folder variable, fix composer bash command lines update composer vendors.
+
 ## v0.0.9 (September 28, 2016)
 Update composer.json file, add .gitkeep file.
 

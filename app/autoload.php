@@ -31,7 +31,7 @@ $loader = include $autoload;
  * compiled class file which contains all of the classes commonly used
  * by a request.
  */
-if (file_exists($compiled = APPPATH.'cache'.S.'compiled.php')) {
+if (file_exists($compiled = CACHEPATH.'compiled.php')) {
     include $compiled;
 }
 

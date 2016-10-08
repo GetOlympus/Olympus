@@ -20,6 +20,7 @@ $path = dirname(dirname(__FILE__));
 defined('S')           or define('S', DIRECTORY_SEPARATOR);
 // Paths.
 defined('APPPATH')     or define('APPPATH', $path.S.'app'.S);
+defined('CACHEPATH')   or define('CACHEPATH', APPPATH.'cache'.S);
 defined('VENDORPATH')  or define('VENDORPATH', $path.S.'vendor'.S);
 defined('WEBPATH')     or define('WEBPATH', $path.S.'web'.S);
 // Contents folder

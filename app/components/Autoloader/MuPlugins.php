@@ -142,7 +142,7 @@ class MuPlugins
      */
     private function _updateCache($force = false)
     {
-        $cachefile = APPPATH.'cache'.S.'mu-plugins.php';
+        $cachefile = CACHEPATH.'mu-plugins.php';
 
         // Get cache from file
         if (file_exists($cachefile) && !$force) {
