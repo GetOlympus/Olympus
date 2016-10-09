@@ -1,3 +1,6 @@
+## v0.0.11 (October 09, 2016)
+Fix composer missing bash command line.
+
 ## v0.0.10 (October 08, 2016)
 Add new Cache folder variable, fix composer bash command lines update composer vendors.
 
