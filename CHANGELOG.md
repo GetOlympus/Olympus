@@ -1,4 +1,7 @@
 ## v0.0.12 (October 21, 2016)
+Add `DISTPATH` static to be used in Hera or other packages.
+
+## v0.0.12 (October 21, 2016)
 Update gitignore files, add new `/web/resources/dist` folder for packages assets.
 
 ## v0.0.11 (October 09, 2016)
