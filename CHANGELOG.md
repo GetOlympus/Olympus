@@ -1,4 +1,4 @@
-## v0.0.12 (October 21, 2016)
+## v0.0.13 (October 21, 2016)
 Add `DISTPATH` static to be used in Hera or other packages.
 
 ## v0.0.12 (October 21, 2016)
