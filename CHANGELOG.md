@@ -1,3 +1,6 @@
+## v0.0.12 (October 21, 2016)
+Update gitignore files, add new `/web/resources/dist` folder for packages assets.
+
 ## v0.0.11 (October 09, 2016)
 Fix composer missing bash command line.
 

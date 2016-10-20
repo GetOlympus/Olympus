@@ -60,13 +60,11 @@
   "scripts": {
     "post-install-cmd": [
       "GetOlympus\\Components\\Handler\\Configurator::build",
-      "cd web ; [ ! -h xmlrpc.php ] && ln -s cms/xmlrpc.php xmlrpc.php ; cd ..",
-      "cd web/resources ; [ ! -h hera ] && ln -s ../../vendor/getolympus/olympus-hera/app/assets hera ; cd ../../"
+      "cd web ; [ ! -h xmlrpc.php ] && ln -s cms/xmlrpc.php xmlrpc.php ; cd .."
     ],
     "post-update-cmd": [
       "GetOlympus\\Components\\Handler\\Configurator::build",
-      "cd web ; [ ! -h xmlrpc.php ] && ln -s cms/xmlrpc.php xmlrpc.php ; cd ..",
-      "cd web/resources ; [ ! -h hera ] && ln -s ../../vendor/getolympus/olympus-hera/app/assets hera ; cd ../../"
+      "cd web ; [ ! -h xmlrpc.php ] && ln -s cms/xmlrpc.php xmlrpc.php ; cd .."
     ],
     "test": [
       "vendor/bin/phpcs --standard=phpcs.xml ."
