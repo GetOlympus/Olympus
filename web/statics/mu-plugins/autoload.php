@@ -101,7 +101,7 @@ add_action('setup_theme', function () {
     // The language blog
     define('OLH_LOCAL', OL_BLOG_LANGUAGE);
     // The URI
-    define('OLH_URI', OL_BLOG_HOME.'/resources/hera/');
+    define('OLH_URI', OL_BLOG_HOME.'/resources/dist/');
     // The Twig cache folder
     define('OLH_CACHE', CACHEPATH);
 

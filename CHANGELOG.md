@@ -1,3 +1,6 @@
+## v0.0.14 (October 22, 2016)
+Change web/resources/dist folder contents.
+
 ## v0.0.13 (October 21, 2016)
 Add `DISTPATH` static to be used in Hera or other packages.
 
