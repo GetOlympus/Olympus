@@ -1,3 +1,6 @@
+## v0.0.15 (November 14, 2016)
+Add web/resources/dist/fonts folder.
+
 ## v0.0.14 (October 22, 2016)
 Change web/resources/dist folder contents.
 

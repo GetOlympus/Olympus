@@ -44,6 +44,8 @@ Thumbs.db
 !/web/resources/whoops
 /web/resources/dist/css/*
 !/web/resources/dist/css/.gitkeep
+/web/resources/dist/fonts/*
+!/web/resources/dist/fonts/.gitkeep
 /web/resources/dist/img/*
 !/web/resources/dist/img/.gitkeep
 /web/resources/dist/js/*
