@@ -39,7 +39,7 @@ define('DB_PASSWORD', $config['database']['pass']);
 define('DB_CHARSET', $config['database']['charset']);
 define('DB_COLLATE', $config['database']['collate']);
 
-// CHeck home and siteurl
+// Check home and siteurl
 if ($config['wordpress']['home'] === $config['wordpress']['siteurl']) {
     _error('Security issue!', '<strong>For your own security, your <code>home</code> and <code>siteurl</code> values cannot be identical.</strong> Please define your environments properly.', 'Security');
 }

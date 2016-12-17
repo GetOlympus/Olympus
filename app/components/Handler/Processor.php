@@ -144,10 +144,11 @@ class Processor
      * Create `config.rb` file.
      *
      * @param string $realFile
+     * @param boolean $intro
      *
      * @since 0.0.3
      */
-    public function processConfig($realFile)
+    public function processConfig($realFile, $intro = true)
     {
         // Check if file exists and display headers
         $exists = $this->isExists($realFile);
@@ -167,7 +168,7 @@ class Processor
         $contents = file_get_contents($realFile.'.dist');
 
         // Write in file
-        file_put_contents($realFile, "# This file is auto-generated during the composer install\n\n" . $contents);
+        file_put_contents($realFile, ($intro ? "# This file is auto-generated during the composer install\n\n" : '') . $contents);
     }
 
     /**
@@ -287,24 +288,43 @@ class Processor
                     $this->io->write("\n<comment>Some parameters are missing. Please provide them.</comment>");
                 }
 
+
+                // Special cases.
+                if ('siteurl' === $key) {
+                    // Special case: 'siteurl'
+                    $message = preg_replace('{/$}', '', $params['home']) . '/cms';
+                } else if ('https' === $key) {
+                    // Special case: 'https'
+                    $url = parse_url($params['wordpress']['home']);
+                    $message = 'https' === $url['scheme'] ? true : $message;
+                }
+
+
                 // Display prefix when its needed, treat special boolean case
-                $p = !empty($prefix) ? $prefix.' ' : '';
+                $p = !empty($prefix) ? $prefix . ' ' : '';
                 $m = is_bool($message) && !$message ? '0' : $message;
 
                 # Read
                 $value = $this->io->ask(sprintf("<question>%s%s</question> (<comment>%s</comment>): ", $p, $key, $m), $message);
                 $value = is_bool($message) ? (boolean) $value : (is_int($message) ? (int) $value : $value);
 
-                // Special case: 'debug'
-                if ('debug' === $key && $value) {
+                // Update key's value
+                $params[$key] = $value;
+
+
+                // Special treatments.
+                if ('home' === $key && $value) {
+                    // Special treatment: 'home'
+                    $url = parse_url($value);
+                    $params[$key] = isset($url['scheme']) ? $value : 'http://' . preg_replace('{^\/\/}', '', $value);
+                } else if ('debug' === $key && $value) {
+                    // Special treatment: 'debug'
                     $params[$key] = $this->treatParams([
                         'savequeries' => true,
                         'script_debug' => true,
                         'wp_debug_display' => true,
                         'wp_debug' => true,
                     ], false, $key);
-                } else {
-                    $params[$key] = $value;
                 }
             }
         }

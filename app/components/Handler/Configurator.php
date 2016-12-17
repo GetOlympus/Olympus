@@ -40,6 +40,9 @@ class Configurator
         // Build `salt.php` file
         $processor->processSalt(dirname($vendor).'/app/config/salt.php');
 
+        // Build `own.php` file
+        $processor->processConfig(dirname($vendor).'/app/config/own.php', false);
+
         // Build `config.rb` file
         $processor->processConfig(dirname($vendor).'/app/deploy/config.rb');
 

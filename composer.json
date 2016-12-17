@@ -52,7 +52,7 @@
     "monolog/monolog": "^1.19",
     "timber/timber": "^1.0",
     "wp-api/wp-api": "2.*",
-    "wpackagist-theme/twentysixteen": ">=1.2"
+    "wpackagist-theme/twentyseventeen": ">=1.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "2.*"
