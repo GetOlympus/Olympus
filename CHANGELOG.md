@@ -1,3 +1,7 @@
+## v0.0.16 (December 17, 2016)
+Update Handler component to make install more efficient.
+Replace TwentySixteen theme with the new TwentySeventeen.
+
 ## v0.0.15 (November 14, 2016)
 Add web/resources/dist/fonts folder.
 
