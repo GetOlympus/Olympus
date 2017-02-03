@@ -48,6 +48,7 @@
     "composer/composer": "~1.0.0",
     "filp/whoops": "^2.1",
     "getolympus/olympus-hera": "~0.0.1",
+    "guzzlehttp/guzzle": "~6.0",
     "johnpbloch/wordpress": ">=4",
     "monolog/monolog": "^1.19",
     "timber/timber": "^1.0",

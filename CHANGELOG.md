@@ -1,3 +1,6 @@
+## v0.0.17 (February 03, 2017)
+Update composer components with Guzzle.
+
 ## v0.0.16 (December 17, 2016)
 Update Handler component to make install more efficient.
 Replace TwentySixteen theme with the new TwentySeventeen.
