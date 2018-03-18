@@ -41,16 +41,6 @@ add_action('setup_theme', function () {
 
 
     /**
-     * Global definitions.
-     */
-
-    // Define if we are in the admin panel or not
-    define('OL_ISADMIN', is_admin());
-    // AJAX NONCE value
-    define('OL_NONCE', wp_create_nonce(OL_TPL_DICTIONARY.'_ajax_nonce'));
-
-
-    /**
      * Blog definitions.
      */
 
@@ -89,21 +79,25 @@ add_action('setup_theme', function () {
 
 
     /**
-     * Olympus Hera definitions.
+     * Global definitions.
      */
 
-    // The value defining if we are in admin panel or not
-    define('OLH_ISADMIN', OL_ISADMIN);
-    // The nonce ajax value
-    define('OLH_NONCE', OL_NONCE);
-    // The blog home url
-    define('OLH_HOME', OL_BLOG_HOME);
-    // The language blog
-    define('OLH_LOCAL', OL_BLOG_LANGUAGE);
-    // The URI
-    define('OLH_URI', OL_BLOG_HOME.'/resources/dist/');
-    // The Twig cache folder
-    define('OLH_CACHE', CACHEPATH);
+    // Define if we are in the admin panel or not
+    define('OL_ISADMIN', is_admin());
+    // Define if the user is connected or not
+    define('OL_ISCONNECTED', is_user_logged_in());
+    // The dist folder URI
+    define('OL_DISTURI', OL_BLOG_HOME.'/resources/dist/');
+    // AJAX NONCE value
+    define('OL_NONCE', wp_create_nonce(OL_TPL_DICTIONARY.'_ajax_nonce'));
+
+
+    /**
+     * Olympus Zeus definitions.
+     */
+
+    // Defining if we use Twig cache or not
+    define('OL_ZEUS_USECACHE', false);
 
 
     /**
