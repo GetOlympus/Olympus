@@ -1,8 +1,11 @@
-# Olympus [![Build Status](https://travis-ci.org/GetOlympus/Olympus.svg?branch=master)](https://travis-ci.org/GetOlympus/Olympus)  
+# Olympus  
 
-_**Olympus** is a simple, easy to use and powerfull **framework** to deploy and work with **WordPress**.  
+_The **Olympus WordPress framework**: your simple, easy to use and powerfull framework to deploy and work with **WordPress**.  
 An awesome framework build with ♥ for **WordPress developers**._  
-[![Packagist version](https://img.shields.io/packagist/v/getolympus/olympus.svg?style=flat-square)](https://packagist.org/packages/getolympus/olympus)  
+[![Build Status](https://img.shields.io/travis/GetOlympus/Olympus/master.svg?style=flat-square)](https://travis-ci.org/GetOlympus/Olympus) ~
+[![Packagist version](https://img.shields.io/packagist/v/getolympus/olympus.svg?style=flat-square)](https://packagist.org/packages/getolympus/olympus) ~
+[![PHP version](https://img.shields.io/travis/php-v/GetOlympus/Olympus.svg?style=flat-square)](https://packagist.org/packages/getolympus/olympus) ~
+[![Olympus framework](https://img.shields.io/badge/olympus-framework-brightgreen.svg?style=flat-square)](https://github.com/GetOlympus)  
 
 ---
 
@@ -26,7 +29,7 @@ And more:
 
 ## Requirements
 
-+ PHP >= 5.4
++ PHP >= 7
 + [**Composer**](https://getcomposer.org/)
 + [**Capistrano**](http://capistranorb.com/)
 
@@ -81,8 +84,7 @@ Here are the file to edit:
 ## In this package ![For WordPress](https://img.shields.io/badge/for-WordPress-00aadc.svg?style=flat-square)
 
 + [**Capistrano Olympus**](https://github.com/GetOlympus/capistrano-olympus): _Capistrano tasks for deploying WordPress website easily with the Olympus framework_
-+ [**Olympus Hera**](https://github.com/GetOlympus/Hera): _the framework core system used to make all libraries work efficiently **(in alpha now)**_
-+ [**Olympus Zeus**](https://github.com/GetOlympus/Zeus): _a library allows you to easily add professional looking theme options panels to your WordPress website **(in alpha now)**_
++ [**Olympus Zeus Core**](https://github.com/GetOlympus/Zeus-Core): _framework core system used to make all your **WordPress** plugins and themes developments easier and efficient_
 
 ---
 
@@ -113,4 +115,4 @@ Please, read [LICENSE](https://github.com/GetOlympus/Olympus/blob/master/LICENSE
 
 ---
 
-**Built with ♥ by [Achraf Chouk](http://github.com/crewstyle "Achraf Chouk") ~ (c) since 2015.**
+**Built with ♥ by [Achraf Chouk](http://github.com/crewstyle "Achraf Chouk").**

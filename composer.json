@@ -1,7 +1,7 @@
 {
   "name": "getolympus/olympus",
   "type": "project",
-  "description": "The Olympus framework, Your simple, easy to use and powerfull framework to deploy and work with WordPress. An awesome framework build with ♥ for WordPress developers.",
+  "description": "The Olympus WordPress framework: your simple, easy to use and powerfull framework to deploy and work with WordPress. An awesome framework build with ♥ for WordPress developers.",
   "keywords": ["olympus", "wordpress", "framework", "php"],
   "homepage": "https://github.com/GetOlympus/Olympus",
   "license": "MIT",
@@ -32,12 +32,10 @@
         "wp-api/wp-api"
       ],
       "web/statics/plugins/{$name}/": [
-        "type:wordpress-plugin",
-        "getolympus/plugin"
+        "type:wordpress-plugin"
       ],
       "web/statics/themes/{$name}/": [
-        "type:wordpress-theme",
-        "getolympus/theme"
+        "type:wordpress-theme"
       ]
     },
     "wordpress-install-dir": "web/cms"
