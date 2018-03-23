@@ -6,14 +6,18 @@
  * @category PHP
  * @package  Olympus
  * @author   Achraf Chouk <achrafchouk@gmail.com>
- * @license  https://github.com/crewstyle/Olympus/blob/master/LICENSE MIT
- * @link     https://github.com/crewstyle/Olympus
+ * @license  https://github.com/GetOlympus/Olympus/blob/master/LICENSE MIT
+ * @link     https://github.com/GetOlympus/Olympus
  * @since    0.0.2
  */
 
 // Return array of environment data
 if (!file_exists($env = APPPATH.'config'.S.'env.php')) {
-    _error('Unable to load your environment data.', 'Please define your environments properly in <code>'.$env.'</code> file.', 'File not found');
+    // Require error class file.
+    require_once APPPATH.'components'.S.'Error'.S.'ErrorDebugger.php';
+
+    // Use ErrorDebugger class to display error.
+    Olympus\Components\Error\ErrorDebugger::error500('Unable to load your environment data.', 'Please define your environments properly in <code>'.$env.'</code> file.', 'File not found');
 }
 
 // Load all environments
@@ -39,10 +43,8 @@ define('DB_PASSWORD', $config['database']['pass']);
 define('DB_CHARSET', $config['database']['charset']);
 define('DB_COLLATE', $config['database']['collate']);
 
-// Check home and siteurl
-if ($config['wordpress']['home'] === $config['wordpress']['siteurl']) {
-    _error('Security issue!', '<strong>For your own security, your <code>home</code> and <code>siteurl</code> values cannot be identical.</strong> Please define your environments properly.', 'Security');
-}
+// Set siteurl var
+$config['wordpress']['siteurl'] = rtrim($config['wordpress']['home'], '/').'/cms';
 
 // Define home as domain.tld and siteurl as domain.tld/cms_or_whatever_you_want
 define('WP_HOME', $config['wordpress']['home']);
@@ -114,7 +116,11 @@ define('WPMU_PLUGIN_DIR', WEBPATH.CONTENT_DIR.S.'mu-plugins');
  * Define salt constants.
  */
 if (!file_exists($salt = APPPATH.'config'.S.'salt.php')) {
-    _error('Unable to load your salt constants.', 'Please define your constants properly in <code>'.$salt.'</code> file.', 'File not found');
+    // Require error class file.
+    require_once APPPATH.'components'.S.'Error'.S.'ErrorDebugger.php';
+
+    // Use ErrorDebugger class to display error.
+    Olympus\Components\Error\ErrorDebugger::error500('Unable to load your salt data.', 'Please define your constants properly in <code>'.$salt.'</code> file.', 'File not found');
 }
 
 require_once $salt;

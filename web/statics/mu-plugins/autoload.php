@@ -1,12 +1,12 @@
 <?php
 
-use GetOlympus\Components\Autoloader\MuPlugins;
+use Olympus\Components\Autoloader\MuPlugins;
 
 /**
  * This autoloader initialize all details for Olympus Hera and Zeus. It brings all necessary statics for plugins and themes.
  *
  * @category PHP
- * @package  GetOlympus
+ * @package  Olympus
  * @author   Achraf Chouk <achrafchouk@gmail.com>
  * @license  https://github.com/GetOlympus/Olympus/blob/master/LICENSE MIT
  * @link     https://github.com/GetOlympus/Olympus
@@ -14,9 +14,9 @@ use GetOlympus\Components\Autoloader\MuPlugins;
  */
 
 /**
- * Plugin Name: GetOlympus Autoload
+ * Plugin Name: Olympus Autoload
  * Plugin URI: https://github.com/GetOlympus/Olympus
- * Description: This autoloader initialize all details for Olympus Hera and Zeus. It brings all necessary statics for plugins and themes.
+ * Description: This autoloader initialize all details for Olympus bundles. It brings all necessary statics for plugins and themes.
  * Version: 0.0.1
  * Author: crewstyle
  * Author URI: https://github.com/crewstyle

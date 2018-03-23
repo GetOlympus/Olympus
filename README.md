@@ -1,6 +1,6 @@
 # Olympus  
 
-_The **Olympus WordPress framework**: your simple, easy to use and powerfull framework to deploy and work with **WordPress**.  
+_The **Olympus framework**, your simple, easy to use and powerfull framework to deploy and work with **WordPress**.  
 An awesome framework build with ♥ for **WordPress developers**._  
 [![Build Status](https://img.shields.io/travis/GetOlympus/Olympus/master.svg?style=flat-square)](https://travis-ci.org/GetOlympus/Olympus) ~
 [![Packagist version](https://img.shields.io/packagist/v/getolympus/olympus.svg?style=flat-square)](https://packagist.org/packages/getolympus/olympus) ~

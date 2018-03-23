@@ -1,8 +1,8 @@
 {
   "name": "getolympus/olympus",
   "type": "project",
-  "description": "The Olympus WordPress framework: your simple, easy to use and powerfull framework to deploy and work with WordPress. An awesome framework build with ♥ for WordPress developers.",
-  "keywords": ["olympus", "wordpress", "framework", "php"],
+  "description": "The Olympus framework, your simple, easy to use and powerfull framework to deploy and work with WordPress. An awesome framework build with ♥ for WordPress developers.",
+  "keywords": ["olympus", "wordpress", "framework", "php", "capistrano", "composer"],
   "homepage": "https://github.com/GetOlympus/Olympus",
   "license": "MIT",
   "authors": [
@@ -14,9 +14,9 @@
   ],
   "autoload": {
     "psr-4": {
-      "GetOlympus\\Components\\Autoloader\\": "app/components/Autoloader/",
-      "GetOlympus\\Components\\Error\\": "app/components/Error/",
-      "GetOlympus\\Components\\Handler\\": "app/components/Handler/"
+      "Olympus\\Components\\Autoloader\\": "app/components/Autoloader/",
+      "Olympus\\Components\\Error\\": "app/components/Error/",
+      "Olympus\\Components\\Handler\\": "app/components/Handler/"
     }
   },
   "config": {
@@ -64,11 +64,11 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "GetOlympus\\Components\\Handler\\Configurator::build",
+      "Olympus\\Components\\Handler\\Configurator::build",
       "cd web ; [ ! -h xmlrpc.php ] && ln -s cms/xmlrpc.php xmlrpc.php ; cd .."
     ],
     "post-update-cmd": [
-      "GetOlympus\\Components\\Handler\\Configurator::build",
+      "Olympus\\Components\\Handler\\Configurator::build",
       "cd web ; [ ! -h xmlrpc.php ] && ln -s cms/xmlrpc.php xmlrpc.php ; cd .."
     ],
     "test": [

@@ -1,6 +1,6 @@
 <?php
 
-namespace GetOlympus\Components\Handler;
+namespace Olympus\Components\Handler;
 
 use Composer\IO\IOInterface;
 
@@ -8,7 +8,7 @@ use Composer\IO\IOInterface;
  * Gets its own config via composer, inspired from Incenteev ParameterHandler script.
  *
  * @category   PHP
- * @package    GetOlympus
+ * @package    Olympus
  * @subpackage Components\Handler\Processor
  * @author     Achraf Chouk <achrafchouk@gmail.com>
  * @license    https://github.com/GetOlympus/Olympus/blob/master/LICENSE MIT
@@ -290,10 +290,7 @@ class Processor
 
 
                 // Special cases.
-                if ('siteurl' === $key) {
-                    // Special case: 'siteurl'
-                    $message = preg_replace('{/$}', '', $params['home']) . '/cms';
-                } else if ('https' === $key) {
+                if ('https' === $key) {
                     // Special case: 'https'
                     $url = parse_url($params['wordpress']['home']);
                     $message = 'https' === $url['scheme'] ? true : $message;

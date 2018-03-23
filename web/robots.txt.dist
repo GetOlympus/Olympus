@@ -2,30 +2,6 @@ Sitemap: http://www.domain.tld/sitemap.xml
 
 User-agent: *
 Disallow: /*?
-
-User-agent: Googlebot
-User-agent: Googlebot-News
-User-agent: Googlebot-Image
-User-agent: Googlebot-Video
-User-agent: Googlebot-Mobile
-User-agent: Mediapartners-Google
-User-agent: Mediapartners
-User-agent: AdsBot-Google
-User-agent: Bingbot
-User-agent: Twitterbot
-Crawl-delay: 5
-
-User-agent: CCBot
-Crawl-delay: 10
-
-User-agent: Yandex
-Crawl-delay: 10
-
-User-agent: Applebot
-Crawl-delay: 10
-
-User-agent: archive.org_bot
-Crawl-delay: 10
-
-User-agent: ia_archiver
-Crawl-delay: 10
+Disallow: /cms/
+Disallow: /statics/
+Allow: /statics/uploads/

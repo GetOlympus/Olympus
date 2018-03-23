@@ -1,3 +1,6 @@
+## v0.0.18 (March 23, 2018)
+Update main package with new Whoops integration.
+
 ## v0.0.17 (February 03, 2017)
 Update composer components with Guzzle.
 

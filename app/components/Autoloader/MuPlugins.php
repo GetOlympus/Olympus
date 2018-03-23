@@ -1,12 +1,12 @@
 <?php
 
-namespace GetOlympus\Components\Autoloader;
+namespace Olympus\Components\Autoloader;
 
 /**
  * Autoload all plugins from the mu-plugins folder.
  *
  * @category   PHP
- * @package    GetOlympus
+ * @package    Olympus
  * @subpackage Components\Autoloader\MuPlugins
  * @author     Achraf Chouk <achrafchouk@gmail.com>
  * @license    https://github.com/GetOlympus/Olympus/blob/master/LICENSE MIT

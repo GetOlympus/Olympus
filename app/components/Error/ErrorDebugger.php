@@ -1,6 +1,6 @@
 <?php
 
-namespace GetOlympus\Components\Error;
+namespace Olympus\Components\Error;
 
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Handler\JsonResponseHandler;
@@ -11,7 +11,7 @@ use Whoops\Util\Misc;
  * Log all errors in log file
  *
  * @category   PHP
- * @package    GetOlympus
+ * @package    Olympus
  * @subpackage Components\Error\ErrorDebugger
  * @author     Achraf Chouk <achrafchouk@gmail.com>
  * @license    https://github.com/GetOlympus/Olympus/blob/master/LICENSE MIT
@@ -46,7 +46,7 @@ class ErrorDebugger
 
         // Page custom CSS
         $handler->setResourcesPath(WEBPATH.'resources'.S.'whoops'.S);
-        $handler->addCustomCss('olympoops.base.css');
+        $handler->addCustomCss('olympus.whoops.css');
 
         // Push all in handler
         $run->pushHandler($handler);
@@ -84,7 +84,7 @@ class ErrorDebugger
         $error .= '  <div id="olympus-error">';
         $error .= '    <h1>'.$title.'</h1>';
         $error .= '    <p>'.$message.'</p>';
-        $error .= '    <small>'.$type.'<br/>--<br/>Please, find more details on the <a href="https://github.com/crewstyle/Olympus" target="_blank">Olympus framework</a> repository.</small>';
+        $error .= '    <small>'.$type.'<br/>--<br/>Please, find more details on the <a href="https://github.com/GetOlympus" target="_blank">Olympus framework</a> repository.</small>';
         $error .= '  </div>';
         $error .= '</body>';
         $error .= '</html>';
