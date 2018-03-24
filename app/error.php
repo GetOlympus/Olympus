@@ -1,6 +1,5 @@
 <?php
 
-use Olympus\Components\Error\FileLogger;
 use Olympus\Components\Error\ErrorDebugger;
 
 /**
@@ -20,13 +19,5 @@ use Olympus\Components\Error\ErrorDebugger;
  */
 new ErrorDebugger([
     'debug' => WP_DEBUG,
+    'log'   => WP_DEBUG_LOG,
 ]);
-
-/**
- * Check if logger is enabled or not and Log all in file
- */
-if (defined(WP_DEBUG_LOG) && true === WP_DEBUG_LOG) {
-    // Use the FileLogger to store errors
-    // in a specific log file
-    new FileLogger(APPPATH.'logs'.S.'errors.log');
-}

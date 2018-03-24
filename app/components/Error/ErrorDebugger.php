@@ -2,6 +2,8 @@
 
 namespace Olympus\Components\Error;
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Handler\JsonResponseHandler;
 use Whoops\Run;
@@ -54,6 +56,18 @@ class ErrorDebugger
         // AJAX requests
         if (Misc::isAjaxRequest()) {
             $run->pushHandler(new JsonResponseHandler);
+        }
+
+        // Log in file
+        if (isset($configs['log']) && true === $configs['log']) {
+            // Setup Monolog
+            $logger = new Logger('Olympus');
+            $logger->pushHandler(new StreamHandler(APPPATH.'logs'.S.'errors.log', Logger::CRITICAL));
+
+            // Push all in handler
+            $run->pushHandler(function ($exception, $inspector, $run) use($logger) {
+                $logger->addError($exception->getMessage());
+            });
         }
 
         // Handler registration

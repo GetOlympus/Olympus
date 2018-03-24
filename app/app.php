@@ -27,14 +27,6 @@ $loader = include_once APPPATH.'autoload.php';
 require_once APPPATH.'environment.php';
 
 /**
- * Olympus configs.
- */
-$olympus_data = [
-    'debug' => WP_DEBUG,
-    'log'   => WP_DEBUG_LOG,
-];
-
-/**
  * Load error catcher.
  */
 require_once APPPATH.'error.php';
