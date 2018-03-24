@@ -1,3 +1,6 @@
+## v0.0.20 (March 24, 2018)
+PHPCS validation.
+
 ## v0.0.19 (March 24, 2018)
 Log file integration with Whoops package, update required php version.
 

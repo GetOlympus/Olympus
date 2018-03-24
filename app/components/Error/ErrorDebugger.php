@@ -65,7 +65,7 @@ class ErrorDebugger
             $logger->pushHandler(new StreamHandler(APPPATH.'logs'.S.'errors.log', Logger::ERROR));
 
             // Push all in handler
-            $run->pushHandler(function ($exception, $inspector, $run) use($logger) {
+            $run->pushHandler(function ($exception, $inspector, $run) use ($logger) {
                 $logger->addError($exception->getMessage());
             });
         }

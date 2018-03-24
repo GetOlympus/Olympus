@@ -30,15 +30,11 @@
           Stack frames (<?php echo count($frames) ?>):
         </div>
 
-        <div class="frames-container">
-          <?php $tpl->render($frame_list) ?>
-        </div>
+        <div class="frames-container"><?php $tpl->render($frame_list) ?></div>
       </div>
 
       <div class="details-container cf">
-        <header>
-          <?php $tpl->render($header) ?>
-        </header>
+        <header><?php $tpl->render($header) ?></header>
         <?php $tpl->render($frame_code) ?>
         <?php $tpl->render($env_details) ?>
       </div>
