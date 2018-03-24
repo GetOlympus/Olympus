@@ -62,7 +62,7 @@ class ErrorDebugger
         if (isset($configs['log']) && true === $configs['log']) {
             // Setup Monolog
             $logger = new Logger('Olympus');
-            $logger->pushHandler(new StreamHandler(APPPATH.'logs'.S.'errors.log', Logger::CRITICAL));
+            $logger->pushHandler(new StreamHandler(APPPATH.'logs'.S.'errors.log', Logger::ERROR));
 
             // Push all in handler
             $run->pushHandler(function ($exception, $inspector, $run) use($logger) {
