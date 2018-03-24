@@ -12,7 +12,7 @@
  */
 
 // Check debugger
-$olp_debug = isset($tables['debug']) ? $tables['debug'] : false;
+$olp_debug = isset($tables['Olympus configurations']['debug']) ? $tables['Olympus configurations']['debug'] : false;
 $olp_layout = $olp_debug ? 'on' : 'off';
 
 // Call template

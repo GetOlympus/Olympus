@@ -27,7 +27,7 @@ if (!file_exists($wpblogheader = $d.$s.'cms'.$s.'wp-blog-header.php')) {
     require_once dirname($d).$s.'app'.$s.'components'.$s.'Error'.$s.'ErrorDebugger.php';
 
     // Use ErrorDebugger class to display error.
-    Olympus\Components\Error\ErrorDebugger::error500('WordPress is not installed.', 'The default WordPress CMS folder seems empty and does not contain the required files. Please, run <code>php composer.phar install</code> command lines from your project folder and refresh this page.', 'File not found');
+    Olympus\Components\Error\ErrorDebugger::error500('WordPress is not installed.', 'The default WordPress CMS folder seems empty and does not contain the required files. Please, run <code>php composer.phar install</code> command line from your project folder and refresh this page.', 'File not found');
 }
 
 require $wpblogheader;

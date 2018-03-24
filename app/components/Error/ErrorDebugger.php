@@ -45,7 +45,7 @@ class ErrorDebugger
         $handler->setPageTitle('Whoops! There was a problem.');
 
         // Page custom CSS
-        $handler->setResourcesPath(WEBPATH.'resources'.S.'whoops'.S);
+        $handler->setResourcesPath(dirname(__FILE__).S.'resources'.S);
         $handler->addCustomCss('olympus.whoops.css');
 
         // Push all in handler

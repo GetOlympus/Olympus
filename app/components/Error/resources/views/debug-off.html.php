@@ -27,7 +27,7 @@
   <div id="olympus-error">
     <h1><?php echo $page_title ?></h1>
     <p>An unexpected error has occurred. Please, try again later by refreshing this page.</p>
-    <small>Server error<br/>--<br/>If the error persists, please contact the website webmaster.</small>
+    <small>Server error<br/>--<br/>If the error persists, please contact the webmaster.</small>
   </div>
 </body>
 </html>
