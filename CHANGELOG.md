@@ -1,3 +1,6 @@
+## v0.0.19 (March 24, 2018)
+Log file integration with Whoops package, update required php version.
+
 ## v0.0.18 (March 23, 2018)
 Update main package with new Whoops integration.
 
