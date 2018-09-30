@@ -83,13 +83,13 @@ add_action('setup_theme', function () {
      */
 
     // Define if we are in the admin panel or not
-    define('OL_ISADMIN', is_admin());
+    defined('OL_ISADMIN')       or define('OL_ISADMIN', is_admin());
     // Define if the user is connected or not
-    define('OL_ISCONNECTED', is_user_logged_in());
+    defined('OL_ISCONNECTED')   or define('OL_ISCONNECTED', is_user_logged_in());
     // The dist folder URI
-    define('OL_DISTURI', OL_BLOG_HOME.'/resources/dist/');
+    defined('OL_DISTURI')       or define('OL_DISTURI', OL_BLOG_HOME.'/resources/dist/');
     // AJAX NONCE value
-    define('OL_NONCE', wp_create_nonce(OL_TPL_DICTIONARY.'_ajax_nonce'));
+    defined('OL_NONCE')         or define('OL_NONCE', wp_create_nonce(OL_TPL_DICTIONARY.'_ajax_nonce'));
 
 
     /**
@@ -97,7 +97,7 @@ add_action('setup_theme', function () {
      */
 
     // Defining if we use Twig cache or not
-    define('OL_ZEUS_USECACHE', false);
+    defined('OL_ZEUS_USECACHE') or define('OL_ZEUS_USECACHE', false);
 
 
     /**

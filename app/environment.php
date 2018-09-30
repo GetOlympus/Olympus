@@ -55,6 +55,11 @@ if (-1 < $config['wordpress']['revisions']) {
     define('WP_POST_REVISIONS', $config['wordpress']['revisions']);
 }
 
+// Days for posts in trash
+if (-1 < $config['wordpress']['posts_in_trash']) {
+    define('EMPTY_TRASH_DAYS', $config['wordpress']['posts_in_trash']);
+}
+
 // Automatic updater
 define('AUTOMATIC_UPDATER_DISABLED', $config['wordpress']['disable_updater']);
 
