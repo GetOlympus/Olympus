@@ -33,10 +33,10 @@ class ErrorDebugger
     public function __construct($configs = [])
     {
         // Use Whoops vendor to display errors
-        $run = new Run;
+        $run = new Run();
 
         // New Pretty handler
-        $handler = new PrettyPageHandler;
+        $handler = new PrettyPageHandler();
 
         // Custom tables
         if (!empty($configs)) {
@@ -44,7 +44,7 @@ class ErrorDebugger
         }
 
         // Page title
-        $handler->setPageTitle('Whoops! There was a problem.');
+        $handler->setPageTitle('Oops! There was a problem.');
 
         // Page custom CSS
         $handler->setResourcesPath(dirname(__FILE__).S.'resources'.S);
@@ -60,12 +60,16 @@ class ErrorDebugger
 
         // Log in file
         if (isset($configs['log']) && true === $configs['log']) {
-            // Setup Monolog
-            $logger = new Logger('Olympus');
-            $logger->pushHandler(new StreamHandler(APPPATH.'logs'.S.'errors.log', Logger::ERROR));
-
             // Push all in handler
-            $run->pushHandler(function ($exception, $inspector, $run) use ($logger) {
+            $run->pushHandler(function ($exception, $inspector, $run) {
+                // Setup error level
+                $error_level = 500 === ERROR_LEVEL ? Logger::CRITICAL : Logger::WARNING;
+
+                // Setup Monolog
+                $logger = new Logger('Olympus');
+                $logger->pushHandler(new StreamHandler(APPPATH.'logs'.S.'errors.log', $error_level));
+
+                // Add error to logger
                 $logger->addError($exception->getMessage());
             });
         }

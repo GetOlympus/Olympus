@@ -1,8 +1,8 @@
 /**
- * Olympus style for Whoops error pages.
+ * Olympus style for error pages.
  *
- * primary color: 75cd45
- * secondary color: 5da535
+ * Primary color: 75cd45
+ * Secondary color: 5da535
  */
 
 
@@ -10,8 +10,7 @@
 body {
     background-color: #fff;
     color: #2b2b2b;
-    //font: 14px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
-    font: 14px "Source Sans Pro",Helvetica,sans-serif;
+    font: 14px 'Source Code Pro', Monaco, Consolas, 'Lucida Console', monospace;
     margin: 0;
     max-height: 100%;
     padding: 0;
@@ -205,7 +204,7 @@ header {
 }
 .frame-file {
     color: #999;
-    font-family: 'Source Code Pro', Monaco, Consolas, "Lucida Console", monospace;
+    font-family: 'Source Code Pro', Monaco, Consolas, 'Lucida Console', monospace;
     word-wrap: break-word;
 }
 .frame-file .editor-link {
@@ -339,7 +338,7 @@ header {
     width: 100%;
 }
 .data-table tbody {
-    font: 12px 'Source Code Pro', Monaco, Consolas, "Lucida Console", monospace;
+    font: 12px 'Source Code Pro', Monaco, Consolas, 'Lucida Console', monospace;
 }
 .data-table thead {
     display: none;
@@ -384,11 +383,11 @@ header {
 /* prettify code style
 Uses the Doxy theme as a base */
 pre .str, code .str {
-    color: #E3B446;
+    color: #e3b446;
 }
 /* string  */
 pre .kwd, code .kwd {
-    color: #DB613B;
+    color: #db613b;
     font-weight: 700;
 }
 /* keyword*/
@@ -402,28 +401,28 @@ pre .typ, code .typ {
 }
 /* type  */
 pre .lit, code .lit {
-    color: #17CFB6;
+    color: #17cfb6;
 }
 /* literal */
 pre .pun, code .pun {
-    color: #93A1A1;
+    color: #93a1a1;
     font-weight: 700;
 }
 /* punctuation  */
 pre .pln, code .pln {
-    color: #CCCCCC;
+    color: #cccccc;
 }
 /* plaintext  */
 pre .tag, code .tag {
-    color: #DB613B;
+    color: #db613b;
 }
 /* html/xml tag  */
 pre .htm, code .htm {
-    color: #DDA0DD;
+    color: #dda0dd;
 }
 /* html tag */
 pre .xsl, code .xsl {
-    color: #D0A0D0;
+    color: #d0a0d0;
 }
 /* xslt tag */
 pre .atn, code .atn {
@@ -432,7 +431,7 @@ pre .atn, code .atn {
 }
 /* html/xml attribute name */
 pre .atv, code .atv {
-    color: #E3B446;
+    color: #e3b446;
 }
 /* html/xml attribute value  */
 pre .dec, code .dec {
@@ -442,8 +441,7 @@ pre .dec, code .dec {
 pre.prettyprint, code.prettyprint {
     background: #272727;
     color: #929292;
-    font-family: 'Source Code Pro', Monaco, Consolas, "Lucida Console", monospace;
-    font-size: 11px;
+    font: 12px 'Source Code Pro', Monaco, Consolas, 'Lucida Console', monospace;
     font-weight: 400;
     line-height: 1.5em;
 }
