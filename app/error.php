@@ -19,5 +19,5 @@ use Olympus\Components\Error\ErrorDebugger;
  */
 new ErrorDebugger([
     'debug' => WP_DEBUG,
-    'log'   => WP_DEBUG_LOG,
+    'level' => ERROR_LEVEL,
 ]);

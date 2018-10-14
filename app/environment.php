@@ -101,7 +101,7 @@ if (!is_array($config['debug']) && false === $config['debug']) {
     define('WP_DEBUG_LOG', false);
     define('WP_DEBUG', false);
     // Special Olympus error level
-    define('ERROR_LEVEL', 300);
+    define('ERROR_LEVEL', 500);
 } else {
     // Development environment
     define('SAVEQUERIES', isset($config['debug']['savequeries']) ? $config['debug']['savequeries'] : true);
@@ -110,7 +110,7 @@ if (!is_array($config['debug']) && false === $config['debug']) {
     define('WP_DEBUG_LOG', isset($config['debug']['wp_debug_log']) ? $config['debug']['wp_debug_log'] : true);
     define('WP_DEBUG', isset($config['debug']['wp_debug']) ? $config['debug']['wp_debug'] : true);
     // Special Olympus error level
-    define('ERROR_LEVEL', 500);
+    define('ERROR_LEVEL', 200);
 }
 
 /**

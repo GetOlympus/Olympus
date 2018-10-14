@@ -58,21 +58,18 @@ class ErrorDebugger
             $run->pushHandler(new JsonResponseHandler);
         }
 
-        // Log in file
-        if (isset($configs['log']) && true === $configs['log']) {
-            // Push all in handler
-            $run->pushHandler(function ($exception, $inspector, $run) {
-                // Setup error level
-                $error_level = 500 === ERROR_LEVEL ? Logger::CRITICAL : Logger::WARNING;
+        // Push all in a handler to log in file
+        $run->pushHandler(function ($exception, $inspector, $run) use ($configs) {
+            // Setup error level
+            $errorLevel = Logger::getLevelName($configs['level']);
 
-                // Setup Monolog
-                $logger = new Logger('Olympus');
-                $logger->pushHandler(new StreamHandler(APPPATH.'logs'.S.'errors.log', $error_level));
+            // Setup Monolog
+            $logger = new Logger('Olympus');
+            $logger->pushHandler(new StreamHandler(APPPATH.'logs'.S.'errors.log', $errorLevel));
 
-                // Add error to logger
-                $logger->addError($exception->getMessage());
-            });
-        }
+            // Add error to logger
+            $logger->addError($exception->getMessage());
+        });
 
         // Handler registration
         $run->register();
