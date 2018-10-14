@@ -11,31 +11,15 @@
  * @since    0.0.1
  */
 
-$path = dirname(dirname(__FILE__));
+/**
+ * Loads the WordPress theme and output it.
+ */
+define('WP_USE_THEMES', true);
 
 /**
  * Global constants.
  */
-
-// Directory separator.
-defined('S')             or define('S', DIRECTORY_SEPARATOR);
-// Paths.
-defined('APPPATH')       or define('APPPATH', $path.S.'app'.S);
-defined('CACHEPATH')     or define('CACHEPATH', APPPATH.'cache'.S);
-defined('VENDORPATH')    or define('VENDORPATH', $path.S.'vendor'.S);
-defined('WEBPATH')       or define('WEBPATH', $path.S.'web'.S);
-// Web contents paths.
-defined('DISTPATH')      or define('DISTPATH', WEBPATH.'resources'.S.'dist'.S);
-// Folders names.
-defined('WORDPRESS_DIR') or define('WORDPRESS_DIR', 'cms');
-defined('STATICS_DIR')   or define('STATICS_DIR', 'statics');
-
-/**
- * WordPress constants.
- */
-
-// Loads the WordPress theme and output it.
-define('WP_USE_THEMES', true);
+include dirname(__FILE__).DIRECTORY_SEPARATOR.'constants.php';
 
 /**
  * Loads the WordPress Environment and Template.

@@ -12,11 +12,16 @@
  */
 
 /**
+ * Global constants if needed.
+ */
+if (!defined('WP_USE_THEMES')) {
+    include dirname(__FILE__).DIRECTORY_SEPARATOR.'constants.php';
+}
+
+/**
  * Bootstrap WordPress.
  */
-
 require_once APPPATH.'app.php';
-
 
 /**
  * DO NOT add any constants in this file.
@@ -26,9 +31,7 @@ require_once APPPATH.'app.php';
  * Please, see the `environment.php` file for more instructions.
  */
 
-
 /**
  * Sets up WordPress vars and included files.
  */
-
 require_once ABSPATH.'wp-settings.php';
