@@ -11,23 +11,6 @@
  * @since    0.0.1
  */
 
-$path = dirname(dirname(__FILE__));
-
-/**
- * Global constants.
- */
-
-// Directory separator.
-defined('S')           or define('S', DIRECTORY_SEPARATOR);
-// Paths.
-defined('APPPATH')     or define('APPPATH', $path.S.'app'.S);
-defined('CACHEPATH')   or define('CACHEPATH', APPPATH.'cache'.S);
-defined('VENDORPATH')  or define('VENDORPATH', $path.S.'vendor'.S);
-defined('WEBPATH')     or define('WEBPATH', $path.S.'web'.S);
-defined('DISTPATH')    or define('DISTPATH', WEBPATH.'resources'.S.'dist'.S);
-// Contents folder
-defined('STATICS_DIR') or define('STATICS_DIR', 'statics');
-
 /**
  * Bootstrap WordPress.
  */

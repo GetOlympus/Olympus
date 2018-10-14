@@ -44,7 +44,7 @@ define('DB_CHARSET', $config['database']['charset']);
 define('DB_COLLATE', $config['database']['collate']);
 
 // Set siteurl var
-$config['wordpress']['siteurl'] = rtrim($config['wordpress']['home'], '/').'/cms';
+$config['wordpress']['siteurl'] = rtrim($config['wordpress']['home'], '/').'/'.WORDPRESS_DIR;
 
 // Define home as domain.tld and siteurl as domain.tld/cms_or_whatever_you_want
 define('WP_HOME', $config['wordpress']['home']);
