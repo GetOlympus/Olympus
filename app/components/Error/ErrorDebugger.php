@@ -33,10 +33,17 @@ class ErrorDebugger
     public function __construct($configs = [])
     {
         // Use Whoops vendor to display errors
-        $run = new Run();
+        $run = new Run;
+
+
+        // AJAX requests
+        if (Misc::isAjaxRequest()) {
+            $run->pushHandler(new JsonResponseHandler);
+        }
+
 
         // New Pretty handler
-        $handler = new PrettyPageHandler();
+        $handler = new PrettyPageHandler;
 
         // Custom tables
         if (!empty($configs)) {
@@ -53,23 +60,17 @@ class ErrorDebugger
         // Push all in handler
         $run->pushHandler($handler);
 
-        // AJAX requests
-        if (Misc::isAjaxRequest()) {
-            $run->pushHandler(new JsonResponseHandler);
-        }
+
+        // Setup Monolog
+        $logger = new Logger('Olympus');
+        $logger->pushHandler(new StreamHandler(APPPATH.'logs'.S.'errors.log', Logger::getLevelName($configs['level'])));
 
         // Push all in a handler to log in file
-        $run->pushHandler(function ($exception, $inspector, $run) use ($configs) {
-            // Setup error level
-            $errorLevel = Logger::getLevelName($configs['level']);
-
-            // Setup Monolog
-            $logger = new Logger('Olympus');
-            $logger->pushHandler(new StreamHandler(APPPATH.'logs'.S.'errors.log', $errorLevel));
-
+        $run->pushHandler(function ($exception, $inspector, $run) use ($logger) {
             // Add error to logger
             $logger->addError($exception->getMessage());
         });
+
 
         // Handler registration
         $run->register();
