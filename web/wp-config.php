@@ -14,7 +14,7 @@
 /**
  * Global constants if needed.
  */
-if (!defined('WP_USE_THEMES') || defined('DOING_CRON')) {
+if (!defined('APPPATH')) {
     include dirname(__FILE__).DIRECTORY_SEPARATOR.'constants.php';
 }
 
