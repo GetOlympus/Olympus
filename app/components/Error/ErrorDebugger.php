@@ -63,7 +63,12 @@ class ErrorDebugger
 
         // Setup Monolog
         $logger = new Logger('Olympus');
-        $logger->pushHandler(new StreamHandler(APPPATH.'logs'.S.'errors.log', Logger::getLevelName($configs['level'])));
+        $logger->pushHandler(
+            new StreamHandler(
+                APPPATH.'logs'.S.'errors.log',
+                Logger::getLevelName($configs['level'])
+            )
+        );
 
         // Push all in a handler to log in file
         $run->pushHandler(function ($exception, $inspector, $run) use ($logger) {
