@@ -32,6 +32,11 @@ class ErrorDebugger
      */
     public function __construct($configs = [])
     {
+        // Vars
+        $stream = APPPATH.'logs'.S.'errors.log';
+        $log = Logger::getLevelName($configs['level']);
+
+
         // Use Whoops vendor to display errors
         $run = new Run;
 
@@ -63,17 +68,17 @@ class ErrorDebugger
 
         // Setup Monolog
         $logger = new Logger('Olympus');
-        $logger->pushHandler(
-            new StreamHandler(
-                APPPATH.'logs'.S.'errors.log',
-                Logger::getLevelName($configs['level'])
-            )
-        );
+        $logger->pushHandler(new StreamHandler($stream, $log));
 
         // Push all in a handler to log in file
         $run->pushHandler(function ($exception, $inspector, $run) use ($logger) {
             // Add error to logger
-            $logger->addError($exception->getMessage());
+            $logger->error($exception->getMessage(), [
+                'file'  => $exception->getFile(),
+                'line'  => $exception->getLine(),
+                'code'  => $exception->getCode(),
+                'error' => $exception->getTrace()
+            ]);
         });
 
 
