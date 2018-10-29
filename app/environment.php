@@ -50,6 +50,16 @@ $config['wordpress']['siteurl'] = rtrim($config['wordpress']['home'], '/').'/'.W
 define('WP_HOME', $config['wordpress']['home']);
 define('WP_SITEURL', $config['wordpress']['siteurl']);
 
+// Fix unknown bug from WP where SERVER_NAME and HTTP_HOST can be empty
+if (empty($_SERVER['SERVER_NAME']) || empty($_SERVER['HTTP_HOST'])) {
+    $hostname = parse_url(WP_HOME, PHP_URL_HOST);
+    // Set $_SERVER vars
+    $_SERVER['SERVER_NAME'] = $hostname;
+    $_SERVER['HTTP_HOST'] = $hostname;
+    // Free memory
+    unset($hostname);
+}
+
 // Fix revisions up to 10 - 0 to disable revisions, remove the line to make it infinite
 if (-1 < $config['wordpress']['revisions']) {
     define('WP_POST_REVISIONS', $config['wordpress']['revisions']);
