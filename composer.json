@@ -51,7 +51,7 @@
     "php": ">=7",
     "composer/composer": "~1.0.0",
     "filp/whoops": "^2.1",
-    "getolympus/olympus-zeus-core": "~0.0.1",
+    "getolympus/olympus-zeus-core": "~1.1",
     "guzzlehttp/guzzle": "~6.0",
     "johnpbloch/wordpress": ">=4",
     "monolog/monolog": "^1.19",
