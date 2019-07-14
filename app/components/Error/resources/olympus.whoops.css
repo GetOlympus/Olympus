@@ -25,9 +25,6 @@ a:hover {
 
 
 /* content panel */
-.cf {
-    *zoom: 1;
-}
 .cf:before, .cf:after {
     content: " ";
     display: table;
@@ -114,7 +111,7 @@ header {
     margin-right: 10px;
 }
 .exc-message .search-for-help {
-    display: inline;
+    display: inline-block;
     line-height: 24px;
     margin: 0 10px 0 0;
     width: auto;
@@ -356,11 +353,10 @@ header {
 .data-table td:last-child {
     color: #999;
     width: 80%;
-    -ms-word-break: break-all;
     word-break: break-all;
     word-break: break-word;
+
     -webkit-hyphens: auto;
-    -moz-hyphens: auto;
     hyphens: auto;
 }
 .data-table .empty {

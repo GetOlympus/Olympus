@@ -31,5 +31,9 @@ defined('DISTPATH')      or define('DISTPATH', WEBPATH.'resources'.S.'dist'.S);
  * Folder names constants.
  */
 
-defined('WORDPRESS_DIR') or define('WORDPRESS_DIR', 'cms');
-defined('STATICS_DIR')   or define('STATICS_DIR', 'statics');
+defined('WORDPRESSDIR')  or define('WORDPRESSDIR', 'cms');
+defined('WPADMINDIR')    or define('WPADMINDIR', 'wp-admin');
+defined('STATICSDIR')    or define('STATICSDIR', 'statics');
+defined('MUPLUGINSDIR')  or define('MUPLUGINSDIR', 'mu-plugins');
+defined('PLUGINSDIR')    or define('PLUGINSDIR', 'plugins');
+defined('THEMESDIR')     or define('THEMESDIR', 'themes');

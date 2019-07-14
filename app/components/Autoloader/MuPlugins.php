@@ -64,7 +64,7 @@ class MuPlugins
         foreach ($cache as $file => $data) {
             // Check file to include it or not
             if (!file_exists(WPMU_PLUGIN_DIR.S.$file)) {
-                $this->_updateCache(true);
+                $this->updateCache(true);
                 continue;
             }
 
@@ -86,9 +86,10 @@ class MuPlugins
     public function showPlugins($bool, $type)
     {
         $screen = get_current_screen();
+        $bases = ['plugins', 'plugins-network'];
 
         // Check capabilities
-        if (!in_array($screen->base, ['plugins', 'plugins-network']) || $type !== 'mustuse' || !current_user_can('activate_plugins')) {
+        if (!in_array($screen->base, $bases) || $type !== 'mustuse' || !current_user_can('activate_plugins')) {
             return $bool;
         }
 
@@ -110,8 +111,8 @@ class MuPlugins
     {
         // Check cache
         if (empty($this->cache)) {
-            $cache = $this->_updateCache();
-            $this->_setCache($cache);
+            $cache = $this->updateCache();
+            $this->setCache($cache);
         }
 
         return (array) $this->cache;
@@ -125,7 +126,7 @@ class MuPlugins
      *
      * @since 0.0.4
      */
-    private function _setCache($cache)
+    private function setCache($cache)
     {
         $this->cache = (array) $cache;
 
@@ -140,7 +141,7 @@ class MuPlugins
      *
      * @since 0.0.4
      */
-    private function _updateCache($force = false)
+    private function updateCache($force = false)
     {
         $cachefile = CACHEPATH.'mu-plugins.php';
 
@@ -156,7 +157,10 @@ class MuPlugins
         $cache = get_plugins(S.'..'.S.basename(WPMU_PLUGIN_DIR));
 
         // Create cache file and return result
-        file_put_contents($cachefile, "<?php\n\n/**\n * File auto-generated.\n */\n\nreturn ".var_export($cache, true).";\n");
+        file_put_contents(
+            $cachefile,
+            "<?php\n\n/**\n * File auto-generated.\n */\n\nreturn ".var_export($cache, true).";\n"
+        );
         return $cache;
     }
 }
