@@ -49,15 +49,14 @@
   ],
   "require": {
     "php": ">=7",
-    "composer/composer": "~1.0.0",
-    "filp/whoops": "^2.1",
-    "getolympus/olympus-zeus-core": "~1.1",
-    "guzzlehttp/guzzle": "~6.0",
-    "johnpbloch/wordpress": ">=4",
-    "monolog/monolog": "^1.19",
-    "timber/timber": "^1.0",
+    "composer/composer": "^1.8",
+    "filp/whoops": "^2.4",
+    "getolympus/olympus-zeus-core": "^2.0",
+    "johnpbloch/wordpress": "^5.2",
+    "monolog/monolog": "^1.20",
+    "timber/timber": "^1.10",
     "wp-api/wp-api": "2.*",
-    "wpackagist-theme/twentyseventeen": ">=1.0"
+    "wpackagist-theme/twentynineteen": ">=1.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "2.*"

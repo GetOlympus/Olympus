@@ -64,7 +64,7 @@ class MuPlugins
         foreach ($cache as $file => $data) {
             // Check file to include it or not
             if (!file_exists(WPMU_PLUGIN_DIR.S.$file)) {
-                $this->_updateCache(true);
+                $this->updateCache(true);
                 continue;
             }
 
@@ -110,8 +110,8 @@ class MuPlugins
     {
         // Check cache
         if (empty($this->cache)) {
-            $cache = $this->_updateCache();
-            $this->_setCache($cache);
+            $cache = $this->updateCache();
+            $this->setCache($cache);
         }
 
         return (array) $this->cache;
@@ -125,7 +125,7 @@ class MuPlugins
      *
      * @since 0.0.4
      */
-    private function _setCache($cache)
+    private function setCache($cache)
     {
         $this->cache = (array) $cache;
 
@@ -140,7 +140,7 @@ class MuPlugins
      *
      * @since 0.0.4
      */
-    private function _updateCache($force = false)
+    private function updateCache($force = false)
     {
         $cachefile = CACHEPATH.'mu-plugins.php';
 

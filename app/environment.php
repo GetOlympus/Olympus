@@ -24,112 +24,59 @@ if (!file_exists($env = APPPATH.'config'.S.'env.php')) {
 $environments = include_once $env;
 $defaults = include_once APPPATH.'config'.S.'env.php.dist';
 
-// Retrieve all configs and merge them with defaults
+// Special case: works on `home` and `siteurl`
+$environments['wordpress']['home']    = rtrim($environments['wordpress']['home'], S);
+$environments['wordpress']['siteurl'] = rtrim($environments['wordpress']['home'].S.WORDPRESSDIR, S);
+
+/**
+ * Define optional constants.
+ */
+if (file_exists($opts = APPPATH.'config'.S.'opts.php')) {
+    // Load all options
+    $options = include_once $opts;
+
+    // Merge environments and options
+    $environments = array_merge($environments, $options);
+
+    // Free memory
+    unset($options);
+    unset($opts);
+}
+
+/**
+ * Retrieve all configs / optionals and merge them with defaults
+ */
 $config = array_merge($defaults, $environments);
 
 /**
- * WordPress Database Table prefix.
+ * Include files containing constants definitions.
  */
-$table_prefix = $config['database']['prefix'];
+// Database constants and Table prefix
+include_once APPPATH.'environments'.S.'database.php';
 
-/**
- * Define environment constants.
- */
-// Database
-define('DB_HOST', $config['database']['host']);
-define('DB_NAME', $config['database']['name']);
-define('DB_USER', $config['database']['user']);
-define('DB_PASSWORD', $config['database']['pass']);
-define('DB_CHARSET', $config['database']['charset']);
-define('DB_COLLATE', $config['database']['collate']);
+// Site URL, Home URL, SSL and Directories
+include_once APPPATH.'environments'.S.'website.php';
 
-// Set siteurl var
-$config['wordpress']['siteurl'] = rtrim($config['wordpress']['home'], '/').'/'.WORDPRESS_DIR;
-
-// Define home as domain.tld and siteurl as domain.tld/cms_or_whatever_you_want
-define('WP_HOME', $config['wordpress']['home']);
-define('WP_SITEURL', $config['wordpress']['siteurl']);
-
-// Fix unknown bug from WP where SERVER_NAME and HTTP_HOST can be empty
-if (empty($_SERVER['SERVER_NAME']) || empty($_SERVER['HTTP_HOST'])) {
-    $hostname = parse_url(WP_HOME, PHP_URL_HOST);
-    // Set $_SERVER vars
-    $_SERVER['SERVER_NAME'] = $hostname;
-    $_SERVER['HTTP_HOST'] = $hostname;
-    // Free memory
-    unset($hostname);
-}
-
-// Fix revisions up to 10 - 0 to disable revisions, remove the line to make it infinite
-if (-1 < $config['wordpress']['revisions']) {
-    define('WP_POST_REVISIONS', $config['wordpress']['revisions']);
-}
-
-// Days for posts in trash
-if (-1 < $config['wordpress']['posts_in_trash']) {
-    define('EMPTY_TRASH_DAYS', $config['wordpress']['posts_in_trash']);
-}
-
-// Automatic updater
-define('AUTOMATIC_UPDATER_DISABLED', $config['wordpress']['disable_updater']);
-
-// Multisite configuration
-if (true === $config['multisite']) {
-    define('WP_ALLOW_MULTISITE', true);
-}
-
-// If Secure protocol is defined, in a several servers environment with a loadbalancer,
-// the $_SERVER array is not properly defined. So we have to explicitly define HTTPS to 'on'
-// to make WordPress works within it.
-if (true === $config['https']) {
-    $_SERVER['HTTPS'] = 'on';
-    define('FORCE_SSL_ADMIN', true);
-}
-
-// We recommand that you DO NOT use the default WordPress cron which is made to work
-// for those who do not have an ssh access to their server.
-if (false === $config['cron']) {
-    define('ALTERNATE_WP_CRON', false);
-    define('DISABLE_WP_CRON', true);
-}
-
-// Security:
-// Disable file editor in the "Theme editor"
-if (false === $config['file_edit']) {
-    define('DISALLOW_FILE_EDIT', true);
-}
+// Theme editor, Revisions, Trash days, Updater and Cron
+include_once APPPATH.'environments'.S.'configuration.php';
 
 // Cache
-define('WP_CACHE', $config['cache']);
+include_once APPPATH.'environments'.S.'cache.php';
+
+// Multisite options
+include_once APPPATH.'environments'.S.'multisite.php';
+
+// Cookies names and definitions
+include_once APPPATH.'environments'.S.'cookies.php';
 
 // Debug
-if (!is_array($config['debug']) && false === $config['debug']) {
-    // Production environment
-    define('SAVEQUERIES', false);
-    define('SCRIPT_DEBUG', false);
-    define('WP_DEBUG_DISPLAY', false);
-    define('WP_DEBUG_LOG', false);
-    define('WP_DEBUG', false);
-    // Special Olympus error level
-    define('ERROR_LEVEL', 500);
-} else {
-    // Development environment
-    define('SAVEQUERIES', isset($config['debug']['savequeries']) ? $config['debug']['savequeries'] : true);
-    define('SCRIPT_DEBUG', isset($config['debug']['script_debug']) ? $config['debug']['script_debug'] : true);
-    define('WP_DEBUG_DISPLAY', isset($config['debug']['wp_debug_display']) ? $config['debug']['wp_debug_display'] : true);
-    define('WP_DEBUG_LOG', isset($config['debug']['wp_debug_log']) ? $config['debug']['wp_debug_log'] : true);
-    define('WP_DEBUG', isset($config['debug']['wp_debug']) ? $config['debug']['wp_debug'] : true);
-    // Special Olympus error level
-    define('ERROR_LEVEL', 200);
-}
+include_once APPPATH.'environments'.S.'debug.php';
 
-/**
- * Content directory
- */
-define('CONTENT_DIR', STATICS_DIR);
-define('WP_CONTENT_DIR', WEBPATH.CONTENT_DIR);
-define('WP_CONTENT_URL', WP_HOME.S.CONTENT_DIR);
-define('WPMU_PLUGIN_DIR', WEBPATH.CONTENT_DIR.S.'mu-plugins');
+// Free memory
+unset($config);
+unset($defaults);
+unset($env);
+unset($environments);
 
 /**
  * Define salt constants.

@@ -24,7 +24,7 @@ include dirname(__FILE__).DIRECTORY_SEPARATOR.'constants.php';
 /**
  * Loads the WordPress Environment and Template.
  */
-if (!file_exists($wpblogheader = WEBPATH.WORDPRESS_DIR.S.'wp-blog-header.php')) {
+if (!file_exists($wpblogheader = WEBPATH.WORDPRESSDIR.S.'wp-blog-header.php')) {
     // Require error class file.
     require_once APPPATH.'components'.S.'Error'.S.'ErrorDebugger.php';
 
