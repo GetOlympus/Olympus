@@ -41,13 +41,12 @@ if (!is_array($config['debug']) && false === (bool) $config['debug']) {
     // Special Olympus error level
     define('ERROR_LEVEL', 500);
 } else {
+    $display = isset($config['debug']['wp_debug_display']) ? (bool) $config['debug']['wp_debug_display'] : true;
+
     // Development environment
     define('SAVEQUERIES', isset($config['debug']['savequeries']) ? (bool) $config['debug']['savequeries'] : true);
     define('SCRIPT_DEBUG', isset($config['debug']['script_debug']) ? (bool) $config['debug']['script_debug'] : true);
-    define('WP_DEBUG_DISPLAY', isset($config['debug']['wp_debug_display'])
-        ? (bool) $config['debug']['wp_debug_display']
-        : true
-    );
+    define('WP_DEBUG_DISPLAY', $display);
     define('WP_DEBUG_LOG', isset($config['debug']['wp_debug_log']) ? (bool) $config['debug']['wp_debug_log'] : true);
     define('WP_DEBUG', isset($config['debug']['wp_debug']) ? (bool) $config['debug']['wp_debug'] : true);
 
