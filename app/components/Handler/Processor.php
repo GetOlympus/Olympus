@@ -83,7 +83,10 @@ class Processor
 
             // Params must be stored in an array
             if (!is_array($existingValues)) {
-                throw new \InvalidArgumentException(sprintf('The existing "%s" file does not contain an array', $realFile));
+                throw new \InvalidArgumentException(sprintf(
+                    'The existing "%s" file does not contain an array',
+                    $realFile
+                ));
             }
 
             $actualValues = $existingValues;
@@ -99,7 +102,8 @@ class Processor
         $actualValues = array_merge_recursive($actualValues, $userValues);
 
         // Write in file
-        file_put_contents($realFile, "<?php\n\n/**\n * This file is auto-generated during the composer install\n */\n\nreturn ".var_export($actualValues, true).";\n");
+        $ctn = "<?php\n\n/**\n * This file is auto-generated\n */\n\nreturn ".var_export($actualValues, true).";\n";
+        file_put_contents($realFile, $ctn);
     }
 
     /**
@@ -120,7 +124,9 @@ class Processor
         }
 
         # Write
-        $this->io->write("<comment>Get values directly from 'http://api.wordpress.org/secret-key/1.1/salt/'</comment>");
+        $this->io->write(
+            "<comment>Get values directly from 'http://api.wordpress.org/secret-key/1.1/salt/'</comment>"
+        );
 
         // Get salt keys
         if (function_exists('curl_init')) {
@@ -134,9 +140,12 @@ class Processor
             curl_close($ch);
 
             // Write in file
-            file_put_contents($realFile, "<?php\n\n/**\n * This file is auto-generated during the composer install\n */\n\n".$salt."\n");
+            $ctn = "<?php\n\n/**\n * This file is auto-generated during the composer install\n */\n\n".$salt."\n";
+            file_put_contents($realFile, $ctn);
         } else {
-            $this->io->write("<comment>curl module is not installed. Please, install it first or get values manually.</comment>\n");
+            $this->io->write(
+                "<comment>curl module is not installed. Please, install it first or get values manually.</comment>\n"
+            );
         }
     }
 
@@ -156,19 +165,29 @@ class Processor
         // Check file and rebuild it
         if ($exists) {
             # Write
-            $this->io->write(sprintf("<comment>Your '%s' already exists</comment>", $realFile));
+            $this->io->write(sprintf(
+                "<comment>Your '%s' already exists</comment>",
+                $realFile
+            ));
 
             return;
         }
 
         # Write
-        $this->io->write(sprintf("<comment>Your '%s' is copied from '%s'</comment>", $realFile, $realFile.'.dist'));
+        $this->io->write(sprintf(
+            "<comment>Your '%s' is copied from '%s'</comment>",
+            $realFile,
+            $realFile.'.dist'
+        ));
 
         // Get contents, simply
         $contents = file_get_contents($realFile.'.dist');
 
         // Write in file
-        file_put_contents($realFile, ($intro ? "# This file is auto-generated during the composer install\n\n" : '') . $contents);
+        file_put_contents(
+            $realFile,
+            ($intro ? "# This file is auto-generated during the composer install\n\n" : '').$contents
+        );
     }
 
     /**
@@ -220,7 +239,13 @@ class Processor
     {
         // Simply use the expectedParams value as default for the missing params.
         if (!$this->io->isInteractive()) {
-            $this->io->write(sprintf("<comment>Interactions are not permitted.\nPlease, edit your \"%s\" file manually to define properly your parameters.</comment>\n", $realFile));
+            $ctn = "Interactions are not permitted.\nPlease, edit your \"%s\" file";
+            $ctn .= " manually to define properly your parameters.";
+
+            $this->io->write(sprintf(
+                "<comment>".$ctn."</comment>\n",
+                $realFile
+            ));
             return array_replace($expectedParams, $actualValues);
         }
 
@@ -302,7 +327,12 @@ class Processor
                 $m = is_bool($message) && !$message ? '0' : $message;
 
                 # Read
-                $value = $this->io->ask(sprintf("<question>%s%s</question> (<comment>%s</comment>): ", $p, $key, $m), $message);
+                $value = $this->io->ask(sprintf(
+                    "<question>%s%s</question> (<comment>%s</comment>): ",
+                    $p,
+                    $key,
+                    $m
+                ), $message);
                 $value = is_bool($message) ? (boolean) $value : (is_int($message) ? (int) $value : $value);
 
                 // Update key's value
