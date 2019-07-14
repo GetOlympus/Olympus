@@ -12,23 +12,23 @@
  */
 
 // Set homeurl & siteurl vars
-$config['wordpress']['home'] = rtrim($config['wordpress']['home'], S);
+$config['wordpress']['home']    = rtrim($config['wordpress']['home'], S);
 $config['wordpress']['siteurl'] = rtrim($config['wordpress']['home'].S.WORDPRESSDIR, S);
 
 // Define options
 $opts = array_merge([
     // Global
-    'wp_content_dir' => WEBPATH.STATICSDIR,
-    'wp_content_url' => $config['wordpress']['home'].S.STATICSDIR,
+    'wp_content_dir'  => WEBPATH.STATICSDIR,
+    'wp_content_url'  => $config['wordpress']['home'].S.STATICSDIR,
     // Mu plugins
     'wpmu_plugin_dir' => WEBPATH.STATICSDIR.S.MUPLUGINSDIR,
     'wpmu_plugin_url' => $config['wordpress']['home'].S.STATICSDIR.S.MUPLUGINSDIR,
     // Plugins
-    'wp_plugin_dir' => WEBPATH.STATICSDIR.S.PLUGINSDIR,
-    'wp_plugin_url' => $config['wordpress']['home'].S.STATICSDIR.S.PLUGINSDIR,
+    'wp_plugin_dir'   => WEBPATH.STATICSDIR.S.PLUGINSDIR,
+    'wp_plugin_url'   => $config['wordpress']['home'].S.STATICSDIR.S.PLUGINSDIR,
     // Themes - Define 2 new constants to prevent themes folder path and name
-    'wp_theme_dir' => WEBPATH.STATICSDIR.S.THEMESDIR,
-    'wp_theme_url' => $config['wordpress']['home'].S.STATICSDIR.S.THEMESDIR,
+    'wp_theme_dir'    => WEBPATH.STATICSDIR.S.THEMESDIR,
+    'wp_theme_url'    => $config['wordpress']['home'].S.STATICSDIR.S.THEMESDIR,
 ], isset($config['options']['website']) ? $config['options']['website'] : []);
 
 /**
@@ -45,7 +45,7 @@ if (empty($_SERVER['SERVER_NAME']) || empty($_SERVER['HTTP_HOST'])) {
 
     // Set $_SERVER vars
     $_SERVER['SERVER_NAME'] = empty($_SERVER['SERVER_NAME']) ? (string) $hostname : $_SERVER['SERVER_NAME'];
-    $_SERVER['HTTP_HOST'] = empty($_SERVER['HTTP_HOST']) ? (string) $hostname : $_SERVER['HTTP_HOST'];
+    $_SERVER['HTTP_HOST']   = empty($_SERVER['HTTP_HOST']) ? (string) $hostname : $_SERVER['HTTP_HOST'];
 
     // Free memory
     unset($hostname);

@@ -14,13 +14,13 @@
 // Default options
 $opts = array_merge([
     // Set memory limit
-    'wp_memory_limit' => '128M',
+    'wp_memory_limit'      => '128M',
     // Autosave interval in seconds
-    'autosave_interval' => 60,
+    'autosave_interval'    => 60,
     // Cron lock timeout in seconds
     'wp_cron_lock_timeout' => 60,
     // Trash feature for media
-    'media_trash' => true,
+    'media_trash'          => true,
 ], isset($config['options']['configuration']) ? $config['options']['configuration'] : []);
 
 /**

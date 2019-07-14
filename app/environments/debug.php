@@ -14,10 +14,10 @@
 $opts = array_merge([
     // Scripts and CSS debug
     'concatenate_scripts' => false,
-    'compress_scripts' => false,
-    'compress_css' => false,
+    'compress_scripts'    => false,
+    'compress_css'        => false,
     // Special Olympus error level
-    'error_level' => 200,
+    'error_level'         => 200,
 ], isset($config['options']['debug']) ? $config['options']['debug'] : []);
 
 /**
@@ -44,7 +44,10 @@ if (!is_array($config['debug']) && false === (bool) $config['debug']) {
     // Development environment
     define('SAVEQUERIES', isset($config['debug']['savequeries']) ? (bool) $config['debug']['savequeries'] : true);
     define('SCRIPT_DEBUG', isset($config['debug']['script_debug']) ? (bool) $config['debug']['script_debug'] : true);
-    define('WP_DEBUG_DISPLAY', isset($config['debug']['wp_debug_display']) ? (bool) $config['debug']['wp_debug_display'] : true);
+    define('WP_DEBUG_DISPLAY', isset($config['debug']['wp_debug_display'])
+        ? (bool) $config['debug']['wp_debug_display']
+        : true
+    );
     define('WP_DEBUG_LOG', isset($config['debug']['wp_debug_log']) ? (bool) $config['debug']['wp_debug_log'] : true);
     define('WP_DEBUG', isset($config['debug']['wp_debug']) ? (bool) $config['debug']['wp_debug'] : true);
 

@@ -12,9 +12,9 @@
  */
 
 $opts = array_merge([
-    'subdomain_install' => (bool) $config['multisite'],
-    'domain_current_site' => preg_replace('|https?://[^/]+|i', '', $config['wordpress']['home']),
-    'path_current_site' => S.WORDPRESSDIR.S,
+    'subdomain_install'    => (bool) $config['multisite'],
+    'domain_current_site'  => preg_replace('|https?://[^/]+|i', '', $config['wordpress']['home']),
+    'path_current_site'    => S.WORDPRESSDIR.S,
     'site_id_current_site' => 1,
     'blog_id_current_site' => 1,
 ], isset($config['options']['multisite']) ? $config['options']['multisite'] : []);

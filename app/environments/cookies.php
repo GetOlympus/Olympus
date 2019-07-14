@@ -13,6 +13,7 @@
 
 $md5olympus = md5('olympus');
 $md5siteurl = md5($config['wordpress']['siteurl']);
+$search = '|https?://[^/]+|i';
 
 $opts = array_merge([
     // Default
@@ -21,14 +22,14 @@ $opts = array_merge([
     'user_cookie' => $md5olympus.'u_'.$md5siteurl,
     'pass_cookie' => $md5olympus.'p_'.$md5siteurl,
     'auth_cookie' => $md5olympus.'a_'.$md5siteurl,
-    'secure_auth_cookie' => $md5olympus.'s_'.$md5siteurl,
-    'logged_in_cookie' => $md5olympus.'l_'.$md5siteurl,
+    'secure_auth_cookie'   => $md5olympus.'s_'.$md5siteurl,
+    'logged_in_cookie'     => $md5olympus.'l_'.$md5siteurl,
     'recovery_mode_cookie' => $md5olympus.'r_'.$md5siteurl,
     // Paths
-    'cookiepath' => preg_replace('|https?://[^/]+|i', '', $config['wordpress']['home'].S),
-    'sitecookiepath' => preg_replace('|https?://[^/]+|i', '', $config['wordpress']['siteurl'].S),
-    'admin_cookie_path' => preg_replace('|https?://[^/]+|i', '', $config['wordpress']['siteurl'].S).WPADMINDIR,
-    'plugins_cookie_path' => preg_replace('|https?://[^/]+|i', '', $config['wordpress']['home'].S.STATICSDIR.S.PLUGINSDIR),
+    'cookiepath'           => preg_replace($search, '', $config['wordpress']['home'].S),
+    'sitecookiepath'       => preg_replace($search, '', $config['wordpress']['siteurl'].S),
+    'admin_cookie_path'    => preg_replace($search, '', $config['wordpress']['siteurl'].S).WPADMINDIR,
+    'plugins_cookie_path'  => preg_replace($search, '', $config['wordpress']['home'].S.STATICSDIR.S.PLUGINSDIR),
     // Domain
     'cookie_domain' => false,
     // Testing or trying...
