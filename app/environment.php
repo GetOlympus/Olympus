@@ -40,7 +40,7 @@ if (file_exists($opts = APPPATH.'config'.S.'opts.php')) {
     $options = include_once $opts;
 
     // Merge environments and options
-    $environments = array_merge($environments, $options);
+    $environments = array_merge($environments, ['options' => $options]);
 
     // Free memory
     unset($options);
