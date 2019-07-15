@@ -26,6 +26,7 @@ Thumbs.db
 # Olympus dist files
 /app/config/*
 !/app/config/env.php.dist
+!/app/config/opts.php.dist
 !/app/config/own.php.dist
 !/app/config/salt.php.dist
 /app/cache/*

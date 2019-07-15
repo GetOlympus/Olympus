@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * Optional WordPress constants defined here.
+ * 
+ * @category PHP
+ * @package  Olympus
+ * @author   Achraf Chouk <achrafchouk@gmail.com>
+ * @license  https://github.com/GetOlympus/Olympus/blob/master/LICENSE MIT
+ * @link     https://github.com/GetOlympus/Olympus
+ * @since    0.0.2
+ */
+
+/**
+ * Site environment options.
+ */
+return [
+    // Website options
+    // ~
+    // See all default options in the `/app/environments/website.php` file
+    // It sets all statics folder names
+    // ~
+    'website' => [
+        'wp_content_dir' => '/path/to/web_docroot/statics/',
+        // (...)
+    ],
+
+    // Configuration options
+    // ~
+    // See all default options in the `/app/environments/configuration.php` file
+    // It sets memory limit, some security and features options
+    // ~
+    'configuration' => [
+        'media_trash' => true,
+        // (...)
+    ],
+
+    // Multisite options
+    // ~
+    // See all default options in the `/app/environments/multisite.php` file
+    // In multisite case, it sets default current site definitions
+    // ~
+    'multisite' => [
+        'site_id_current_site' => 1,
+        'blog_id_current_site' => 1,
+        // (...)
+    ],
+
+    // Cookies options
+    // ~
+    // See all default options in the `/app/environments/cookies.php` file
+    // It sets all cookies namaes
+    // ~
+    'cookies' => [
+        'cookie_domain' => false,
+        // (...)
+    ],
+
+    // Debug options
+    // ~
+    // See all default options in the `/app/environments/debug.php` file
+    // It sets all debug options
+    // ~
+    'debug' => [
+        'concatenate_scripts' => false,
+        'compress_scripts'    => false,
+        // (...)
+    ],
+];
