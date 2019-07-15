@@ -1,3 +1,7 @@
+## v0.0.21 (July 16, 2018)
+Add opts.php file.
+New PHPCS validation.
+
 ## v0.0.20 (March 24, 2018)
 PHPCS validation.
 
