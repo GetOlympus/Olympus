@@ -57,7 +57,7 @@ if (false === (bool) $config['cron']) {
 }
 
 // Set memory limit
-define('WP_MEMORY_LIMIT',     (string) $opts['wp_memory_limit']);
+define('WP_MEMORY_LIMIT', (string) $opts['wp_memory_limit']);
 define('WP_MAX_MEMORY_LIMIT', (string) $opts['wp_max_memory_limit']);
 
 // Autosave interval in seconds
