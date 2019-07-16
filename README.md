@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://news.getolympus.me/content/images/2019/07/olympus-large.png" width="381" height="305">
+</p>
+
 # Olympus ![PHP Version][php-image]
 > The **Olympus** package is the **easiest and secure** way to install **WordPress** websites with the powerfull **Zeus Core** framework.
 > All WordPress optimizations are listed and enabled here. You can use theme easily.
