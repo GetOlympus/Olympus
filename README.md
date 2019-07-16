@@ -182,7 +182,7 @@ Go to your `app/config/` folder and make sure to find:
 + `salt.php`, contains WordPress authentication unique keys and salts
 
 An other file you can create if needed is:
-+ `opts.php`, contains WordPress constants overrides. Simply copy the `opts.php.dist` file to `opts.php` and edit it.
++ `opts.php`, contains WordPress constants overrides. Simply copy the `opts.php.dist` file to `opts.php` and edit it.  
 **Be carefull** with this file: you can change your WordPress core functions  
 See [Variables definitions](#variables-definitions) to know more about this `opts.php` file contents.
 
