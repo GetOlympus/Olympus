@@ -297,7 +297,7 @@ Please, read [LICENSE][license-blob] for more information.
 ---
 
 **Built with ♥ by [Achraf Chouk](https://github.com/crewstyle "Achraf Chouk") ~ (c) since a long time.**  
-**Design made levely by [Anis Chouk](https://anischouk.com/ "Anis Chouk")**
+**Logo design made levely by [Anis Chouk](https://anischouk.com/ "Anis Chouk")**
 
 <!-- links & imgs dfn's -->
 [olympus-image]: https://img.shields.io/badge/for-Olympus-44cc11.svg?style=flat-square
