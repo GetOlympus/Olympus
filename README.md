@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="https://news.getolympus.me/content/images/2019/07/olympus-large.png" width="381" height="305">
+    <img src="https://news.getolympus.me/content/images/2019/07/olympus-large.png" width="381" height="305"><br/>
+    <i>This logo is property of <a href="https://anischouk.com/" target="_blank">Anis Chouk</a>.</i>
 </p>
 
 # Olympus ![PHP Version][php-image]
@@ -50,7 +51,7 @@ And more:
 + [Whoops](https://github.com/filp/whoops) as the best PHP debugger "for cool kids"
 + [WP Rest API](http://v2.wp-api.org/) as your official JSON Rest API: all your posts with a simple `GET` request: `/wp-json/wp/v2/posts`
 
-![With Composer](https://img.shields.io/badge/with-Composer-885630.svg?style=flat-square) 
+![With Composer](https://img.shields.io/badge/with-Composer-885630.svg?style=flat-square)
 ![With Capistrano](https://img.shields.io/badge/with-Capistrano-52c1db.svg?style=flat-square)
 
 ## Get started
@@ -283,7 +284,7 @@ Please, read [LICENSE][license-blob] for more information.
 [![MIT][license-image]][license-url]
 
 [https://github.com/crewstyle](https://github.com/crewstyle)  
-[http://fr.linkedin.com/in/achrafchouk](http://fr.linkedin.com/in/achrafchouk)
+[https://fr.linkedin.com/in/achrafchouk](https://fr.linkedin.com/in/achrafchouk)
 
 ## Contributing
 
@@ -295,7 +296,8 @@ Please, read [LICENSE][license-blob] for more information.
 
 ---
 
-**Built with ♥ by [Achraf Chouk](http://github.com/crewstyle "Achraf Chouk") ~ (c) since a long time.**
+**Built with ♥ by [Achraf Chouk](https://github.com/crewstyle "Achraf Chouk") ~ (c) since a long time.**  
+**Logo design made levely by [Anis Chouk](https://anischouk.com/ "Anis Chouk")**
 
 <!-- links & imgs dfn's -->
 [olympus-image]: https://img.shields.io/badge/for-Olympus-44cc11.svg?style=flat-square
