@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://news.getolympus.me/content/images/2019/07/olympus-large-h.png" width="375" height="300"><br/>
+    <img src="https://news.getolympus.me/content/images/2019/07/olympus-large-def.png" width="375" height="300"><br/>
     <i>This logo is property of <a href="https://anischouk.com/" target="_blank">Anis Chouk</a>.</i>
 </p>
 
