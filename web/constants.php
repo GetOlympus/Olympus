@@ -26,6 +26,8 @@ defined('VENDORPATH')    or define('VENDORPATH', $path.S.'vendor'.S);
 defined('WEBPATH')       or define('WEBPATH', $path.S.'web'.S);
 // Web contents paths.
 defined('DISTPATH')      or define('DISTPATH', WEBPATH.'resources'.S.'dist'.S);
+// Error log.
+defined('ERRORPATH')     or define('ERRORPATH', APPPATH.'logs'.S.'errors.log');
 
 /**
  * Folder names constants.
