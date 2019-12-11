@@ -1,3 +1,6 @@
+## v0.0.22 (December 11, 2019)
+Update ErrorDebugger class with error file rotation.
+
 ## v0.0.21 (July 16, 2018)
 Add opts.php file.
 New PHPCS validation.

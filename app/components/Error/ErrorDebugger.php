@@ -3,7 +3,9 @@
 namespace Olympus\Components\Error;
 
 use Monolog\Logger;
+use Monolog\Handler\FirePHPHandler;
 use Monolog\Handler\StreamHandler;
+use Monolog\Handler\RotatingFileHandler;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Handler\JsonResponseHandler;
 use Whoops\Run;
@@ -33,7 +35,6 @@ class ErrorDebugger
     public function __construct($configs = [])
     {
         // Vars
-        $stream = APPPATH.'logs'.S.'errors.log';
         $log = Logger::getLevelName($configs['level']);
 
 
@@ -68,7 +69,9 @@ class ErrorDebugger
 
         // Setup Monolog
         $logger = new Logger('Olympus');
-        $logger->pushHandler(new StreamHandler($stream, $log));
+        $logger->pushHandler(new RotatingFileHandler(ERRORPATH, 0, $log));
+        $logger->pushHandler(new StreamHandler(ERRORPATH, $log));
+        $logger->pushHandler(new FirePHPHandler);
 
         // Push all in a handler to log in file
         $run->pushHandler(function ($exception, $inspector, $run) use ($logger) {
