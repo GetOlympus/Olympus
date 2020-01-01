@@ -1,12 +1,12 @@
 # Define capistrano common vars
-set :stage_config_path, 'app/deploy/stages/'
-set :deploy_config_path, 'app/deploy/config.rb'
+set :stage_config_path, "app/deploy/stages/"
+set :deploy_config_path, "app/deploy/config.rb"
 
 # Load DSL and set up stages
-require 'capistrano/setup'
+require "capistrano/setup"
 
 # Include default deployment tasks
-require 'capistrano/deploy'
+require "capistrano/deploy"
 
-# Include capistrano-olympus tool
-require 'capistrano/olympus'
+# Include olympus-hestia tool
+require "capistrano/olympus-hestia"

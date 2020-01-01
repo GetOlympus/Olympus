@@ -1,13 +1,14 @@
 # Setup Server and Project
 set :application, 'olympus-test'
 set :stage, :staging
-set :stage_url, 'http://staging.domain.tld'
+set :stage_url, 'https://staging.domain.tld'
 server 'staging', roles: %w{web app db}
 
 # ~~~~
 
-# Setup Git
-set :branch, "master"
+# Setup Git - Default branch is :master
+#set :branch, "master"
+ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :deploy_to, "/path/to/#{fetch(:application)}"
 
 # ~~~~
@@ -19,7 +20,7 @@ server 'staging',
   hostname: 'ssh_hostname',
   ssh_options: {
     user: 'ssh_user',
-    keys: %w(/path/to/file/id_rsa),
+    keys: %w(/home/username/.ssh/id_rsa),
     forward_agent: true,
     auth_methods: %w(publickey)
   }
