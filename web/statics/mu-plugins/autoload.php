@@ -104,5 +104,6 @@ add_action('setup_theme', function () {
      * Class initialization.
      */
 
-    new MuPlugins(OL_ISADMIN);
+    $mup = new MuPlugins(OL_ISADMIN);
+    $mup->init();
 });

@@ -14,7 +14,7 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-EN" lang="en-EN">
 <head>
   <meta charset="utf-8">
   <title><?php echo $tpl->escape($page_title) ?></title>

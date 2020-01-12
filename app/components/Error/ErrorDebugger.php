@@ -26,16 +26,78 @@ use Whoops\Util\Misc;
 class ErrorDebugger
 {
     /**
+     * @var boolean
+     */
+    private $debug = false;
+
+    /**
+     * @var integer
+     */
+    private $level = 500;
+
+    /**
      * Constructor.
      *
-     * @param array $configs
+     * @param string $debug
+     * @param string $level
      *
      * @since 0.0.6
      */
-    public function __construct($configs = [])
+    public function __construct($debug, $level)
+    {
+        // Set private variables
+        $this->debug = (boolean) $debug;
+        $this->level = (int) $level;
+    }
+
+    /**
+     * Display error page.
+     *
+     * @param string $title
+     * @param string $message
+     * @param string $type
+     *
+     * @since 0.0.6
+     */
+    public static function error500($title, $message, $type)
+    {
+        $error = '<!DOCTYPE html>'."\n";
+        $error .= '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-EN" lang="en-EN">'."\n";
+        $error .= '<head>'."\n";
+        $error .= '  <title>'.$title.'</title>'."\n";
+        $error .= '  <meta charset="utf-8">'."\n";
+        $error .= '  <meta name="robots" content="noindex">'."\n";
+        $error .= '  <meta name="generator" content="Olympus">'."\n";
+        $error .= '  <style>#olympus-error{background:#fff;margin:100px auto 0;max-width:98%;width:800px}';
+        $error .= '#olympus-error h1{color:#333;font:700 42px/40px sans-serif;margin:30px 0 0}';
+        $error .= '#olympus-error p{color:#333;font:20px/28px Georgia,serif;margin:30px 0 0}';
+        $error .= '#olympus-error code{background:rgba(117,205,69,.3);color:#333;display:inline-block;';
+        $error .= 'font:16px/28px monospace;padding:0 10px}#olympus-error small{color:#333;display:block;';
+        $error .= 'font:14px/16px Georgia,serif;margin:30px 0 0}a{color:#75cd45}a:hover{color:#5da535}</style>'."\n";
+        $error .= '</head>'."\n";
+        $error .= '<body>'."\n";
+        $error .= '  <div id="olympus-error">'."\n";
+        $error .= '    <h1>'.$title.'</h1>'."\n";
+        $error .= '    <p>'.$message.'</p>'."\n";
+        $error .= '    <small>'.$type.'<br/>--<br/>Please, find more details on the';
+        $error .= ' <a href="https://github.com/GetOlympus" target="_blank">Olympus framework</a>';
+        $error .= ' repository.</small>'."\n";
+        $error .= '  </div>'."\n";
+        $error .= '</body>'."\n";
+        $error .= '</html>';
+
+        die($error);
+    }
+
+    /**
+     * Initialize class.
+     *
+     * @since 0.0.23
+     */
+    public function register()
     {
         // Vars
-        $log = Logger::getLevelName($configs['level']);
+        $log = Logger::getLevelName($this->level);
 
 
         // Use Whoops vendor to display errors
@@ -52,9 +114,11 @@ class ErrorDebugger
         $handler = new PrettyPageHandler;
 
         // Custom tables
-        if (!empty($configs)) {
-            $handler->addDataTable('Olympus configurations', $configs);
-        }
+        $handler->addDataTable('Olympus configurations', [
+            'debug' => $this->debug,
+            'level' => $this->level,
+            'log'   => $log,
+        ]);
 
         // Page title
         $handler->setPageTitle('Oops! There was a problem.');
@@ -87,44 +151,5 @@ class ErrorDebugger
 
         // Handler registration
         $run->register();
-    }
-
-    /**
-     * Display error page.
-     *
-     * @param string $title
-     * @param string $message
-     * @param string $type
-     *
-     * @since 0.0.6
-     */
-    public static function error500($title, $message, $type)
-    {
-        $error = '<!DOCTYPE html>'."\n";
-        $error .= '<html>'."\n";
-        $error .= '<head>'."\n";
-        $error .= '  <title>'.$title.'</title>'."\n";
-        $error .= '  <meta charset="utf-8">'."\n";
-        $error .= '  <meta name="robots" content="noindex">'."\n";
-        $error .= '  <meta name="generator" content="Olympus">'."\n";
-        $error .= '  <style>#olympus-error{background:#fff;margin:100px auto 0;max-width:98%;width:800px}';
-        $error .= '#olympus-error h1{color:#333;font:700 42px/40px sans-serif;margin:30px 0 0}';
-        $error .= '#olympus-error p{color:#333;font:20px/28px Georgia,serif;margin:30px 0 0}';
-        $error .= '#olympus-error code{background:rgba(117,205,69,.3);color:#333;display:inline-block;';
-        $error .= 'font:16px/28px monospace;padding:0 10px}#olympus-error small{color:#333;display:block;';
-        $error .= 'font:14px/16px Georgia,serif;margin:30px 0 0}a{color:#75cd45}a:hover{color:#5da535}</style>'."\n";
-        $error .= '</head>'."\n";
-        $error .= '<body>'."\n";
-        $error .= '  <div id="olympus-error">'."\n";
-        $error .= '    <h1>'.$title.'</h1>'."\n";
-        $error .= '    <p>'.$message.'</p>'."\n";
-        $error .= '    <small>'.$type.'<br/>--<br/>Please, find more details on the';
-        $error .= ' <a href="https://github.com/GetOlympus" target="_blank">Olympus framework</a>';
-        $error .= ' repository.</small>'."\n";
-        $error .= '  </div>'."\n";
-        $error .= '</body>'."\n";
-        $error .= '</html>';
-
-        die($error);
     }
 }

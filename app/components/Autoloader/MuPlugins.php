@@ -44,8 +44,6 @@ class MuPlugins
         if ($is_admin) {
             add_filter('show_advanced_plugins', [&$this, 'showPlugins'], 0, 2);
         }
-
-        $this->init();
     }
 
     /**
