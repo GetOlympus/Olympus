@@ -1,3 +1,6 @@
+## v0.0.23 (January 12, 2020)
+Update twentytwenty theme from composer.
+
 ## v0.0.22 (December 11, 2019)
 Update ErrorDebugger class with error file rotation.
 
