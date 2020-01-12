@@ -17,7 +17,7 @@ use Olympus\Components\Error\ErrorDebugger;
  * Use the ErrorDebugger to display errors with the gorgeous Whoops vendor in
  * development environment only
  */
-new ErrorDebugger([
-    'debug' => WP_DEBUG,
-    'level' => ERROR_LEVEL,
-]);
+$err = new ErrorDebugger(WP_DEBUG, ERROR_LEVEL);
+
+// Run debugger
+$err->register();
