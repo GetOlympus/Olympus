@@ -1,7 +1,9 @@
 source "https://rubygems.org"
 
 # https://github.com/capistrano/capistrano
-gem 'capistrano', '~> 3.4'
+group :development do
+  gem "capistrano", "~> 3.11", require: false
+end
 
-# https://github.com/GetOlympus/capistrano-olympus
-gem 'capistrano-olympus', '~> 0.0.8'
+# https://github.com/GetOlympus/Hestia-Capistrano
+gem "olympus-hestia-capistrano"

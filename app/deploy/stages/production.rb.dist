@@ -1,7 +1,7 @@
 # Setup Server and Project
 set :application, 'olympus'
 set :stage, :production
-set :stage_url, 'http://www.domain.tld'
+set :stage_url, 'https://www.domain.tld'
 
 # ~~~~
 
@@ -12,32 +12,35 @@ role :db,  %w{production1 production2}
 
 # ~~~~
 
-# Setup Git
-set :branch, "master"
+# Setup Git - Default branch is :master
+#set :branch, "master"
+ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :deploy_to, "/path/to/#{fetch(:application)}"
 
 # ~~~~
+
+# SSH global options
+set :ssh_options, {
+  user: 'ssh_user',
+  keys: %w(/home/username/.ssh/id_rsa),
+  forward_agent: false,
+  auth_methods: %w(publickey)
+}
 
 # Servers configuration: 'production1'
 server 'production1',
   user: 'ssh_user',
   roles: %w{web app db},
   hostname: 'ssh_hostname_1',
-  ssh_options: {
-    user: 'ssh_user',
-    keys: %w(/path/to/file/id_rsa),
-    forward_agent: true,
-    auth_methods: %w(publickey)
-  }
 
-# Servers configuration: 'production2'
+# Servers configuration: 'production2' - with specific SSH options
 server 'production2',
   user: 'ssh_user',
   roles: %w{web app db},
   hostname: 'ssh_hostname_2',
   ssh_options: {
     user: 'ssh_user',
-    keys: %w(/path/to/file/id_rsa),
+    keys: %w(/home/username/.ssh/id_rsa),
     forward_agent: true,
     auth_methods: %w(publickey)
   }
