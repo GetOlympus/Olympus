@@ -44,7 +44,7 @@ In order to provide those tools, the **Olympus** package dependency manager and 
 + Autoloader for mu-plugins
 + Auto-generated configuration files with `composer install`
 + Dependency management with [**Composer**](https://getcomposer.org)
-+ Remote server automation tool with [**Capistrano**](http://capistranorb.com/) and [**Capistrano Olympus**](https://github.com/GetOlympus/capistrano-olympus)
++ Remote server automation tool with [**Capistrano**](http://capistranorb.com/) and [**Olympus Hestia Capistrano**](https://github.com/GetOlympus/Hestia-Capistrano)
 
 And more:
 + [Monolog](https://github.com/Seldaek/monolog) as an extensible powerful file logger
@@ -100,7 +100,7 @@ cp app/deploy/stages/production.rb.dist app/deploy/stages/production.rb
 cp app/deploy/stages/staging.rb.dist app/deploy/stages/staging.rb
 ```
 
-Feel free to read the `README.md` file of the [**Capistrano Olympus**](https://github.com/GetOlympus/capistrano-olympus) repository to know more.
+Feel free to read the `README.md` file of the [**Olympus Hestia Capistrano**](https://github.com/GetOlympus/Hestia-Capistrano) repository to know more.
 
 ### Update Vhost with Capistrano
 
@@ -150,7 +150,7 @@ The **Olympus** package is structured as this:
 +-- vendor/                     # ~ vendors downloaded with composer
 +-- web/                        # ~ web server doc root
 |  +-- cms/                     # stores default WordPress installation
-|  +-- resources/               # stores assets files expected by Olympus compoenents
+|  +-- resources/               # stores assets files expected by Olympus bundles
    |  +-- dist/
 |  +-- statics/                 # stores default "wp-content" folder contents
    |  +-- languages/
@@ -269,22 +269,17 @@ In these examples, you can replace:
 
 ## Release History
 
-* v0.0.21 (July 16, 2019)
-- [x] FIX: Add opts.php file, new PHPCS validation
-
-* v0.0.20 (March 24, 2018)
-- [x] FIX: PHPCS validation.
+See [**CHANGELOG.md**][changelog-blob] for all details.
 
 ## Authors and Copyright
 
 Achraf Chouk  
 [![@crewstyle][twitter-image]][twitter-url]
 
-Please, read [LICENSE][license-blob] for more information.  
-[![MIT][license-image]][license-url]
-
 [https://github.com/crewstyle](https://github.com/crewstyle)  
-[https://fr.linkedin.com/in/achrafchouk](https://fr.linkedin.com/in/achrafchouk)
+[http://fr.linkedin.com/in/achrafchouk](http://fr.linkedin.com/in/achrafchouk)
+
+Please, read [![MIT][license-image]][license-blob] for more information.
 
 ## Contributing
 
@@ -297,16 +292,16 @@ Please, read [LICENSE][license-blob] for more information.
 ---
 
 **Built with ♥ by [Achraf Chouk](https://github.com/crewstyle "Achraf Chouk") ~ (c) since a long time.**  
-**Logo design made levely by [Anis Chouk](https://anischouk.com/ "Anis Chouk")**
+**Logo design made lovely by [Anis Chouk](https://anischouk.com/ "Anis Chouk")**
 
 <!-- links & imgs dfn's -->
 [olympus-image]: https://img.shields.io/badge/for-Olympus-44cc11.svg?style=flat-square
 [olympus-url]: https://github.com/GetOlympus
+[changelog-blob]: https://github.com/GetOlympus/Olympus/blob/master/CHANGELOG.md
 [codefactor-image]: https://www.codefactor.io/repository/github/getolympus/olympus/badge?style=flat-square
 [codefactor-url]: https://www.codefactor.io/repository/github/getolympus/olympus
 [license-blob]: https://github.com/GetOlympus/Olympus/blob/master/LICENSE
 [license-image]: https://img.shields.io/badge/license-MIT_License-blue.svg?style=flat-square
-[license-url]: http://opensource.org/licenses/MIT
 [packagist-image]: https://img.shields.io/packagist/v/getolympus/olympus.svg?style=flat-square
 [packagist-url]: https://packagist.org/packages/getolympus/olympus
 [php-image]: https://img.shields.io/travis/php-v/GetOlympus/Olympus.svg?style=flat-square
