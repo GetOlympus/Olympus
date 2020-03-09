@@ -53,7 +53,7 @@
     "filp/whoops": "^2.4",
     "getolympus/olympus-zeus-core": "^2.0",
     "johnpbloch/wordpress": "^5.2",
-    "monolog/monolog": "^1.20",
+    "monolog/monolog": "^2.0",
     "timber/timber": "^1.10",
     "wp-api/wp-api": "2.*",
     "wpackagist-theme/twentytwenty": "^1.0"
