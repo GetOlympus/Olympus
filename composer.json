@@ -40,7 +40,7 @@
     },
     "wordpress-install-dir": "web/cms"
   },
-  "minimum-stability": "beta",
+  "minimum-stability": "stable",
   "repositories": [
     {
       "type": "composer",
@@ -50,12 +50,9 @@
   "require": {
     "php": ">=7",
     "composer/composer": "^1.8",
-    "filp/whoops": "^2.4",
-    "getolympus/olympus-zeus-core": "^2.0",
+    "getolympus/olympus-zeus-core": "^2.1",
+    "getolympus/olympus-hades-error-handler": "^0.0.3",
     "johnpbloch/wordpress": "^5.2",
-    "monolog/monolog": "^1.20",
-    "timber/timber": "^1.10",
-    "wp-api/wp-api": "2.*",
     "wpackagist-theme/twentytwenty": "^1.0"
   },
   "require-dev": {
@@ -64,11 +61,13 @@
   "scripts": {
     "post-install-cmd": [
       "Olympus\\Components\\Handler\\Configurator::build",
-      "cd web ; [ ! -h xmlrpc.php ] && ln -s cms/xmlrpc.php xmlrpc.php ; cd .."
+      "cd web ; [ ! -h xmlrpc.php ] && ln -s cms/xmlrpc.php xmlrpc.php ; cd -"
     ],
     "post-update-cmd": [
       "Olympus\\Components\\Handler\\Configurator::build",
-      "cd web ; [ ! -h xmlrpc.php ] && ln -s cms/xmlrpc.php xmlrpc.php ; cd .."
+      "cd web ; [ ! -h xmlrpc.php ] && ln -s cms/xmlrpc.php xmlrpc.php ; cd -",
+      "cd app/cache/ ; find . ! -name '.gitkeep' -type f -exec rm -f {} + ; cd -",
+      "cd web/resources/dist ; find . ! -name '.gitkeep' -type f -exec rm -f {} + ; cd -"
     ],
     "test": [
       "vendor/bin/phpcs --standard=phpcs.xml ."

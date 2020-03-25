@@ -14,10 +14,11 @@ use Olympus\Components\Error\ErrorDebugger;
  */
 
 /**
- * Use the ErrorDebugger to display errors with the gorgeous Whoops vendor in
- * development environment only
+ * Use the ErrorDebugger to display errors in development environment only
  */
-$err = new ErrorDebugger(WP_DEBUG, ERROR_LEVEL);
-
-// Run debugger
-$err->register();
+$err = ErrorDebugger::register([
+    'debug' => WP_DEBUG,
+    'level' => ERROR_LEVEL,
+    'logs'  => dirname(__FILE__).S.'logs'.S,
+    'title' => 'Olympus',
+]);
