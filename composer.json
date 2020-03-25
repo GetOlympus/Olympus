@@ -55,6 +55,9 @@
     "johnpbloch/wordpress": "^5.2",
     "wpackagist-theme/twentytwenty": "^1.0"
   },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "3.*"
+  },
   "scripts": {
     "post-install-cmd": [
       "Olympus\\Components\\Handler\\Configurator::build",
