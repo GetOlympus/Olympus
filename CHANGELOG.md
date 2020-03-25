@@ -1,3 +1,6 @@
+## v0.0.24 (March 25, 2020)
+Add new Olympus components integration.
+
 ## v0.0.23 (January 12, 2020)
 Update twentytwenty theme from composer.
 

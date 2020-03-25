@@ -13,11 +13,7 @@
 
 // Return array of environment data
 if (!file_exists($env = APPPATH.'config'.S.'env.php')) {
-    // Require error class file.
-    require_once APPPATH.'components'.S.'Error'.S.'ErrorDebugger.php';
-
-    // Use ErrorDebugger class to display error.
-    Olympus\Components\Error\ErrorDebugger::error500(
+    displayError(
         'Unable to load your environment data.',
         'Please define your environments properly in <code>'.basename(APPPATH).S.'config'.S.'env.php</code> file.',
         'File not found'
@@ -86,11 +82,7 @@ unset($environments);
  * Define salt constants.
  */
 if (!file_exists($salt = APPPATH.'config'.S.'salt.php')) {
-    // Require error class file.
-    require_once APPPATH.'components'.S.'Error'.S.'ErrorDebugger.php';
-
-    // Use ErrorDebugger class to display error.
-    Olympus\Components\Error\ErrorDebugger::error500(
+    displayError(
         'Unable to load your salt data.',
         'Please define your constants properly in <code>'.basename(APPPATH).S.'config'.S.'salt.php</code> file.',
         'File not found'

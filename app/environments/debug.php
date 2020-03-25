@@ -17,7 +17,7 @@ $opts = array_merge([
     'compress_scripts'    => false,
     'compress_css'        => false,
     // Special Olympus error level
-    'error_level'         => 200,
+    'error_level'         => 100,
 ], isset($config['options']['debug']) ? $config['options']['debug'] : []);
 
 /**
