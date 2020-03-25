@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/GetOlympus/olympus/blob/master/web/apple-touch-icon.png" />
+    <img src="https://github.com/GetOlympus/olympus/blob/master/web/apple-touch-icon.png" /><br/>
     <i>This logo is property of <a href="https://anischouk.com/" target="_blank">Anis Chouk</a>.</i>
 </p>
 
@@ -273,11 +273,11 @@ See [**CHANGELOG.md**][changelog-blob] for all details.
 
 ## Authors and Copyright
 
-Achraf Chouk  
-[![@crewstyle][twitter-image]][twitter-url]
+Achraf Chouk
 
 [https://github.com/crewstyle](https://github.com/crewstyle)  
-[http://fr.linkedin.com/in/achrafchouk](http://fr.linkedin.com/in/achrafchouk)
+[https://twitter.com/crewstyle](https://twitter.com/crewstyle)  
+[https://fr.linkedin.com/in/achrafchouk](http://fr.linkedin.com/in/achrafchouk)
 
 Please, read [![MIT][license-image]][license-blob] for more information.
 
@@ -307,5 +307,3 @@ Please, read [![MIT][license-image]][license-blob] for more information.
 [php-image]: https://img.shields.io/travis/php-v/GetOlympus/Olympus.svg?style=flat-square
 [travis-image]: https://img.shields.io/travis/GetOlympus/Olympus/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/GetOlympus/Olympus
-[twitter-image]: https://img.shields.io/badge/crewstyle-blue.svg?style=social&logo=twitter
-[twitter-url]: http://twitter.com/crewstyle
