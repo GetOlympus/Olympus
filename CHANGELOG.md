@@ -1,3 +1,6 @@
+## v0.0.25 (April 08, 2020)
+Update composer and autoload
+
 ## v0.0.24 (March 25, 2020)
 Add new Olympus components integration.
 
