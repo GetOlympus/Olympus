@@ -36,8 +36,6 @@ add_action('setup_theme', function () {
     define('OL_TPL_DIR', get_template_directory());
     // Current theme URI.
     define('OL_TPL_DIR_URI', get_template_directory_uri());
-    // Current language dictionnary
-    define('OL_TPL_DICTIONARY', basename(OL_TPL_DIR));
 
 
     /**
@@ -89,21 +87,12 @@ add_action('setup_theme', function () {
     // The dist folder URI
     defined('OL_DISTURI')       or define('OL_DISTURI', OL_BLOG_HOME.'/resources/dist/');
     // AJAX NONCE value
-    defined('OL_NONCE')         or define('OL_NONCE', wp_create_nonce(OL_TPL_DICTIONARY.'_ajax_nonce'));
-
-
-    /**
-     * Olympus Zeus definitions.
-     */
-
-    // Defining if we use Twig cache or not
-    defined('OL_ZEUS_USECACHE') or define('OL_ZEUS_USECACHE', false);
+    defined('OL_NONCE')         or define('OL_NONCE', wp_create_nonce(basename(OL_TPL_DIR).'_ajax_nonce'));
 
 
     /**
      * Class initialization.
      */
 
-    $mup = new MuPlugins(OL_ISADMIN);
-    $mup->init();
+    (new MuPlugins(OL_ISADMIN))->init();
 });
