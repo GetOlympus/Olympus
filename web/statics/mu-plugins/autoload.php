@@ -3,7 +3,8 @@
 use Olympus\Components\Autoloader\MuPlugins;
 
 /**
- * This autoloader initialize all details for Olympus Hera and Zeus. It brings all necessary statics for plugins and themes.
+ * This autoloader initialize all details for Olympus Hera and Zeus.
+ * It brings all necessary statics for plugins and themes.
  *
  * @category PHP
  * @package  Olympus
@@ -16,7 +17,7 @@ use Olympus\Components\Autoloader\MuPlugins;
 /**
  * Plugin Name: Olympus Autoload
  * Plugin URI: https://github.com/GetOlympus/Olympus
- * Description: This autoloader initialize all details for Olympus bundles. It brings all necessary statics for plugins and themes.
+ * Description: This autoloader initialize all details for Olympus bundles and brings statics for plugins and themes.
  * Version: 0.0.1
  * Author: crewstyle
  * Author URI: https://github.com/crewstyle
