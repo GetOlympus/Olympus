@@ -81,13 +81,13 @@ add_action('setup_theme', function () {
      */
 
     // Define if we are in the admin panel or not
-    defined('OL_ISADMIN')       or define('OL_ISADMIN', is_admin());
+    defined('OL_ISADMIN')       || define('OL_ISADMIN', is_admin());
     // Define if the user is connected or not
-    defined('OL_ISCONNECTED')   or define('OL_ISCONNECTED', is_user_logged_in());
+    defined('OL_ISCONNECTED')   || define('OL_ISCONNECTED', is_user_logged_in());
     // The dist folder URI
-    defined('OL_DISTURI')       or define('OL_DISTURI', OL_BLOG_HOME.'/resources/dist/');
+    defined('OL_DISTURI')       || define('OL_DISTURI', OL_BLOG_HOME.'/resources/dist/');
     // AJAX NONCE value
-    defined('OL_NONCE')         or define('OL_NONCE', wp_create_nonce(basename(OL_TPL_DIR).'_ajax_nonce'));
+    defined('OL_NONCE')         || define('OL_NONCE', wp_create_nonce(basename(OL_TPL_DIR).'_ajax_nonce'));
 
 
     /**
