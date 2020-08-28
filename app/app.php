@@ -14,7 +14,7 @@
 /**
  * Path to WordPress.
  */
-defined('ABSPATH') or define('ABSPATH', WEBPATH.WORDPRESSDIR.S);
+defined('ABSPATH') || define('ABSPATH', WEBPATH.WORDPRESSDIR.S);
 
 /**
  * Include composer autoloading.

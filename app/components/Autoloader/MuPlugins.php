@@ -17,19 +17,19 @@ namespace Olympus\Components\Autoloader;
 class MuPlugins
 {
     /**
-     * @var array $cache
+     * @var array
      */
     private $cache;
 
     /**
-     * @var MuPlugins $singleton
+     * @var MuPlugins
      */
     private static $singleton;
 
     /**
      * Constructor.
      *
-     * @param boolean $is_admin
+     * @param  bool    $is_admin
      *
      * @since 0.0.4
      */
@@ -53,13 +53,13 @@ class MuPlugins
      */
     public function init()
     {
-        $cache = (array) $this->getCache();
+        $caches = (array) $this->getCache();
 
-        if (!$cache) {
+        if (!$caches) {
             return;
         }
 
-        foreach ($cache as $file => $data) {
+        foreach ($caches as $file => $data) {
             // Check file to include it or not
             if (!file_exists(WPMU_PLUGIN_DIR.S.$file)) {
                 $this->updateCache(true);
@@ -75,9 +75,9 @@ class MuPlugins
     /**
      * Display the autoloaded plugins.
      *
-     * @param  boolean $bool
+     * @param  bool    $bool
      * @param  string  $type
-     * @return boolean $bool
+     * @return bool    $bool
      *
      * @since 0.0.4
      */
@@ -92,8 +92,8 @@ class MuPlugins
         }
 
         // Display the autoloaded plugins
-        $cache = $this->getCache();
-        $GLOBALS['plugins']['mustuse'] = array_unique($cache, SORT_REGULAR);
+        $caches = $this->getCache();
+        $GLOBALS['plugins']['mustuse'] = array_unique($caches, SORT_REGULAR);
 
         return false;
     }
@@ -101,7 +101,7 @@ class MuPlugins
     /**
      * Gets the value of cache.
      *
-     * @return array $cache
+     * @return array   $cache
      *
      * @since 0.0.4
      */
@@ -109,8 +109,8 @@ class MuPlugins
     {
         // Check cache
         if (empty($this->cache)) {
-            $cache = $this->updateCache();
-            $this->setCache($cache);
+            $caches = $this->updateCache();
+            $this->setCache($caches);
         }
 
         return (array) $this->cache;
@@ -119,14 +119,14 @@ class MuPlugins
     /**
      * Sets the value of cache.
      *
-     * @param array $cache
+     * @param  array   $caches
      * @return self
      *
      * @since 0.0.4
      */
-    private function setCache($cache)
+    private function setCache($caches)
     {
-        $this->cache = (array) $cache;
+        $this->cache = (array) $caches;
 
         return $this;
     }
@@ -145,20 +145,19 @@ class MuPlugins
 
         // Get cache from file
         if (file_exists($cachefile) && !$force) {
-            $cache = (array) include_once $cachefile;
-            return $cache;
+            return (array) include_once $cachefile;
         }
 
         include_once ABSPATH.'wp-admin'.S.'includes'.S.'plugin.php';
 
         // Get auto-loaded <or to autoload> mu-plugins
-        $cache = get_plugins(S.'..'.S.basename(WPMU_PLUGIN_DIR));
+        $caches = get_plugins(S.'..'.S.basename(WPMU_PLUGIN_DIR));
 
         // Create cache file and return result
         file_put_contents(
             $cachefile,
-            "<?php\n\n/**\n * File auto-generated.\n */\n\nreturn ".var_export($cache, true).";\n"
+            "<?php\n\n/**\n * File auto-generated.\n */\n\nreturn ".var_export($caches, true).";\n"
         );
-        return $cache;
+        return $caches;
     }
 }
