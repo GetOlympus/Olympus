@@ -73,7 +73,7 @@ return [
     'cookies' => [
         // Default
         'cookiehash'           => md5('https://www.domain.tld/cms/'),
-        // Auth                => md5('olympus') . 'u_' . md5('https://www.domain.tld/cms/'),
+        // Auth                => md5('olympus').'u_'.md5('https://www.domain.tld/cms/'),
         'user_cookie'          => '341e76dcd74b690d08b26b51bce88813u_9829f1ed04a267596cd30501b815ad7f',
         'pass_cookie'          => '341e76dcd74b690d08b26b51bce88813p_9829f1ed04a267596cd30501b815ad7f',
         'auth_cookie'          => '341e76dcd74b690d08b26b51bce88813a_9829f1ed04a267596cd30501b815ad7f',

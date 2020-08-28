@@ -19,6 +19,8 @@ use Composer\IO\IOInterface;
 
 class Processor
 {
+    const DIST = '.dist';
+
     /**
      * @var IOInterface
      */
@@ -27,20 +29,20 @@ class Processor
     /**
      * Constructor.
      *
-     * @param IOInterface $io
+     * @param IOInterface $ioi
      *
      * @since 0.0.3
      */
-    public function __construct(IOInterface $io)
+    public function __construct(IOInterface $ioi)
     {
-        $this->io = $io;
+        $this->io = $ioi;
     }
 
     /**
      * Starts creating file.
      *
-     * @param  string $realFile
-     * @return boolean $exists
+     * @param  string  $realFile
+     * @return bool    $exists
      *
      * @since 0.0.3
      */
@@ -59,7 +61,7 @@ class Processor
     /**
      * Create `env.php` file.
      *
-     * @param string $realFile
+     * @param  string  $realFile
      *
      * @since 0.0.3
      */
@@ -69,7 +71,7 @@ class Processor
         $exists = $this->isExists($realFile);
 
         // Find the expected params from dist file
-        $expectedParams = (array) require_once $realFile.'.dist';
+        $expectedParams = (array) require_once $realFile.DIST;
         $actualValues = [];
 
         // Update contents
@@ -109,7 +111,7 @@ class Processor
     /**
      * Create `salt.php` file.
      *
-     * @param string $realFile
+     * @param  string  $realFile
      *
      * @since 0.0.3
      */
@@ -125,13 +127,13 @@ class Processor
 
         # Write
         $this->io->write(
-            "<comment>Get values directly from 'http://api.wordpress.org/secret-key/1.1/salt/'</comment>"
+            "<comment>Get values directly from 'https://api.wordpress.org/secret-key/1.1/salt/'</comment>"
         );
 
         // Get salt keys
         if (function_exists('curl_init')) {
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, 'http://api.wordpress.org/secret-key/1.1/salt/');
+            curl_setopt($ch, CURLOPT_URL, 'https://api.wordpress.org/secret-key/1.1/salt/');
             curl_setopt($ch, CURLOPT_HEADER, false);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -152,8 +154,8 @@ class Processor
     /**
      * Create `config.rb` file.
      *
-     * @param string $realFile
-     * @param boolean $intro
+     * @param  string  $realFile
+     * @param  bool    $intro
      *
      * @since 0.0.3
      */
@@ -177,11 +179,11 @@ class Processor
         $this->io->write(sprintf(
             "<comment>Your '%s' is copied from '%s'</comment>",
             $realFile,
-            $realFile.'.dist'
+            $realFile.DIST
         ));
 
         // Get contents, simply
-        $contents = file_get_contents($realFile.'.dist');
+        $contents = file_get_contents($realFile.DIST);
 
         // Write in file
         file_put_contents(
@@ -193,8 +195,8 @@ class Processor
     /**
      * Create `robots.txt` file.
      *
-     * @param string $realFile
-     * @param string $envFile
+     * @param  string  $realFile
+     * @param  string  $envFile
      *
      * @since 0.0.8
      */
@@ -212,26 +214,26 @@ class Processor
         }
 
         # Write
-        $this->io->write(sprintf("<comment>Your '%s' is copied from '%s'</comment>", $realFile, $realFile.'.dist'));
+        $this->io->write(sprintf("<comment>Your '%s' is copied from '%s'</comment>", $realFile, $realFile.DIST));
 
         // Get contents and environments, simply
-        $contents = file_get_contents($realFile.'.dist');
+        $contents = file_get_contents($realFile.DIST);
         $env = include_once $envFile;
 
         // Replace default URL by the configured one
-        $contents = str_replace('http://www.domain.tld', $env['wordpress']['home'], $contents);
+        $contents = str_replace('https://www.domain.tld', $env['wordpress']['home'], $contents);
 
         // Write in file
-        file_put_contents($realFile, "# This file is auto-generated\n\n" . $contents);
+        file_put_contents($realFile, "# This file is auto-generated\n\n".$contents);
     }
 
     /**
      * Get actual params and display Q&A.
      *
-     * @param  array $expectedParams
-     * @param  array $actualValues
-     * @param  string $realFile
-     * @return array $values
+     * @param  array   $expectedParams
+     * @param  array   $actualValues
+     * @param  string  $realFile
+     * @return array   $values
      *
      * @since 0.0.3
      */
@@ -259,9 +261,9 @@ class Processor
     /**
      * Return an array that contains keys do not match between $array and $compare.
      *
-     * @param array $array
-     * @param array $compare
-     * @return array $diffs
+     * @param  array   $array
+     * @param  array   $compare
+     * @return array   $diffs
      *
      * @since 0.0.4
      */
@@ -290,9 +292,9 @@ class Processor
     /**
      * Treat params and display Q&A.
      *
-     * @param array $expectedKeys
-     * @param boolean $isStarted
-     * @param string $prefix
+     * @param  array   $expectedKeys
+     * @param  bool    $isStarted
+     * @param  string  $prefix
      *
      * @since 0.0.3
      */
@@ -304,56 +306,94 @@ class Processor
         foreach ($expectedKeys as $key => $message) {
             if (is_array($message)) {
                 $params[$key] = $this->treatParams($message, $isStarted, $key);
-            } else {
-                // Display a first message before treating params
-                if (!$isStarted) {
-                    $isStarted = true;
-
-                    # Write
-                    $this->io->write("\n<comment>Some parameters are missing. Please provide them.</comment>");
-                }
-
-
-                // Special cases.
-                if ('https' === $key) {
-                    // Special case: 'https'
-                    $url = parse_url($params['wordpress']['home']);
-                    $message = 'https' === $url['scheme'] ? true : $message;
-                }
-
-
-                // Display prefix when its needed, treat special boolean case
-                $p = !empty($prefix) ? $prefix . ' ' : '';
-                $m = is_bool($message) && !$message ? '0' : $message;
-
-                # Read
-                $value = $this->io->ask(sprintf(
-                    "<question>%s%s</question> (<comment>%s</comment>): ",
-                    $p,
-                    $key,
-                    $m
-                ), $message);
-                $value = is_bool($message) ? (boolean) $value : (is_int($message) ? (int) $value : $value);
-
-                // Update key's value
-                $params[$key] = $value;
-
-
-                // Special treatments.
-                if ('home' === $key && $value) {
-                    // Special treatment: 'home'
-                    $url = parse_url($value);
-                    $params[$key] = isset($url['scheme']) ? $value : 'http://' . preg_replace('{^\/\/}', '', $value);
-                } else if ('debug' === $key && $value) {
-                    // Special treatment: 'debug'
-                    $params[$key] = $this->treatParams([
-                        'savequeries' => true,
-                        'script_debug' => true,
-                        'wp_debug_display' => true,
-                        'wp_debug' => true,
-                    ], false, $key);
-                }
+                continue;
             }
+
+            // Display a first message before treating params
+            if (!$isStarted) {
+                $isStarted = true;
+
+                # Write
+                $this->io->write("\n<comment>Some parameters are missing. Please provide them.</comment>");
+            }
+
+            // Update message
+            $message = $this->updateMessage($key, $message, $params);
+
+            // Display prefix when its needed, treat special boolean case
+            $p = !empty($prefix) ? $prefix.' ' : '';
+            $m = is_bool($message) && !$message ? '0' : $message;
+
+            # Read
+            $value = $this->io->ask(sprintf(
+                "<question>%s%s</question> (<comment>%s</comment>): ",
+                $p,
+                $key,
+                $m
+            ), $message);
+
+            $value = is_bool($message) ? (boolean) $value : $value;
+            $value = is_int($message) ? (int) $value : $value;
+
+            // Update params
+            $params = $this->updateParams($params, $key, $value);
+        }
+
+        return $params;
+    }
+
+    /**
+     * Update message.
+     *
+     * @param  string  $key
+     * @param  integer $message
+     * @param  array   $params
+     * @return integer $message
+     *
+     * @since 0.0.25
+     */
+    private function updateMessage($key, $message, $params)
+    {
+        if ('https' !== $key) {
+            return $message;
+        }
+
+        $url = parse_url($params['wordpress']['home']);
+        $message = 'https' === $url['scheme'] ? true : $message;
+    }
+
+    /**
+     * Update params key's value.
+     *
+     * @param  array   $params
+     * @param  string  $key
+     * @param  string  $value
+     * @return string  $value
+     *
+     * @since 0.0.25
+     */
+    private function updateParams($params, $key, $value)
+    {
+        $params[$key] = $value;
+
+        // Home case
+        if ('home' === $key && $value) {
+            $url = parse_url($value);
+            $params[$key] = isset($url['scheme']) ? $value : 'https://'.preg_replace('{^\/\/}', '', $value);
+
+            return $params;
+        }
+
+        // Debug case
+        if ('debug' === $key && $value) {
+            $params[$key] = $this->treatParams([
+                'savequeries' => true,
+                'script_debug' => true,
+                'wp_debug_display' => true,
+                'wp_debug' => true,
+            ], false, $key);
+
+            return $params;
         }
 
         return $params;
