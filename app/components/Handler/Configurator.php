@@ -28,6 +28,8 @@ class Configurator
      */
     public static function build(Event $event)
     {
+        $DS = DIRECTORY_SEPARATOR;
+
         // Get vendor path
         $vendor = $event->getComposer()->getConfig()->get('vendor-dir');
 
@@ -35,21 +37,21 @@ class Configurator
         $processor = new Processor($event->getIO());
 
         // Build `env.php` file
-        $processor->processEnv(dirname($vendor).S.'app'.S.'config'.S.'env.php');
+        $processor->processEnv(dirname($vendor).$DS.'app'.$DS.'config'.$DS.'env.php');
 
         // Build `salt.php` file
-        $processor->processSalt(dirname($vendor).S.'app'.S.'config'.S.'salt.php');
+        $processor->processSalt(dirname($vendor).$DS.'app'.$DS.'config'.$DS.'salt.php');
 
         // Build `own.php` file
-        $processor->processConfig(dirname($vendor).S.'app'.S.'config'.S.'own.php', false);
+        $processor->processConfig(dirname($vendor).$DS.'app'.$DS.'config'.$DS.'own.php', false);
 
         // Build `config.rb` file
-        $processor->processConfig(dirname($vendor).S.'app'.S.'deploy'.S.'config.rb');
+        $processor->processConfig(dirname($vendor).$DS.'app'.$DS.'deploy'.$DS.'config.rb');
 
         // Build `robots.txt` file
         $processor->processRobots(
-            dirname($vendor).S.'web'.S.'robots.txt',
-            dirname($vendor).S.'app'.S.'config'.S.'env.php'
+            dirname($vendor).$DS.'web'.$DS.'robots.txt',
+            dirname($vendor).$DS.'app'.$DS.'config'.$DS.'env.php'
         );
     }
 }

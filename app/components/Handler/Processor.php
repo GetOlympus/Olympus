@@ -19,7 +19,10 @@ use Composer\IO\IOInterface;
 
 class Processor
 {
-    const DIST = '.dist';
+    /**
+     * @var string
+     */
+    private $ext = '.dist';
 
     /**
      * @var IOInterface
@@ -71,7 +74,7 @@ class Processor
         $exists = $this->isExists($realFile);
 
         // Find the expected params from dist file
-        $expectedParams = (array) require_once $realFile.DIST;
+        $expectedParams = (array) require_once $realFile.$this->ext;
         $actualValues = [];
 
         // Update contents
@@ -179,11 +182,11 @@ class Processor
         $this->io->write(sprintf(
             "<comment>Your '%s' is copied from '%s'</comment>",
             $realFile,
-            $realFile.DIST
+            $realFile.$this->ext
         ));
 
         // Get contents, simply
-        $contents = file_get_contents($realFile.DIST);
+        $contents = file_get_contents($realFile.$this->ext);
 
         // Write in file
         file_put_contents(
@@ -214,10 +217,10 @@ class Processor
         }
 
         # Write
-        $this->io->write(sprintf("<comment>Your '%s' is copied from '%s'</comment>", $realFile, $realFile.DIST));
+        $this->io->write(sprintf("<comment>Your '%s' is copied from '%s'</comment>", $realFile, $realFile.$this->ext));
 
         // Get contents and environments, simply
-        $contents = file_get_contents($realFile.DIST);
+        $contents = file_get_contents($realFile.$this->ext);
         $env = include_once $envFile;
 
         // Replace default URL by the configured one
