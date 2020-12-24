@@ -1,3 +1,6 @@
+## v0.0.26 (December 25, 2020)
+Fix Configurator and Processor Handler components
+
 ## v0.0.25 (April 08, 2020)
 Update composer and autoload
 
