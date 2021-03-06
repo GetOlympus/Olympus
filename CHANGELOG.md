@@ -1,3 +1,8 @@
+## v0.0.27 (March 6, 2021)
+Auto detect https use from site url.
+Add options to fully customize WordPress installation, as multisite or single site.
+Make themes directory overridable through get_template_directory() and get_template_directory_uri() functions.
+
 ## v0.0.26 (December 25, 2020)
 Fix Configurator and Processor Handler components
 
