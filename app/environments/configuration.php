@@ -99,8 +99,8 @@ define('ENFORCE_GZIP', (bool) $opts['enforce_gzip']);
 // FS method, only work for 'direct', 'ssh2', 'ftpext', or 'ftpsockets'
 if (is_string($opts['fs_method']) && in_array($opts['fs_method'], ['direct', 'ssh2', 'ftpext', 'ftpsockets'])) {
     define('FS_METHOD', (string) $opts['fs_method']);
-    define('FS_CHMOD_DIR', $opts['fs_chmod_dir']);
-    define('FS_CHMOD_FILE', $opts['fs_chmod_file']);
+    define('FS_CHMOD_DIR', (int) $opts['fs_chmod_dir']);
+    define('FS_CHMOD_FILE', (int) $opts['fs_chmod_file']);
 }
 
 // Set the directory files that should be downloaded to before they are moved (usually set in the PHP conf)
