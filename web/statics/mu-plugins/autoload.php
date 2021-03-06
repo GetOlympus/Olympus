@@ -25,6 +25,16 @@ use Olympus\Components\Autoloader\MuPlugins;
  */
 
 /**
+ * Update theme root folder.
+ */
+add_filter('theme_root', function () {
+    return WP_THEME_DIR;
+});
+add_filter('theme_root_uri', function () {
+    return WP_THEME_URL;
+});
+
+/**
  * Autoload all mu-plugins.
  * As the first autoloaded file, all useful constants are defined here.
  */
