@@ -59,7 +59,9 @@ class MuPlugins
             return;
         }
 
-        foreach ($caches as $file => $data) {
+        $files = array_keys($caches);
+
+        foreach ($files as $file) {
             // Check file to include it or not
             if (!file_exists(WPMU_PLUGIN_DIR.S.$file)) {
                 $this->updateCache(true);
