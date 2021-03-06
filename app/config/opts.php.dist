@@ -15,26 +15,6 @@
  * Site environment options.
  */
 return [
-    // Website options
-    // ~
-    // See all default options in the `/app/environments/website.php` file
-    // It sets all statics folder names
-    // ~
-    'website' => [
-        // Global
-        'wp_content_dir'  => '/path/to/web_docroot/statics/',
-        'wp_content_url'  => 'https://www.domain.tld/statics/',
-        // Mu plugins
-        'wpmu_plugin_dir' => '/path/to/web_docroot/statics/mu-plugins/',
-        'wpmu_plugin_url' => 'https://www.domain.tld/statics/mu-plugins/',
-        // Plugins
-        'wp_plugin_dir'   => '/path/to/web_docroot/statics/plugins/',
-        'wp_plugin_url'   => 'https://www.domain.tld/statics/plugins/',
-        // Themes
-        'wp_theme_dir'    => '/path/to/web_docroot/statics/themes/',
-        'wp_theme_url'    => 'https://www.domain.tld/statics/themes/',
-    ],
-
     // Configuration options
     // ~
     // See all default options in the `/app/environments/configuration.php` file
@@ -43,26 +23,25 @@ return [
     'configuration' => [
         // Set memory limit
         'wp_memory_limit'      => '128M',
-        // Cron
+        'wp_max_memory_limit'  => '256M',
+        // Autosave interval in seconds
         'autosave_interval'    => 60,
+        // Cron lock timeout in seconds
         'wp_cron_lock_timeout' => 60,
         // Trash feature for media
         'media_trash'          => true,
-    ],
-
-    // Multisite options
-    // ~
-    // See all default options in the `/app/environments/multisite.php` file
-    // In multisite case, it sets default current site definitions
-    // ~
-    'multisite' => [
-        'subdomain_install'    => true,
-        // Website
-        'domain_current_site'  => 'www.domain.tld',
-        'path_current_site'    => '/cms/',
-        // Identifier
-        'site_id_current_site' => 1,
-        'blog_id_current_site' => 1,
+        // Allow users to update core, themes or plugins
+        'disallow_file_mods'   => false,
+        // Allow editing images to replace the originals
+        'image_edit_overwrite' => false,
+        // Enforce GZIP encoding
+        'enforce_gzip'         => false,
+        // FS method
+        'fs_method'            => false,
+        'fs_chmod_dir'         => 493,
+        'fs_chmod_file'        => 420,
+        // Temp directory ~ We recommand to leave this empty
+        'wp_temp_dir'          => WEBPATH.STATICSDIR.S,
     ],
 
     // Cookies options
@@ -101,7 +80,48 @@ return [
         'concatenate_scripts' => false,
         'compress_scripts'    => false,
         'compress_css'        => false,
+        // Turn off WSOD Protection and don't send email notification
+        'wp_sandbox_scraping' => true,
         // Special Olympus error level
         'error_level'         => 200,
+    ],
+
+    // Multisite options
+    // ~
+    // See all default options in the `/app/environments/multisite.php` file
+    // In multisite case, it sets default current site definitions
+    // ~
+    'multisite' => [
+        'subdomain_install'    => true,
+        // Website
+        'domain_current_site'  => 'www.domain.tld',
+        'path_current_site'    => '/cms/',
+        // Identifier
+        'site_id_current_site' => 1,
+        'blog_id_current_site' => 1,
+    ],
+
+    // Website options
+    // ~
+    // See all default options in the `/app/environments/website.php` file
+    // It sets all statics folder names
+    // ~
+    'website' => [
+        // Global
+        'wp_content_dir'  => '/path/to/web_docroot/statics/',
+        'wp_content_url'  => 'https://www.domain.tld/statics/',
+        'contentdir'      => '../statics',
+        // Mu plugins
+        'wpmu_plugin_dir' => '/path/to/web_docroot/statics/mu-plugins/',
+        'wpmu_plugin_url' => 'https://www.domain.tld/statics/mu-plugins/',
+        'muplugindir'     => '../statics/mu-plugins',
+        // Plugins
+        'wp_plugin_dir'   => '/path/to/web_docroot/statics/plugins/',
+        'wp_plugin_url'   => 'https://www.domain.tld/statics/plugins/',
+        'plugindir'       => '../statics/plugins',
+        // Themes
+        'wp_theme_dir'    => '/path/to/web_docroot/statics/themes/',
+        'wp_theme_url'    => 'https://www.domain.tld/statics/themes/',
+        'themedir'        => '../statics/themes',
     ],
 ];

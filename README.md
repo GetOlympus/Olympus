@@ -1,18 +1,27 @@
-<p align="center">
-    <img src="https://github.com/GetOlympus/olympus/blob/master/web/apple-touch-icon.png" /><br/>
-    <i>This logo is property of <a href="https://anischouk.com/" target="_blank">Anis Chouk</a>.</i>
-</p>
+<img src="https://github.com/GetOlympus/olympus/blob/master/web/apple-touch-icon.png" align="left" />
 
-# Olympus ![PHP Version][php-image]
-> The **Olympus** package is the **easiest and secure** way to install **WordPress** websites with the powerfull **Zeus Core** framework.
-> All WordPress optimizations are listed and enabled here. You can use theme easily.
+# Olympus
 
 [![Olympus Component][olympus-image]][olympus-url]
 [![CodeFactor Grade][codefactor-image]][codefactor-url]
 [![Packagist Version][packagist-image]][packagist-url]
+![PHP Version][php-image]
 [![Travis Status][travis-image]][travis-url]
+[![MIT][license-image]][license-blob]
+
+> The **Olympus** package is the **easiest and secure** way to install **WordPress** websites with the powerfull **Zeus Core** framework.
+> All WordPress optimizations are listed and enabled here. You can use theme easily.
+
+```sh
+# Quick install ~ See #install-olympus-in-2-steps section for details
+git clone https://github.com/GetOlympus/Olympus.git projectname && cd $_
+composer install
+```
+
+---
 
 **Table of Contents**
+
 - [What is Olympus?](#what-is-olympus)
 - [Features](#features)
 - [Get started](#get-started)
@@ -32,11 +41,15 @@
 - [Authors and Copyright](#authors-and-copyright)
 - [Contributing](#contributing)
 
+---
+
 ## What is Olympus?
 
-The **Olympus** package is a tool that provides a secure WordPress application structure with better tools to developers. It is aimed to WordPress developers of any levels.
+The **Olympus** package is a set of line codes that provides a secure WordPress application structure with better tools to developers. It is aimed to WordPress developers of any levels.
 
-In order to provide those tools, the **Olympus** package dependency manager and remote server automation tool such as **Composer** and **Capistrano**. A bunch of auto-generated files and autoloaded plugins make your WordPress website more secure and faster.
+In order to provide those tools, the **Olympus** package uses dependency manager and remote server automation tool such as **Composer** and **Capistrano**. A bunch of auto-generated files and auto-loaded plugins make your WordPress website more secure and faster.
+
+---
 
 ## Features
 
@@ -46,12 +59,7 @@ In order to provide those tools, the **Olympus** package dependency manager and 
 + Dependency management with [**Composer**](https://getcomposer.org)
 + Remote server automation tool with [**Capistrano**](http://capistranorb.com/) and [**Olympus Hestia Capistrano**](https://github.com/GetOlympus/Hestia-Capistrano)
 
-And more:
-+ [Monolog](https://github.com/Seldaek/monolog) as an extensible powerful file logger
-+ [WP Rest API](http://v2.wp-api.org/) as your official JSON Rest API: all your posts with a simple `GET` request: `/wp-json/wp/v2/posts`
-
-![With Composer](https://img.shields.io/badge/with-Composer-885630.svg?style=flat-square)
-![With Capistrano](https://img.shields.io/badge/with-Capistrano-52c1db.svg?style=flat-square)
+---
 
 ## Get started
 
@@ -79,7 +87,9 @@ Restart your server and That's all folkes.
 
 ### Build database
 
-Go to your website homepage URL to launch your WordPress website install.
+Go to your website homepage URL to launch your WordPress install.
+
+---
 
 ## Get started with Capistrano
 
@@ -109,6 +119,8 @@ Restart your server and That's all folkes.
 ### Build database with Capistrano
 
 Go to your website homepage URL to launch your WordPress website install.
+
+---
 
 ## Advanced details
 
@@ -192,45 +204,29 @@ See [Variables definitions](#variables-definitions) to know more about this `opt
 
 ### Variables definitions
 
-**Website section**, sets all statics folder names:
-
-| Variable          | Type    | Default value                                  | Expected value                   |
-| ----------------- | ------- | ---------------------------------------------- | -------------------------------- |
-| `wp_content_dir`  | String  | `'/path/to/web_docroot/statics/'`              | path to your `statics` folder    |
-| `wp_content_url`  | String  | `'https://www.domain.tld/statics/'`            | url to your `statics` folder     |
-| `wpmu_plugin_dir` | String  | `'/path/to/web_docroot/statics/mu-plugins/'`   | path to your `mu-plugins` folder |
-| `wpmu_plugin_dir` | String  | `'https://www.domain.tld/statics/mu-plugins/'` | url to your `mu-plugins` folder  |
-| `wp_plugin_dir`   | String  | `'/path/to/web_docroot/statics/plugins/'`      | path to your `plugins` folder    |
-| `wp_plugin_url`   | String  | `'https://www.domain.tld/statics/plugins/'`    | url to your `plugins` folder     |
-| `wp_theme_dir`    | String  | `'/path/to/web_docroot/statics/themes/'`       | path to your `themes` folder     |
-| `wp_theme_url`    | String  | `'https://www.domain.tld/statics/themes/'`     | url to your `themes` folder      |
-
 **Configuration section**, sets memory limit, some security and features options:
 
-| Variable               | Type    | Default value | Expected value                           |
-| ---------------------- | ------- | ------------- | ---------------------------------------- |
-| `wp_memory_limit`      | String  | `'128M'`      | frontend PHP `memory_limit`              |
-| `wp_max_memory_limit`  | String  | `'256M'`      | backend PHP `memory_limit`               |
-| `autosave_interval`    | Integer | `60`          | interval in seconds between 2 autosaves  |
-| `wp_cron_lock_timeout` | Integer | `60`          | interval in seconds to unlock cron tasks |
-| `media_trash`          | Boolean | `true`        | enable or not trash in media page        |
-
-**Multisite section**, sets default current site definitions in multisite case
-
-| Variable               | Type    | Default value      | Expected value                    |
-| ---------------------- | ------- | ------------------ | --------------------------------- |
-| `subdomain_install`    | Boolean | `true`             | use or not sub domain display     |
-| `domain_current_site`  | String  | `'www.domain.tld'` | url to the current (main) website |
-| `path_current_site`    | String  | `'/cms/'`          | path to current (main) website    |
-| `site_id_current_site` | Integer | `1`                | site id of the main website       |
-| `blog_id_current_site` | Integer | `1`                | blog id of the main website       |
+| Variable               | Type    | Default value | Description                                                   |
+| ---------------------- | ------- | ------------- | ------------------------------------------------------------- |
+| `wp_memory_limit`      | String  | `'128M'`      | frontend PHP `memory_limit`                                   |
+| `wp_max_memory_limit`  | String  | `'256M'`      | backend PHP `memory_limit`                                    |
+| `autosave_interval`    | Integer | `60`          | interval in seconds between 2 autosaves                       |
+| `wp_cron_lock_timeout` | Integer | `60`          | interval in seconds to unlock cron tasks                      |
+| `media_trash`          | Boolean | `true`        | enable or not trash in media page                             |
+| `disallow_file_mods`   | Boolean | `false`       | allow users to update core, themes or plugins                 |
+| `image_edit_overwrite` | Boolean | `false`       | allow editing images to replace the originals                 |
+| `enforce_gzip`         | Boolean | `false`       | enforce GZIP encoding                                         |
+| `fs_method`            | String  | `false`       | FS method: `'direct'`, `'ssh2'`, `'ftpext'` or `'ftpsockets'` |
+| `fs_chmod_dir`         | Integer | `0755`        | Change mode on directories                                    |
+| `fs_chmod_file`        | Integer | `0644`        | Change mode on files                                          |
+| `wp_temp_dir`          | String  | `''`          | Temp directory ~ We recommand to leave this empty             |
 
 **Cookies section**, sets all cookies names.  
 In these examples, you can replace:
 - `olympus` by the result of `md5('olympus')`
 - `domaintld` by the result of `md5('https://www.domain.tld/cms/')`
 
-| Variable               | Type    | Default value                       | Expected value              |
+| Variable               | Type    | Default value                       | Description                 |
 | ---------------------- | ------- | ----------------------------------- | --------------------------- |
 | `cookiehash`           | String  | `'domaintld'`                       | current domain cookie hash  |
 | `user_cookie`          | String  | `'olympusu_domaintld'`              | user cookie hash            |
@@ -248,12 +244,40 @@ In these examples, you can replace:
 
 **Debug section**, sets all debug options:
 
-| Variable              | Type    | Default value | Expected value                             |
+| Variable              | Type    | Default value | Description                                |
 | --------------------- | ------- | ------------- | ------------------------------------------ |
 | `concatenate_scripts` | Boolean | `false`       | enable or not scripts concatenation        |
 | `compress_scripts`    | Boolean | `false`       | enable or not scripts compression          |
 | `compress_css`        | Boolean | `false`       | enable or not stylesheets compressions     |
+| `wp_sandbox_scraping` | Boolean | `true`        | turn off WSOD default protection           |
 | `error_level`         | Integer | `200`         | error level, see [Log levels](#log-levels) |
+
+**Multisite section**, sets default current site definitions in multisite case
+
+| Variable               | Type    | Default value      | Description                       |
+| ---------------------- | ------- | ------------------ | --------------------------------- |
+| `subdomain_install`    | Boolean | `true`             | use or not sub domain display     |
+| `domain_current_site`  | String  | `'www.domain.tld'` | url to the current (main) website |
+| `path_current_site`    | String  | `'/cms/'`          | path to current (main) website    |
+| `site_id_current_site` | Integer | `1`                | site id of the main website       |
+| `blog_id_current_site` | Integer | `1`                | blog id of the main website       |
+
+**Website section**, sets all statics folder names:
+
+| Variable          | Type    | Default value                                  | Description                       |
+| ----------------- | ------- | ---------------------------------------------- | --------------------------------- |
+| `wp_content_dir`  | String  | `'/path/to/web_docroot/statics/'`              | path to your `statics` folder     |
+| `wp_content_url`  | String  | `'https://www.domain.tld/statics/'`            | url to your `statics` folder      |
+| `contentdir`      | String  | `'../statics'`                                 | path from ABSPATH to `statics`    |
+| `wpmu_plugin_dir` | String  | `'/path/to/web_docroot/statics/mu-plugins/'`   | path to your `mu-plugins` folder  |
+| `wpmu_plugin_dir` | String  | `'https://www.domain.tld/statics/mu-plugins/'` | url to your `mu-plugins` folder   |
+| `muplugindir`     | String  | `'../statics/mu-plugins'`                      | path from ABSPATH to `mu-plugins` |
+| `wp_plugin_dir`   | String  | `'/path/to/web_docroot/statics/plugins/'`      | path to your `plugins` folder     |
+| `wp_plugin_url`   | String  | `'https://www.domain.tld/statics/plugins/'`    | url to your `plugins` folder      |
+| `plugindir`       | String  | `'../statics/plugins'`                         | path from ABSPATH to `plugins`    |
+| `wp_theme_dir`    | String  | `'/path/to/web_docroot/statics/themes/'`       | path to your `themes` folder      |
+| `wp_theme_url`    | String  | `'https://www.domain.tld/statics/themes/'`     | url to your `themes` folder       |
+| `themedir`        | String  | `'../statics/themes'`                          | path from ABSPATH to `themes`     |
 
 ### Log levels
 
@@ -266,19 +290,13 @@ In these examples, you can replace:
 * `550` Action must be taken immediately.
 * `600` Urgent alert.
 
+---
+
 ## Release History
 
 See [**CHANGELOG.md**][changelog-blob] for all details.
 
-## Authors and Copyright
-
-Achraf Chouk
-
-[https://github.com/crewstyle](https://github.com/crewstyle)  
-[https://twitter.com/crewstyle](https://twitter.com/crewstyle)  
-[https://fr.linkedin.com/in/achrafchouk](http://fr.linkedin.com/in/achrafchouk)
-
-Please, read [![MIT][license-image]][license-blob] for more information.
+---
 
 ## Contributing
 
