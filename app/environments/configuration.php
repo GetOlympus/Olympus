@@ -96,7 +96,7 @@ define('IMAGE_EDIT_OVERWRITE', (bool) $opts['image_edit_overwrite']);
 // Enforce GZIP encoding
 define('ENFORCE_GZIP', (bool) $opts['enforce_gzip']);
 
-// FS method, only work for 'direct', 'ssh2', 'ftpext', or 'ftpsockets'
+// FS method, only work for 'direct', 'ssh2', 'ftpext' or 'ftpsockets'
 if (is_string($opts['fs_method']) && in_array($opts['fs_method'], ['direct', 'ssh2', 'ftpext', 'ftpsockets'])) {
     define('FS_METHOD', (string) $opts['fs_method']);
     define('FS_CHMOD_DIR', (int) $opts['fs_chmod_dir']);
