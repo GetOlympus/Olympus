@@ -16,6 +16,8 @@ $opts = array_merge([
     'concatenate_scripts' => false,
     'compress_scripts'    => false,
     'compress_css'        => false,
+    // Turn off WSOD Protection and don't send email notification
+    'wp_sandbox_scraping' => true,
     // Special Olympus error level
     'error_level'         => 100,
 ], isset($config['options']['debug']) ? $config['options']['debug'] : []);
@@ -59,6 +61,9 @@ if (!is_array($config['debug']) && false === (bool) $config['debug']) {
     // Special Olympus error level
     define('ERROR_LEVEL', (int) $opts['error_level']);
 }
+
+// Turn off WSOD Protection and don't send email notification
+define('WP_SANDBOX_SCRAPING', (bool) $opts['wp_sandbox_scraping']);
 
 // Free memory
 unset($opts);

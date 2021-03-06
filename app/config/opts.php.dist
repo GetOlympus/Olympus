@@ -43,11 +43,24 @@ return [
     'configuration' => [
         // Set memory limit
         'wp_memory_limit'      => '128M',
+        'wp_max_memory_limit'  => '256M',
         // Cron
         'autosave_interval'    => 60,
         'wp_cron_lock_timeout' => 60,
         // Trash feature for media
         'media_trash'          => true,
+        // Allow users to update core, themes or plugins
+        'disallow_file_mods'   => false,
+        // Allow editing images to replace the originals
+        'image_edit_overwrite' => false,
+        // Enforce GZIP encoding
+        'enforce_gzip'         => false,
+        // FS method
+        'fs_method'            => false,
+        'fs_chmod_dir'         => (0755 & ~ umask()),
+        'fs_chmod_file'        => (0644 & ~ umask()),
+        // Temp directory ~ We recommand to leave this empty
+        'wp_temp_dir'          => WEBPATH.STATICSDIR.S,
     ],
 
     // Multisite options
@@ -101,6 +114,8 @@ return [
         'concatenate_scripts' => false,
         'compress_scripts'    => false,
         'compress_css'        => false,
+        // Turn off WSOD Protection and don't send email notification
+        'wp_sandbox_scraping' => true,
         // Special Olympus error level
         'error_level'         => 200,
     ],
