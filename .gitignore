@@ -59,6 +59,10 @@ Thumbs.db
 # WordPress debug file
 /web/statics/debug.log
 
+# WordPress cache
+/web/statics/cache/*
+!/web/statics/cache/.gitkeep
+
 # WordPress languages
 /web/statics/languages/*
 !/web/statics/languages/.gitkeep
