@@ -119,7 +119,7 @@ add_filter('network_site_url', function ($url, $path, $scheme) {
 
     // Fix path by adding the WORDPRESSDIR constant
     $current_network = get_network();
-    $url = set_url_scheme('http://'.$current_network->domain.'/'.WORDPRESSDIR.$current_network->path, $scheme);
+    $url = set_url_scheme('https://'.$current_network->domain.'/'.WORDPRESSDIR.$current_network->path, $scheme);
 
     return $url.ltrim($path, '/');
 }, 10, 3);
