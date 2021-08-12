@@ -49,9 +49,9 @@
   ],
   "require": {
     "php": ">=7",
-    "composer/composer": "^2.0",
+    "composer/composer": "^2.1",
     "getolympus/olympus-zeus-core": "^2.1",
-    "getolympus/olympus-hades-error-handler": "^0.0.3",
+    "getolympus/olympus-hades-error-handler": "^0.0.5",
     "johnpbloch/wordpress": "^5.2",
     "wpackagist-theme/twentytwenty": "^1.0"
   },
