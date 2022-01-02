@@ -53,7 +53,7 @@
     "getolympus/olympus-zeus-core": "^2.1",
     "getolympus/olympus-hades-error-handler": "^0.0.5",
     "johnpbloch/wordpress": "^5.2",
-    "wpackagist-theme/twentytwenty": "^1.0"
+    "wpackagist-theme/twentytwentyone": "^1.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "3.*"
@@ -61,17 +61,17 @@
   "scripts": {
     "post-install-cmd": [
       "Olympus\\Components\\Handler\\Configurator::build",
-      "cd web ; [ ! -h xmlrpc.php ] && ln -s cms/xmlrpc.php xmlrpc.php ; cd -"
+      "[ ! -h web/xmlrpc.php ] && ln -s cms/xmlrpc.php web/xmlrpc.php"
     ],
     "post-update-cmd": [
       "Olympus\\Components\\Handler\\Configurator::build",
-      "cd web ; [ ! -h xmlrpc.php ] && ln -s cms/xmlrpc.php xmlrpc.php ; cd -",
-      "cd app/cache/ ; find . ! -name '.gitkeep' -type f -exec rm -f {} + ; cd -",
-      "cd web/resources/dist ; find . ! -name '.gitkeep' -type f -exec rm -f {} + ; cd -"
+      "[ ! -h web/xmlrpc.php ] && ln -s cms/xmlrpc.php web/xmlrpc.php",
+      "find ./app/cache ! -name '.gitkeep' -type f -exec rm -f {} +",
+      "find ./web/resources/dist ! -name '.gitkeep' -type f -exec rm -f {} +"
     ],
     "clean": [
-      "cd app/cache/ ; find . ! -name '.gitkeep' -type f -exec rm -f {} + ; cd -",
-      "cd web/resources/dist ; find . ! -name '.gitkeep' -type f -exec rm -f {} + ; cd -"
+      "find ./app/cache ! -name '.gitkeep' -type f -exec rm -f {} +",
+      "find ./web/resources/dist ! -name '.gitkeep' -type f -exec rm -f {} +"
     ],
     "test": [
       "vendor/bin/phpcs --standard=phpcs.xml ."
