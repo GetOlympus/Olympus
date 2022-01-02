@@ -1,3 +1,6 @@
+## v0.0.28 (January 2, 2022)
+Fix the `siteurl` multisite option by adding the WORDPRESSDIR constant.
+
 ## v0.0.27 (March 6, 2021)
 Auto detect https use from site url.
 Add options to fully customize WordPress installation, as multisite or single site.

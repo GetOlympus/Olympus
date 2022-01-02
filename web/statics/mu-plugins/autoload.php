@@ -109,22 +109,6 @@ add_filter('theme_root_uri', function () {
 });
 
 /**
- * Update network admin URL.
- */
-add_filter('network_site_url', function ($url, $path, $scheme) {
-    // Check network admin path
-    if ('wp-admin/network/' !== $path || 'admin' !== $scheme) {
-        return $url;
-    }
-
-    // Fix path by adding the WORDPRESSDIR constant
-    $current_network = get_network();
-    $url = set_url_scheme('https://'.$current_network->domain.'/'.WORDPRESSDIR.$current_network->path, $scheme);
-
-    return $url.ltrim($path, '/');
-}, 10, 3);
-
-/**
  * Update automatically the `own.php` configuration file.
  */
 add_action('admin_footer', function () {
@@ -189,3 +173,45 @@ add_action('admin_footer', function () {
     // Puts contents into target configuration file
     file_put_contents($target, $contents);
 });
+
+/**
+ * Update network admin URL.
+ */
+add_filter('network_site_url', function ($url, $path, $scheme) {
+    // Check network admin path
+    if ('wp-admin/network/' !== $path || 'admin' !== $scheme) {
+        return $url;
+    }
+
+    // Fix path by adding the WORDPRESSDIR constant
+    $current_network = get_network();
+    $url = set_url_scheme('https://'.$current_network->domain.'/'.WORDPRESSDIR.$current_network->path, $scheme);
+
+    return $url.ltrim($path, '/');
+}, 10, 3);
+
+/**
+ * Filters reserved site names on a sub-directory Multisite installation.
+ */
+add_filter('subdirectory_reserved_names', function ($names) {
+    return array_merge($names, [WORDPRESSDIR]);
+});
+
+/**
+ * Fires once a site has been created.
+ * Useful to update the `siteurl` option.
+ */
+add_action('wpmu_new_blog', function ($blog_id, $user_id, $domain, $path, $site_id, $meta) {
+    // Switch the newly created blog
+    switch_to_blog($blog_id);
+
+    // Get `siteurl` network option and add WORDPRESSDIR constant
+    $siteurl = get_option('siteurl');
+    $siteurl = rtrim($siteurl, '/').'/'.WORDPRESSDIR;
+
+    // Update option
+    update_option('siteurl', $siteurl);
+
+    // Restore to the current blog
+    restore_current_blog();
+}, 10, 6);
