@@ -53,7 +53,8 @@
     "getolympus/olympus-zeus-core": "^2.1",
     "getolympus/olympus-hades-error-handler": "^0.0.5",
     "johnpbloch/wordpress": "^5.2",
-    "wpackagist-theme/twentytwentyone": "^1.0"
+    "wpackagist-theme/twentytwentyone": "^1.0",
+    "wikimedia/less.php": "^3.1"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "3.*"
