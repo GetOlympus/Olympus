@@ -1,3 +1,6 @@
+## v0.0.29 (January 2, 2022)
+Update composer command lines and default WordPress theme.
+
 ## v0.0.28 (January 2, 2022)
 Fix the `siteurl` multisite option by adding the WORDPRESSDIR constant.
 
