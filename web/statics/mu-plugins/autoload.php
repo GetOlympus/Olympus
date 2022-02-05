@@ -209,9 +209,9 @@ add_action('wpmu_new_blog', function ($blog_id, $user_id, $domain, $path, $site_
     $siteurl = get_option('siteurl');
     $siteurl = rtrim($siteurl, '/');
 
-    // Check is HTTPS protocol is used
-    $is_https = 'https' === parse_url($siteurl, PHP_URL_SCHEME);
-    $siteurl = $is_https ? str_replace('http://', 'https://', $siteurl) : $siteurl;
+    // Check is HTTPS protocol is used and update siteurl if needed
+    $is_https = defined('FORCE_SSL_ADMIN') && FORCE_SSL_ADMIN;
+    $siteurl  = $is_https ? str_replace('http://', 'https://', $siteurl) : $siteurl;
 
     // Update options by adding WORDPRESSDIR constant to siteurl
     update_option('siteurl', $siteurl.'/'.WORDPRESSDIR);
