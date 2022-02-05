@@ -199,18 +199,23 @@ add_filter('subdirectory_reserved_names', function ($names) {
 
 /**
  * Fires once a site has been created.
- * Useful to update the `siteurl` option.
+ * Useful to update the `siteurl` and `home` options.
  */
 add_action('wpmu_new_blog', function ($blog_id, $user_id, $domain, $path, $site_id, $meta) {
     // Switch the newly created blog
     switch_to_blog($blog_id);
 
-    // Get `siteurl` network option and add WORDPRESSDIR constant
+    // Get `siteurl` network option
     $siteurl = get_option('siteurl');
-    $siteurl = rtrim($siteurl, '/').'/'.WORDPRESSDIR;
+    $siteurl = rtrim($siteurl, '/');
 
-    // Update option
-    update_option('siteurl', $siteurl);
+    // Check is HTTPS protocol is used
+    $is_https = 'https' === parse_url($siteurl, PHP_URL_SCHEME);
+    $siteurl = $is_https ? str_replace('http://', 'https://', $siteurl) : $siteurl;
+
+    // Update options by adding WORDPRESSDIR constant to siteurl
+    update_option('siteurl', $siteurl.'/'.WORDPRESSDIR);
+    update_option('home', $siteurl);
 
     // Restore to the current blog
     restore_current_blog();

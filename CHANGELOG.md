@@ -1,3 +1,6 @@
+## v0.0.30 (February 5, 2022)
+Fix the `siteurl` and `home` multisite options with HTTPS protocol.
+
 ## v0.0.29 (January 2, 2022)
 Update composer command lines and default WordPress theme.
 
