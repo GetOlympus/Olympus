@@ -2,15 +2,15 @@
 Fix composer integration and Add new --no-interaction command compatibility to work with automatic deploy scripts.
 
 ## v0.0.29 (February 5, 2022)
-Update composer command lines and default WordPress theme.
+Update composer command lines and default WordPress theme.  
 Fix the `siteurl` and `home` multisite options with HTTPS protocol.
 
 ## v0.0.28 (January 2, 2022)
 Fix the `siteurl` multisite option by adding the WORDPRESSDIR constant.
 
 ## v0.0.27 (March 6, 2021)
-Auto detect https use from site url.
-Add options to fully customize WordPress installation, as multisite or single site.
+Auto detect https use from site url.  
+Add options to fully customize WordPress installation, as multisite or single site.  
 Make themes directory overridable through get_template_directory() and get_template_directory_uri() functions.
 
 ## v0.0.26 (December 25, 2020)
@@ -45,7 +45,7 @@ Update main package with new Whoops integration.
 Update composer components with Guzzle.
 
 ## v0.0.16 (December 17, 2016)
-Update Handler component to make install more efficient.
+Update Handler component to make install more efficient.  
 Replace TwentySixteen theme with the new TwentySeventeen.
 
 ## v0.0.15 (November 14, 2016)
@@ -70,34 +70,34 @@ Add new Cache folder variable, fix composer bash command lines update composer v
 Update composer.json file, add .gitkeep file.
 
 ## v0.0.8 (May 20, 2016)
-Add an own.php file for your own custom constants.
+Add an own.php file for your own custom constants.  
 Add the robots.txt process into composer and sylink to xmlrpc.php file.
 
 ## v0.0.7 (May 14, 2016)
-Fix bugs via PHP CS integration.
+Fix bugs via PHP CS integration.  
 Adds Olympus Hera integration.
 
 ## v0.0.6 (April 23, 2016)
-Travis and PHP CS integration.
-New Error debugger with Whoops and File logger with Monolog.
+Travis and PHP CS integration.  
+New Error debugger with Whoops and File logger with Monolog.  
 New Olympus Hera mu-plugin integration.
 
 ## v0.0.5 (April 13, 2016)
 Travis and PHP CS integration.
 
 ## v0.0.4 (April 12, 2016)
-Please welcome Must Use Plugins :)
-In this new version, PHPCS recommandations have been followed.
-A new MuPlugins Autoloader class has been written.
-The wonderful WP-API Rest plugin is included as a mu-plugins.
+Please welcome Must Use Plugins :)  
+In this new version, PHPCS recommandations have been followed.  
+A new MuPlugins Autoloader class has been written.  
+The wonderful WP-API Rest plugin is included as a mu-plugins.  
 And capistrano processes has been written.
 
 ## v0.0.3 (April 08, 2016)
-I've been working hard to make Composer install more efficient for developers :)
+I've been working hard to make Composer install more efficient for developers :)  
 Configuration files are auto-generated via composer install command.
 
 ## v0.0.2 (March 29, 2016)
-_It's been a while..._
+_It's been a while..._  
 Capistrano integration is now available. Not yet full optimised, but works efficiently.
 
 ## v0.0.1 (January 09, 2016)
