@@ -1,3 +1,6 @@
+## v0.0.30 (February 12, 2022)
+Fix composer integration and Add new --no-interaction command compatibility to work with automatic deploy scripts.
+
 ## v0.0.29 (February 5, 2022)
 Update composer command lines and default WordPress theme.
 Fix the `siteurl` and `home` multisite options with HTTPS protocol.

@@ -62,11 +62,11 @@
   "scripts": {
     "post-install-cmd": [
       "Olympus\\Components\\Handler\\Configurator::build",
-      "[ ! -h web/xmlrpc.php ] && ln -s cms/xmlrpc.php web/xmlrpc.php"
+      "if [ ! -L web/xmlrpc.php ]; then ln -s cms/xmlrpc.php web/xmlrpc.php; fi"
     ],
     "post-update-cmd": [
       "Olympus\\Components\\Handler\\Configurator::build",
-      "[ ! -h web/xmlrpc.php ] && ln -s cms/xmlrpc.php web/xmlrpc.php",
+      "if [ ! -L web/xmlrpc.php ]; then ln -s cms/xmlrpc.php web/xmlrpc.php; fi",
       "find ./app/cache ! -name '.gitkeep' -type f -exec rm -f {} +",
       "find ./web/resources/dist ! -name '.gitkeep' -type f -exec rm -f {} +"
     ],

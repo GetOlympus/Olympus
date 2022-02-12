@@ -36,22 +36,21 @@ class Configurator
         // Instanciate Processor
         $processor = new Processor($event->getIO());
 
+        // Build `config.rb` file
+        $processor->processDeploy(dirname($vendor).$DS.'app'.$DS.'deploy'.$DS.'config.rb');
+
         // Build `env.php` file
         $processor->processEnv(dirname($vendor).$DS.'app'.$DS.'config'.$DS.'env.php');
 
-        // Build `salt.php` file
-        $processor->processSalt(dirname($vendor).$DS.'app'.$DS.'config'.$DS.'salt.php');
-
         // Build `own.php` file
-        $processor->processConfig(dirname($vendor).$DS.'app'.$DS.'config'.$DS.'own.php', false);
-
-        // Build `config.rb` file
-        $processor->processConfig(dirname($vendor).$DS.'app'.$DS.'deploy'.$DS.'config.rb');
+        $processor->processOwn(dirname($vendor).$DS.'app'.$DS.'config'.$DS.'own.php');
 
         // Build `robots.txt` file
         $processor->processRobots(
             dirname($vendor).$DS.'web'.$DS.'robots.txt',
             dirname($vendor).$DS.'app'.$DS.'config'.$DS.'env.php'
         );
+        // Build `salt.php` file
+        $processor->processSalt(dirname($vendor).$DS.'app'.$DS.'config'.$DS.'salt.php');
     }
 }
