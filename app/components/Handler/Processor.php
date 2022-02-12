@@ -22,6 +22,11 @@ class Processor
     /**
      * @var string
      */
+    private $empty = '<info>empty</info>';
+
+    /**
+     * @var string
+     */
     private $ext = '.dist';
 
     /**
@@ -30,15 +35,30 @@ class Processor
     private $io;
 
     /**
+     * @var string
+     */
+    private $question = '<question>%s%s</question> (<comment>default: %s</comment>%s): ';
+
+    /**
+     * @var string
+     */
+    private $salt = 'https://api.wordpress.org/secret-key/1.1/salt/';
+
+    /**
+     * @var string
+     */
+    private $yes_no = 'Answer by <info>yes/y/no/n</info>';
+
+    /**
      * Constructor.
      *
      * @param IOInterface $ioi
      *
      * @since 0.0.3
      */
-    public function __construct(IOInterface $ioi)
+    public function __construct(IOInterface $io)
     {
-        $this->io = $ioi;
+        $this->io = $io;
     }
 
     /**
@@ -62,6 +82,62 @@ class Processor
     }
 
     /**
+     * Merge recursively values.
+     *
+     * @param  array   $default
+     * @param  array   $merge
+     * @return array   $array
+     *
+     * @since 0.0.30
+     */
+    private function mergeRecursively($default, $merge)
+    {
+        $array = [];
+
+        // Iterate on keys
+        foreach ($default as $k => $v) {
+            if (is_array($default[$k])) {
+                $array[$k] = $this->mergeRecursively($default[$k], isset($merge[$k]) ? $merge[$k] : []);
+                continue;
+            }
+
+            $array[$k] = isset($merge[$k]) && !empty($merge[$k]) ? $merge[$k] : $default[$k];
+        }
+
+        return $array;
+    }
+
+    /**
+     * Create `config.rb` file.
+     *
+     * @param  string  $realFile
+     *
+     * @since 0.0.30
+     */
+    public function processDeploy($realFile)
+    {
+        // Check if file exists and display headers
+        $exists = $this->isExists($realFile);
+
+        // Check file and rebuild it
+        if ($exists) {
+            # Write
+            $this->io->write(sprintf('<comment>Your "%s" already exists</comment>', $realFile));
+
+            return;
+        }
+
+        # Write
+        $this->io->write(sprintf('<comment>Your "%s" is copied from "%s"</comment>', $realFile, $realFile.$this->ext));
+
+        // Get contents, simply
+        $contents = file_get_contents($realFile.$this->ext);
+
+        // Write in file
+        file_put_contents($realFile, "# This file is auto-generated during the composer install\n\n".$contents);
+    }
+
+    /**
      * Create `env.php` file.
      *
      * @param  string  $realFile
@@ -74,95 +150,51 @@ class Processor
         $exists = $this->isExists($realFile);
 
         // Find the expected params from dist file
-        $expectedParams = (array) require_once $realFile.$this->ext;
-        $actualValues = [];
+        $expectedValues = (array) require_once $realFile.$this->ext;
+        $actualValues   = [];
 
         // Update contents
         if ($exists) {
-            $existingValues = (array) require_once $realFile;
-
-            // Check validity
-            if ($existingValues === null) {
-                $existingValues = [];
-            }
+            $actualValues = (array) require_once $realFile;
 
             // Params must be stored in an array
-            if (!is_array($existingValues)) {
+            if (!is_array($actualValues)) {
                 throw new \InvalidArgumentException(sprintf(
                     'The existing "%s" file does not contain an array',
                     $realFile
                 ));
             }
-
-            $actualValues = $existingValues;
         }
 
-        // Build Q&A
-        $userValues = $this->getParams($expectedParams, $actualValues, $realFile);
+        // Simply use the expectedValues value as default for the missing params.
+        if (!$this->io->isInteractive()) {
+            $ctn  = 'Interactions are not permitted.'."\n".'Please, edit your "%s" file';
+            $ctn .= ' manually to define properly your parameters.';
+
+            $this->io->write(sprintf('<comment>'.$ctn.'</comment>'."\n", $realFile));
+
+            $answers = $this->mergeRecursively($expectedValues, $actualValues);
+        } else {
+            // Build Q&A
+            $answers = $this->treatParams($expectedValues, $actualValues);
+        }
 
         # Write
-        $this->io->write(sprintf("<comment>All parameters are defined now in your '%s' file</comment>", $realFile));
-
-        // Merge values
-        $actualValues = array_merge_recursive($actualValues, $userValues);
+        $this->io->write(sprintf('<comment>All parameters are defined now in your "%s" file</comment>', $realFile));
 
         // Write in file
-        $ctn = "<?php\n\n/**\n * This file is auto-generated\n */\n\nreturn ".var_export($actualValues, true).";\n";
+        $ctn = "<?php\n\n/**\n * This file is auto-generated\n */\n\nreturn ".var_export($answers, true).";\n";
         file_put_contents($realFile, $ctn);
     }
 
     /**
-     * Create `salt.php` file.
+     * Create `own.php` file.
      *
      * @param  string  $realFile
      *
      * @since 0.0.3
      */
-    public function processSalt($realFile)
-    {
-        // Check if file exists and display headers
-        $exists = $this->isExists($realFile);
-
-        // Check file and rebuild it
-        if ($exists) {
-            unlink($realFile);
-        }
-
-        # Write
-        $this->io->write(
-            "<comment>Get values directly from 'https://api.wordpress.org/secret-key/1.1/salt/'</comment>"
-        );
-
-        // Get salt keys
-        if (function_exists('curl_init')) {
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, 'https://api.wordpress.org/secret-key/1.1/salt/');
-            curl_setopt($ch, CURLOPT_HEADER, false);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-            curl_setopt($ch, CURLOPT_AUTOREFERER, true);
-            $salt = curl_exec($ch);
-            curl_close($ch);
-
-            // Write in file
-            $ctn = "<?php\n\n/**\n * This file is auto-generated during the composer install\n */\n\n".$salt."\n";
-            file_put_contents($realFile, $ctn);
-        } else {
-            $this->io->write(
-                "<comment>curl module is not installed. Please, install it first or get values manually.</comment>\n"
-            );
-        }
-    }
-
-    /**
-     * Create `config.rb` file.
-     *
-     * @param  string  $realFile
-     * @param  bool    $intro
-     *
-     * @since 0.0.3
-     */
-    public function processConfig($realFile, $intro = true)
+    public function processOwn($realFile)
     {
         // Check if file exists and display headers
         $exists = $this->isExists($realFile);
@@ -170,29 +202,19 @@ class Processor
         // Check file and rebuild it
         if ($exists) {
             # Write
-            $this->io->write(sprintf(
-                "<comment>Your '%s' already exists</comment>",
-                $realFile
-            ));
+            $this->io->write(sprintf('<comment>Your "%s" already exists</comment>', $realFile));
 
             return;
         }
 
         # Write
-        $this->io->write(sprintf(
-            "<comment>Your '%s' is copied from '%s'</comment>",
-            $realFile,
-            $realFile.$this->ext
-        ));
+        $this->io->write(sprintf('<comment>Your "%s" is copied from "%s"</comment>', $realFile, $realFile.$this->ext));
 
         // Get contents, simply
         $contents = file_get_contents($realFile.$this->ext);
 
         // Write in file
-        file_put_contents(
-            $realFile,
-            ($intro ? "# This file is auto-generated during the composer install\n\n" : '').$contents
-        );
+        file_put_contents($realFile, $contents);
     }
 
     /**
@@ -211,17 +233,17 @@ class Processor
         // Check file and rebuild it
         if ($exists) {
             # Write
-            $this->io->write(sprintf("<comment>Your '%s' already exists</comment>", $realFile));
+            $this->io->write(sprintf('<comment>Your "%s" already exists</comment>', $realFile));
 
             return;
         }
 
         # Write
-        $this->io->write(sprintf("<comment>Your '%s' is copied from '%s'</comment>", $realFile, $realFile.$this->ext));
+        $this->io->write(sprintf('<comment>Your "%s" is copied from "%s"</comment>', $realFile, $realFile.$this->ext));
 
         // Get contents and environments, simply
         $contents = file_get_contents($realFile.$this->ext);
-        $env = include_once $envFile;
+        $env = include_once $this->isExists($envFile) ? $envFile : $envFile.$this->ext;
 
         // Replace default URL by the configured one
         $contents = str_replace('https://www.domain.tld', $env['wordpress']['home'], $contents);
@@ -231,84 +253,87 @@ class Processor
     }
 
     /**
-     * Get actual params and display Q&A.
+     * Create `salt.php` file.
      *
-     * @param  array   $expectedParams
-     * @param  array   $actualValues
      * @param  string  $realFile
-     * @return array   $values
      *
      * @since 0.0.3
      */
-    private function getParams(array $expectedParams, array $actualValues, $realFile)
+    public function processSalt($realFile)
     {
-        // Simply use the expectedParams value as default for the missing params.
-        if (!$this->io->isInteractive()) {
-            $ctn = "Interactions are not permitted.\nPlease, edit your \"%s\" file";
-            $ctn .= " manually to define properly your parameters.";
+        // Check if file exists and display headers
+        $exists = $this->isExists($realFile);
 
-            $this->io->write(sprintf(
-                "<comment>".$ctn."</comment>\n",
-                $realFile
-            ));
-            return array_replace($expectedParams, $actualValues);
+        // Check file and rebuild it
+        if ($exists) {
+            # Write
+            $this->io->write(sprintf('<comment>Your "%s" already exists</comment>', $realFile));
+
+            return;
         }
 
-        // Get forgotten keys
-        $keys = $this->keyMatch($expectedParams, $actualValues);
+        // Check curl module
+        if (!function_exists('curl_init')) {
+            # Write
+            $this->io->write(
+                "<comment>curl module is not installed. Please, install it first or get values manually.</comment>\n"
+            );
 
-        // Iterate on expectedParams and display Q&A
-        return $this->treatParams($keys);
-    }
-
-    /**
-     * Return an array that contains keys do not match between $array and $compare.
-     *
-     * @param  array   $array
-     * @param  array   $compare
-     * @return array   $diffs
-     *
-     * @since 0.0.4
-     */
-    private function keyMatch(array $array, array $compare)
-    {
-        $diffs = [];
-
-        foreach ($array as $k => $value) {
-            if (!array_key_exists($k, $compare)) {
-                $diffs[$k] = $value;
-                continue;
-            }
-
-            if (is_array($value)) {
-                $diff = $this->keyMatch($value, $compare[$k]);
-
-                if (count($diff)) {
-                    $diffs[$k] = $diff;
-                }
-            }
+            return;
         }
 
-        return $diffs;
+        # Write
+        $this->io->write('<comment>Get values directly from "'.$this->salt.'"</comment>');
+
+        // Get salt keys
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $this->salt);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+        $salt = curl_exec($ch);
+        curl_close($ch);
+
+        // Write in file
+        $ctn = "<?php\n\n/**\n * This file is auto-generated during the composer install\n */\n\n".$salt."\n";
+        file_put_contents($realFile, $ctn);
     }
 
     /**
      * Treat params and display Q&A.
      *
-     * @param  array   $expectedKeys
+     * @param  array   $expectedValues
+     * @param  array   $actualValues
      * @param  bool    $isStarted
      * @param  string  $prefix
      *
      * @since 0.0.3
      */
-    private function treatParams(array $expectedKeys, $isStarted = false, $prefix = '')
+    private function treatParams(array $expectedValues, array $actualValues, $isStarted = false, $prefix = '')
     {
-        $params = [];
+        // Init vars
+        $params   = [];
+        $prefix   = !empty($prefix) ? $prefix.' ' : '';
 
         // Iterate on expected keys
-        foreach ($expectedKeys as $key => $message) {
-            if (is_array($message)) {
-                $params[$key] = $this->treatParams($message, $isStarted, $key);
+        foreach ($expectedValues as $key => $value) {
+            // Check if value is an array of values
+            if (is_array($value)) {
+                // Iterate on expected values and display Q&A with a prefix
+                $params[$key] = $this->treatParams(
+                    $value,
+                    isset($actualValues[$key]) ? $actualValues[$key] : [],
+                    $isStarted,
+                    $key
+                );
+                continue;
+            }
+
+            // Check if value has already been set
+            if (isset($actualValues[$key])) {
+                // Update params
+                $params = $this->updateParams($params, $key, $actualValues[$key]);
                 continue;
             }
 
@@ -317,52 +342,63 @@ class Processor
                 $isStarted = true;
 
                 # Write
-                $this->io->write("\n<comment>Some parameters are missing. Please provide them.</comment>");
+                $this->io->write("\n".'<comment>Some parameters are missing. Please provide them.</comment>');
             }
 
-            // Update message
-            $message = $this->updateMessage($key, $message, $params);
-
-            // Display prefix when its needed, treat special boolean case
-            $p = !empty($prefix) ? $prefix.' ' : '';
-            $m = is_bool($message) && !$message ? '0' : $message;
-
             # Read
-            $value = $this->io->ask(sprintf(
-                "<question>%s%s</question> (<comment>%s</comment>): ",
-                $p,
-                $key,
-                $m
-            ), $message);
+            if ('host' === $key) {
+                $param = $this->io->askAndValidate(
+                    sprintf($this->question, $prefix, $key, $value, ''),
+                    function ($answer) {
+                        $answer = trim($answer);
 
-            $value = is_bool($message) ? (boolean) $value : $value;
-            $value = is_int($message) ? (int) $value : $value;
+                        if (!filter_var($answer, FILTER_VALIDATE_IP)) {
+                            throw new \Exception('The host is not a valid IPv4 or IPv6 address.');
+                        }
+
+                        return $answer;
+                    },
+                    3,
+                    $value
+                );
+            } else if (in_array($key, ['name', 'user'])) {
+                $param = $this->io->askAndValidate(
+                    sprintf($this->question, $prefix, $key, $value, ''),
+                    function ($answer) {
+                        $answer = trim($answer);
+
+                        if ('' === $answer || false !== strpos($answer, ' ')) {
+                            throw new \Exception('The value cannot be empty or contain spaces.');
+                        }
+
+                        return $answer;
+                    },
+                    3,
+                    $value
+                );
+            } else if ('pass' === $key) {
+                $param = $this->io->askAndHideAnswer(
+                    sprintf($this->question, $prefix, $key, $this->empty, '')
+                );
+
+                $param = is_null($param) ? '' : $param;
+            } else if (is_bool($value)) {
+                $param = $this->io->askConfirmation(
+                    sprintf($this->question, $prefix, $key, !$value ? 'no' : 'yes', ' - '.$this->yes_no),
+                    $value
+                );
+            } else {
+                $param = $this->io->ask(
+                    sprintf($this->question, $prefix, $key, '' === $value ? $this->empty : $value, ''),
+                    $value
+                );
+            }
 
             // Update params
-            $params = $this->updateParams($params, $key, $value);
+            $params = $this->updateParams($params, $key, $param);
         }
 
         return $params;
-    }
-
-    /**
-     * Update message.
-     *
-     * @param  string  $key
-     * @param  integer $message
-     * @param  array   $params
-     * @return integer $message
-     *
-     * @since 0.0.25
-     */
-    private function updateMessage($key, $message, $params)
-    {
-        if ('https' !== $key) {
-            return $message;
-        }
-
-        $url = parse_url($params['wordpress']['home']);
-        $message = 'https' === $url['scheme'] ? true : $message;
     }
 
     /**
@@ -377,8 +413,6 @@ class Processor
      */
     private function updateParams($params, $key, $value)
     {
-        $params[$key] = $value;
-
         // Home case
         if ('home' === $key && $value) {
             $url = parse_url($value);
@@ -390,15 +424,16 @@ class Processor
         // Debug case
         if ('debug' === $key && $value) {
             $params[$key] = $this->treatParams([
-                'savequeries' => true,
-                'script_debug' => true,
+                'savequeries'      => true,
+                'script_debug'     => true,
                 'wp_debug_display' => true,
-                'wp_debug' => true,
+                'wp_debug'         => true,
             ], false, $key);
 
             return $params;
         }
 
+        $params[$key] = $value;
         return $params;
     }
 }
