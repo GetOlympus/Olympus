@@ -52,7 +52,7 @@
     "composer/composer": "^2.1",
     "getolympus/olympus-zeus-core": "^2.1",
     "getolympus/olympus-hades-error-handler": "^0.0.5",
-    "johnpbloch/wordpress": "^5.2",
+    "johnpbloch/wordpress": "^6.0",
     "wpackagist-theme/twentytwentytwo": "^1.0"
   },
   "require-dev": {
