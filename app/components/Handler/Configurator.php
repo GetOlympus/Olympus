@@ -45,12 +45,13 @@ class Configurator
         // Build `own.php` file
         $processor->processOwn(dirname($vendor).$DS.'app'.$DS.'config'.$DS.'own.php');
 
+        // Build `salt.php` file
+        $processor->processSalt(dirname($vendor).$DS.'app'.$DS.'config'.$DS.'salt.php');
+
         // Build `robots.txt` file
         $processor->processRobots(
             dirname($vendor).$DS.'web'.$DS.'robots.txt',
             dirname($vendor).$DS.'app'.$DS.'config'.$DS.'env.php'
         );
-        // Build `salt.php` file
-        $processor->processSalt(dirname($vendor).$DS.'app'.$DS.'config'.$DS.'salt.php');
     }
 }
