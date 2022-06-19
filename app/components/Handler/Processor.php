@@ -62,7 +62,27 @@ class Processor
     }
 
     /**
-     * Starts creating file.
+     * Inform creating or updating file.
+     *
+     * @param  string  $realFile
+     * @return bool    $exists
+     *
+     * @since 0.0.31
+     */
+    private function informAction($realFile)
+    {
+        // Check file
+        $exists = $this->isExists($realFile);
+        $action = $exists ? 'Updating' : 'Creating';
+
+        # Write
+        $this->io->write(sprintf('<info>%s the "%s" file</info>', $action, $realFile));
+
+        return $exists;
+    }
+
+    /**
+     * Check file.
      *
      * @param  string  $realFile
      * @return bool    $exists
@@ -71,14 +91,8 @@ class Processor
      */
     private function isExists($realFile)
     {
-        // Check file
-        $exists = is_file($realFile);
-        $action = $exists ? 'Updating' : 'Creating';
-
-        # Write
-        $this->io->write(sprintf('<info>%s the "%s" file</info>', $action, $realFile));
-
-        return $exists;
+        // Check file exists and is file
+        return is_file($realFile);
     }
 
     /**
@@ -117,7 +131,7 @@ class Processor
     public function processDeploy($realFile)
     {
         // Check if file exists and display headers
-        $exists = $this->isExists($realFile);
+        $exists = $this->informAction($realFile);
 
         // Check file and rebuild it
         if ($exists) {
@@ -147,7 +161,7 @@ class Processor
     public function processEnv($realFile)
     {
         // Check if file exists and display headers
-        $exists = $this->isExists($realFile);
+        $exists = $this->informAction($realFile);
 
         // Find the expected params from dist file
         $expectedValues = (array) require_once $realFile.$this->ext;
@@ -197,7 +211,7 @@ class Processor
     public function processOwn($realFile)
     {
         // Check if file exists and display headers
-        $exists = $this->isExists($realFile);
+        $exists = $this->informAction($realFile);
 
         // Check file and rebuild it
         if ($exists) {
@@ -228,7 +242,7 @@ class Processor
     public function processRobots($realFile, $envFile)
     {
         // Check if file exists and display headers
-        $exists = $this->isExists($realFile);
+        $exists = $this->informAction($realFile);
 
         // Check file and rebuild it
         if ($exists) {
@@ -262,7 +276,7 @@ class Processor
     public function processSalt($realFile)
     {
         // Check if file exists and display headers
-        $exists = $this->isExists($realFile);
+        $exists = $this->informAction($realFile);
 
         // Check file and rebuild it
         if ($exists) {

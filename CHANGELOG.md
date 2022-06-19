@@ -1,3 +1,7 @@
+## v0.0.31 (June 19, 2022)
+![][fixed] Fix `.htaccess.dist` file contents.  
+![][fixed] Fix Processor handler via composer.
+
 ## v0.0.30 (February 12, 2022)
 ![][added] Add a better CHANGELOG display.  
 ![][added] Add new `--no-interaction` command compatibility to work with automatic deploy scripts.  
