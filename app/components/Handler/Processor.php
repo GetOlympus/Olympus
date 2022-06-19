@@ -164,12 +164,12 @@ class Processor
         $exists = $this->informAction($realFile);
 
         // Find the expected params from dist file
-        $expectedValues = (array) require_once $realFile.$this->ext;
+        $expectedValues = (array) require $realFile.$this->ext;
         $actualValues   = [];
 
         // Update contents
         if ($exists) {
-            $actualValues = (array) require_once $realFile;
+            $actualValues = (array) require $realFile;
 
             // Params must be stored in an array
             if (!is_array($actualValues)) {
@@ -257,7 +257,7 @@ class Processor
 
         // Get contents and environments, simply
         $contents = file_get_contents($realFile.$this->ext);
-        $env = include_once $this->isExists($envFile) ? $envFile : $envFile.$this->ext;
+        $env = require $this->isExists($envFile) ? $envFile : $envFile.$this->ext;
 
         // Replace default URL by the configured one
         $contents = str_replace('https://www.domain.tld', $env['wordpress']['home'], $contents);

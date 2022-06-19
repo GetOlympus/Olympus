@@ -1,3 +1,6 @@
+## v0.0.32 (June 19, 2022)
+![][fixed] Fix required file on Processor handler.
+
 ## v0.0.31 (June 19, 2022)
 ![][fixed] Fix `.htaccess.dist` file contents.  
 ![][fixed] Fix Processor handler via composer.
