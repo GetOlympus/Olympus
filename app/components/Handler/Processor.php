@@ -442,7 +442,7 @@ class Processor
                 'script_debug'     => true,
                 'wp_debug_display' => true,
                 'wp_debug'         => true,
-            ], false, $key);
+            ], [], $key);
 
             return $params;
         }

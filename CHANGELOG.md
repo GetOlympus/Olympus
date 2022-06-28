@@ -1,3 +1,6 @@
+## v0.0.33 (June 28, 2022)
+![][fixed] Fix array to bool conversion on Processor handler.
+
 ## v0.0.32 (June 19, 2022)
 ![][fixed] Fix required file on Processor handler.
 
