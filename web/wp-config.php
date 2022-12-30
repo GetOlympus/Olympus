@@ -15,7 +15,7 @@
  * Global constants if needed.
  */
 if (!defined('APPPATH')) {
-    include dirname(__FILE__).DIRECTORY_SEPARATOR.'constants.php';
+    include_once rtrim(realpath(dirname(__FILE__)), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.'constants.php';
 }
 
 /**

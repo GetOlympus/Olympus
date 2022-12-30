@@ -39,3 +39,9 @@ defined('STATICSDIR')    || define('STATICSDIR', 'statics');
 defined('MUPLUGINSDIR')  || define('MUPLUGINSDIR', 'mu-plugins');
 defined('PLUGINSDIR')    || define('PLUGINSDIR', 'plugins');
 defined('THEMESDIR')     || define('THEMESDIR', 'themes');
+
+/**
+ * Famous WordPress ABSPATH constant.
+ */
+
+defined('ABSPATH')       || define('ABSPATH', WEBPATH.WORDPRESSDIR.S);
