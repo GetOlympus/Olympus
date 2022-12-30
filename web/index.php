@@ -19,7 +19,7 @@ define('WP_USE_THEMES', true);
 /**
  * Global constants.
  */
-include dirname(__FILE__).DIRECTORY_SEPARATOR.'constants.php';
+include_once dirname(__FILE__).DIRECTORY_SEPARATOR.'constants.php';
 
 /**
  * Loads the WordPress Environment and Template.
@@ -36,4 +36,4 @@ if (!file_exists($wpblogheader = WEBPATH.WORDPRESSDIR.S.'wp-blog-header.php')) {
     Olympus\Components\Error\ErrorDebugger::error500('WordPress is not installed.', $ctn, 'File not found');
 }
 
-require $wpblogheader;
+require_once $wpblogheader;
