@@ -18,24 +18,24 @@ $path = dirname(dirname(__FILE__));
  */
 
 // Directory separator.
-defined('S')             || define('S', DIRECTORY_SEPARATOR);
+defined('S')             or define('S', DIRECTORY_SEPARATOR);
 // Paths.
-defined('APPPATH')       || define('APPPATH', $path.S.'app'.S);
-defined('CACHEPATH')     || define('CACHEPATH', APPPATH.'cache'.S);
-defined('VENDORPATH')    || define('VENDORPATH', $path.S.'vendor'.S);
-defined('WEBPATH')       || define('WEBPATH', $path.S.'web'.S);
+defined('APPPATH')       or define('APPPATH', $path.S.'app'.S);
+defined('CACHEPATH')     or define('CACHEPATH', APPPATH.'cache'.S);
+defined('VENDORPATH')    or define('VENDORPATH', $path.S.'vendor'.S);
+defined('WEBPATH')       or define('WEBPATH', $path.S.'web'.S);
 // Web contents paths.
-defined('DISTPATH')      || define('DISTPATH', WEBPATH.'resources'.S.'dist'.S);
+defined('DISTPATH')      or define('DISTPATH', WEBPATH.'resources'.S.'dist'.S);
 // Error log.
-defined('ERRORPATH')     || define('ERRORPATH', APPPATH.'logs'.S.'errors.log');
+defined('ERRORPATH')     or define('ERRORPATH', APPPATH.'logs'.S.'errors.log');
 
 /**
  * Folder names constants.
  */
 
-defined('WORDPRESSDIR')  || define('WORDPRESSDIR', 'cms');
-defined('WPADMINDIR')    || define('WPADMINDIR', 'wp-admin');
-defined('STATICSDIR')    || define('STATICSDIR', 'statics');
-defined('MUPLUGINSDIR')  || define('MUPLUGINSDIR', 'mu-plugins');
-defined('PLUGINSDIR')    || define('PLUGINSDIR', 'plugins');
-defined('THEMESDIR')     || define('THEMESDIR', 'themes');
+defined('WORDPRESSDIR')  or define('WORDPRESSDIR', 'cms');
+defined('WPADMINDIR')    or define('WPADMINDIR', 'wp-admin');
+defined('STATICSDIR')    or define('STATICSDIR', 'statics');
+defined('MUPLUGINSDIR')  or define('MUPLUGINSDIR', 'mu-plugins');
+defined('PLUGINSDIR')    or define('PLUGINSDIR', 'plugins');
+defined('THEMESDIR')     or define('THEMESDIR', 'themes');

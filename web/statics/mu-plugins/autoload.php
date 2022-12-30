@@ -37,6 +37,7 @@ add_action('setup_theme', function () {
     define('OL_TPL_DIR', get_template_directory());
     // Current theme URI.
     define('OL_TPL_DIR_URI', get_template_directory_uri());
+    define('OL_TPL_DICTIONARY', basename(OL_TPL_DIR));
 
 
     /**
@@ -96,6 +97,18 @@ add_action('setup_theme', function () {
      */
 
     (new MuPlugins(OL_ISADMIN))->init();
+});
+
+/**
+ * Define extra constants after theme setup.
+ */
+add_action('after_setup_theme', function () {
+    /**
+     * Global definitions.
+     */
+
+    // Define if we are in customizer's preview mode or not
+    defined('OL_ISPREVIEW') || define('OL_ISPREVIEW', is_customize_preview());
 });
 
 /**

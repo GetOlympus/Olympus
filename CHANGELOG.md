@@ -1,3 +1,7 @@
+## v0.0.34 (December 28, 2022)
+![][added] Add new constants.
+![][updated] Update the Debugger call.
+
 ## v0.0.33 (June 28, 2022)
 ![][fixed] Fix array to bool conversion on Processor handler.
 
