@@ -14,7 +14,7 @@
 /**
  * Include composer autoloading.
  */
-$loader = include_once APPPATH.'autoload.php';
+$loader = include_once APPPATH.'autoload.php'; // Noncompliant {{Replace "include_once" with namespace import mechanism through the "use" keyword.}}
 
 /**
  * Load environment configuration.
