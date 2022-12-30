@@ -12,11 +12,6 @@
  */
 
 /**
- * Path to WordPress.
- */
-defined('ABSPATH') || define('ABSPATH', WEBPATH.WORDPRESSDIR.S);
-
-/**
  * Include composer autoloading.
  */
 $loader = include_once APPPATH.'autoload.php';

@@ -3,12 +3,12 @@
 /**
  * Register the composer autoloader.
  *
- * @category   PHP
- * @package    Olympus
- * @author     Achraf Chouk <achrafchouk@gmail.com>
- * @license    https://github.com/GetOlympus/Olympus/blob/master/LICENSE MIT
- * @link       https://github.com/GetOlympus/Olympus
- * @since      0.0.1
+ * @category PHP
+ * @package  Olympus
+ * @author   Achraf Chouk <achrafchouk@gmail.com>
+ * @license  https://github.com/GetOlympus/Olympus/blob/master/LICENSE MIT
+ * @link     https://github.com/GetOlympus/Olympus
+ * @since    0.0.1
  */
 
 /**
@@ -21,7 +21,7 @@ if (!file_exists($autoload = VENDORPATH.'autoload.php')) {
     displayError('Unable to find composer autoloader.', $ctn, 'File not found');
 }
 
-$loader = include $autoload;
+$loader = include_once $autoload;
 
 /**
  * Include the compiled class file.
@@ -31,7 +31,7 @@ $loader = include $autoload;
  * by a request.
  */
 if (file_exists($compiled = CACHEPATH.'compiled.php')) {
-    include $compiled;
+    include_once $compiled;
 }
 
 /**

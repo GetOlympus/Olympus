@@ -13,11 +13,10 @@
 
 // Return array of environment data
 if (!file_exists($env = APPPATH.'config'.S.'env.php')) {
-    displayError(
-        'Unable to load your environment data.',
-        'Please define your environments properly in <code>'.basename(APPPATH).S.'config'.S.'env.php</code> file.',
-        'File not found'
-    );
+    $ctn  = 'Please define your environments properly in <code>'.basename(APPPATH).S.'config'.S.'env.php</code> file.';
+    $ctn .= '<br/>You can find an example in the <code>'.basename(APPPATH).S.'config'.S.'env.php.dist</code> file.';
+
+    displayError('Unable to load your environment data.', $ctn, 'File not found');
 }
 
 // Load all environments
@@ -82,11 +81,10 @@ unset($environments);
  * Define salt constants.
  */
 if (!file_exists($salt = APPPATH.'config'.S.'salt.php')) {
-    displayError(
-        'Unable to load your salt data.',
-        'Please define your constants properly in <code>'.basename(APPPATH).S.'config'.S.'salt.php</code> file.',
-        'File not found'
-    );
+    $ctn  = 'Please define your constants properly in <code>'.basename(APPPATH).S.'config'.S.'salt.php</code> file.';
+    $ctn .= '<br/>You can find an example in the <code>'.basename(APPPATH).S.'config'.S.'salt.php.dist</code> file.';
+
+    displayError('Unable to load your salt data.', $ctn, 'File not found');
 }
 
 require_once $salt;

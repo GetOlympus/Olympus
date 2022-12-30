@@ -11,7 +11,7 @@
  * @since    0.0.20
  */
 
-$path = dirname(dirname(__FILE__));
+$path = realpath(dirname(dirname(__FILE__)));
 
 /**
  * Global constants.
@@ -39,3 +39,9 @@ defined('STATICSDIR')    || define('STATICSDIR', 'statics');
 defined('MUPLUGINSDIR')  || define('MUPLUGINSDIR', 'mu-plugins');
 defined('PLUGINSDIR')    || define('PLUGINSDIR', 'plugins');
 defined('THEMESDIR')     || define('THEMESDIR', 'themes');
+
+/**
+ * Famous WordPress ABSPATH constant.
+ */
+
+defined('ABSPATH')       || define('ABSPATH', WEBPATH.WORDPRESSDIR.S);
