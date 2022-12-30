@@ -214,7 +214,7 @@ add_filter('subdirectory_reserved_names', function ($names) {
  * Fires once a site has been created.
  * Useful to update the `siteurl` and `home` options.
  */
-add_action('wpmu_new_blog', function ($blogId, $userId, $domain, $path, $siteId, $meta) { //NOSONAR
+add_action('wpmu_new_blog', function ($blogId, $userId, $domain, $path, $siteId, $meta) {
     // Switch the newly created blog
     switch_to_blog($blogId);
 
