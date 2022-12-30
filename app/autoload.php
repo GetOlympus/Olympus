@@ -21,7 +21,7 @@ if (!file_exists($autoload = VENDORPATH.'autoload.php')) {
     displayError('Unable to find composer autoloader.', $ctn, 'File not found');
 }
 
-$loader = include_once $autoload;
+$loader = include $autoload;
 
 /**
  * Include the compiled class file.
@@ -31,7 +31,7 @@ $loader = include_once $autoload;
  * by a request.
  */
 if (file_exists($compiled = CACHEPATH.'compiled.php')) {
-    include_once $compiled;
+    include $compiled;
 }
 
 /**

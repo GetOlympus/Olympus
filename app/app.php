@@ -14,14 +14,14 @@
 /**
  * Include composer autoloading.
  */
-$loader = include APPPATH.'autoload.php';
+$loader = include_once APPPATH.'autoload.php';
 
 /**
  * Load environment configuration.
  */
-require APPPATH.'environment.php';
+require_once APPPATH.'environment.php';
 
 /**
  * Load error catcher.
  */
-require APPPATH.'error.php';
+require_once APPPATH.'error.php';
