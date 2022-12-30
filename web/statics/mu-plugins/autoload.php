@@ -154,23 +154,23 @@ add_action('admin_footer', function () {
         global $wpdb;
 
         // Get value from DB
-        $subdomain_install = (bool) $wpdb->get_var('
+        $subdomainInstall = (bool) $wpdb->get_var('
             SELECT meta_value FROM '.$wpdb->sitemeta.' WHERE site_id = 1 AND meta_key = "subdomain_install"
         ');
 
-        $contents .= "define('SUBDOMAIN_INSTALL', ".($subdomain_install ? 'true' : 'false').");\n";
+        $contents .= "define('SUBDOMAIN_INSTALL', ".($subdomainInstall ? 'true' : 'false').");\n";
     }
 
     // Check `define('DOMAIN_CURRENT_SITE', ***);` constant definition
     if (!preg_match_all('#^\s?define\(\s?\'DOMAIN_CURRENT_SITE\'\s?,#msi', $contents, $matches)) {
-        $domain_current_site = '\''.get_clean_basedomain().'\'';
-        $contents           .= "define('DOMAIN_CURRENT_SITE', $domain_current_site);\n";
+        $domainCurrentSite = '\''.get_clean_basedomain().'\'';
+        $contents         .= "define('DOMAIN_CURRENT_SITE', $domainCurrentSite);\n";
     }
 
     // Check `define('PATH_CURRENT_SITE', ***);` constant definition
     if (!preg_match_all('#^\s?define\(\s?\'PATH_CURRENT_SITE\'\s?,#msi', $contents, $matches)) {
-        $path_current_site = '\''.parse_url(trailingslashit(get_option('home')), PHP_URL_PATH).'\'';
-        $contents         .= "define('PATH_CURRENT_SITE', $path_current_site);\n";
+        $pathCurrentSite = '\''.parse_url(trailingslashit(get_option('home')), PHP_URL_PATH).'\'';
+        $contents       .= "define('PATH_CURRENT_SITE', $pathCurrentSite);\n";
     }
 
     // Check `define('SITE_ID_CURRENT_SITE', ***);` constant definition
@@ -197,8 +197,8 @@ add_filter('network_site_url', function ($url, $path, $scheme) {
     }
 
     // Fix path by adding the WORDPRESSDIR constant
-    $current_network = get_network();
-    $url = set_url_scheme('https://'.$current_network->domain.'/'.WORDPRESSDIR.$current_network->path, $scheme);
+    $currentNetwork = get_network();
+    $url = set_url_scheme('https://'.$currentNetwork->domain.'/'.WORDPRESSDIR.$currentNetwork->path, $scheme);
 
     return $url.ltrim($path, '/');
 }, 10, 3);
@@ -214,21 +214,21 @@ add_filter('subdirectory_reserved_names', function ($names) {
  * Fires once a site has been created.
  * Useful to update the `siteurl` and `home` options.
  */
-add_action('wpmu_new_blog', function ($blog_id, $user_id, $domain, $path, $site_id, $meta) {
+add_action('wpmu_new_blog', function ($blogId, $userId, $domain, $path, $siteId, $meta) {
     // Switch the newly created blog
-    switch_to_blog($blog_id);
+    switch_to_blog($blogId);
 
     // Get `siteurl` network option
-    $siteurl = get_option('siteurl');
-    $siteurl = rtrim($siteurl, '/');
+    $siteUrl = get_option('siteurl');
+    $siteUrl = rtrim($siteUrl, '/');
 
     // Check is HTTPS protocol is used and update siteurl if needed
-    $is_https = defined('FORCE_SSL_ADMIN') && FORCE_SSL_ADMIN;
-    $siteurl  = $is_https ? str_replace('http://', 'https://', $siteurl) : $siteurl;
+    $isHttps = defined('FORCE_SSL_ADMIN') && FORCE_SSL_ADMIN;
+    $siteUrl = $isHttps ? str_replace('http://', 'https://', $siteUrl) : $siteUrl;
 
     // Update options by adding WORDPRESSDIR constant to siteurl
-    update_option('siteurl', $siteurl.'/'.WORDPRESSDIR);
-    update_option('home', $siteurl);
+    update_option('siteurl', $siteUrl.'/'.WORDPRESSDIR);
+    update_option('home', $siteUrl);
 
     // Restore to the current blog
     restore_current_blog();
