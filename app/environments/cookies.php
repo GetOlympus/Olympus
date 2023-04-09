@@ -11,8 +11,8 @@
  * @since    0.0.20
  */
 
-$md5olympus = md5('olympus');
-$md5siteurl = md5($config['wordpress']['siteurl']);
+$md5olympus = password_hash('olympus', PASSWORD_DEFAULT);
+$md5siteurl = password_hash($config['wordpress']['siteurl'], PASSWORD_DEFAULT);
 $search = '|https?://[^/]+|i';
 
 $opts = array_merge([

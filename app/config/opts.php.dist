@@ -11,6 +11,9 @@
  * @since    0.0.2
  */
 
+$hasholp = password_hash('olympus', PASSWORD_DEFAULT);
+$hashurl = password_hash('https://www.domain.tld/cms/', PASSWORD_DEFAULT);
+
 /**
  * Site environment options.
  */
@@ -51,14 +54,14 @@ return [
     // ~
     'cookies' => [
         // Default
-        'cookiehash'           => md5('https://www.domain.tld/cms/'),
-        // Auth                => md5('olympus').'u_'.md5('https://www.domain.tld/cms/'),
-        'user_cookie'          => '341e76dcd74b690d08b26b51bce88813u_9829f1ed04a267596cd30501b815ad7f',
-        'pass_cookie'          => '341e76dcd74b690d08b26b51bce88813p_9829f1ed04a267596cd30501b815ad7f',
-        'auth_cookie'          => '341e76dcd74b690d08b26b51bce88813a_9829f1ed04a267596cd30501b815ad7f',
-        'secure_auth_cookie'   => '341e76dcd74b690d08b26b51bce88813s_9829f1ed04a267596cd30501b815ad7f',
-        'logged_in_cookie'     => '341e76dcd74b690d08b26b51bce88813l_9829f1ed04a267596cd30501b815ad7f',
-        'recovery_mode_cookie' => '341e76dcd74b690d08b26b51bce88813r_9829f1ed04a267596cd30501b815ad7f',
+        'cookiehash'           => $hashurl,
+        // Auth                => password_hash('olympus').'u_'.password_hash('https://www.domain.tld/cms/'),
+        'user_cookie'          => $hasholp.'u_'.$hashurl,
+        'pass_cookie'          => $hasholp.'p_'.$hashurl,
+        'auth_cookie'          => $hasholp.'a_'.$hashurl,
+        'secure_auth_cookie'   => $hasholp.'s_'.$hashurl,
+        'logged_in_cookie'     => $hasholp.'l_'.$hashurl,
+        'recovery_mode_cookie' => $hasholp.'r_'.$hashurl,
         // Paths
         'cookiepath'           => 'www.domain.tld',
         'sitecookiepath'       => 'www.domain.tld/cms/',
@@ -67,7 +70,7 @@ return [
         // Domain
         'cookie_domain'        => false,
         // Testing or trying...
-        'test_cookie'          => '341e76dcd74b690d08b26b51bce88813is_trying',
+        'test_cookie'          => $hasholp.'is_trying',
     ],
 
     // Debug options
