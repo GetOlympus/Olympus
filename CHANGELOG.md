@@ -1,4 +1,4 @@
-## v0.0.34 (December 28, 2022)
+## v0.0.34 (December 30, 2022)
 ![][added] Add new constants.
 ![][updated] Update displayError() calls and default WordPress ABSPATH constant.
 ![][updated] Update the Debugger call.
