@@ -11,20 +11,20 @@
  * @since    0.0.20
  */
 
-$md5olympus = password_hash('olympus', PASSWORD_DEFAULT);
-$md5siteurl = password_hash($config['wordpress']['siteurl'], PASSWORD_DEFAULT);
+$hasholympus = md5('olympus');
+$hashsiteurl = md5($config['wordpress']['siteurl']);
 $search = '|https?://[^/]+|i';
 
 $opts = array_merge([
     // Default
-    'cookiehash' => $md5siteurl,
+    'cookiehash' => $hashsiteurl,
     // Auth
-    'user_cookie' => $md5olympus.'u_'.$md5siteurl,
-    'pass_cookie' => $md5olympus.'p_'.$md5siteurl,
-    'auth_cookie' => $md5olympus.'a_'.$md5siteurl,
-    'secure_auth_cookie'   => $md5olympus.'s_'.$md5siteurl,
-    'logged_in_cookie'     => $md5olympus.'l_'.$md5siteurl,
-    'recovery_mode_cookie' => $md5olympus.'r_'.$md5siteurl,
+    'user_cookie' => $hasholympus.'_u_'.$hashsiteurl,
+    'pass_cookie' => $hasholympus.'_p_'.$hashsiteurl,
+    'auth_cookie' => $hasholympus.'_a_'.$hashsiteurl,
+    'secure_auth_cookie'   => $hasholympus.'_s_'.$hashsiteurl,
+    'logged_in_cookie'     => $hasholympus.'_l_'.$hashsiteurl,
+    'recovery_mode_cookie' => $hasholympus.'_r_'.$hashsiteurl,
     // Paths
     'cookiepath'           => preg_replace($search, '', $config['wordpress']['home'].S),
     'sitecookiepath'       => preg_replace($search, '', $config['wordpress']['siteurl'].S),
@@ -33,7 +33,7 @@ $opts = array_merge([
     // Domain
     'cookie_domain' => false,
     // Testing or trying...
-    'test_cookie' => $md5olympus.'is_trying',
+    'test_cookie' => $hasholympus.'_is_trying',
 ], isset($config['options']['cookies']) ? $config['options']['cookies'] : []);
 
 /**
