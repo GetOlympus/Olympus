@@ -14,7 +14,7 @@ function displayError($title, $message, $type, $code = 500)
 {
     // Check ErrorDebugger `error500` function
     if (class_exists('\\Olympus\\Components\\Error\\ErrorDebugger')) {
-        $ctn = \Olympus\Components\Error\ErrorDebugger::error500($title, $message, $type);
+        $ctn = \Olympus\Components\Error\ErrorDebugger::error500($title, $message, $type, 'olympus');
         die($ctn);
     }
 
