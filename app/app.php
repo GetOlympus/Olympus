@@ -12,6 +12,13 @@
  */
 
 /**
+ * Helper's functions if needed only
+ */
+if (!function_exists('displayError')) {
+    require_once APPPATH.'components'.S.'helpers.php';
+}
+
+/**
  * Include composer autoloading.
  */
 $loader = include_once APPPATH.'autoload.php';

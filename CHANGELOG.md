@@ -1,3 +1,6 @@
+## v0.0.35 (May 1, 2023)
+![][fixed] Error manager with displayError function.
+
 ## v0.0.34 (December 30, 2022)
 ![][added] Add new constants.
 ![][updated] Update displayError() calls and default WordPress ABSPATH constant.
