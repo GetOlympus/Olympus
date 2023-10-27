@@ -57,7 +57,9 @@
     "getolympus/olympus-zeus-core": "^2.1",
     "getolympus/olympus-hades-error-handler": "^0.0.5",
     "johnpbloch/wordpress": "^6.0",
-    "wpackagist-theme/twentytwentytwo": "^1.0"
+    "wpackagist-theme/twentytwentytwo": "^1.0",
+    "mobiledetect/mobiledetectlib": "^3.74",
+    "gettext/gettext": "^5.7"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "3.*",
@@ -70,7 +72,7 @@
     ],
     "post-update-cmd": [
       "Olympus\\Components\\Handler\\Configurator::build",
-      "if [ ! -L web/xmlrpc.php ]; then ln -s cms/xmlrpc.php web/xmlrpc.php; fi",
+      "if [ ! -L web/pingback.php ]; then ln -s cms/xmlrpc.php web/pingback.php; fi",
       "find ./app/cache ! -name '.gitkeep' -type f -exec rm -f {} +",
       "find ./web/resources/dist ! -name '.gitkeep' -type f -exec rm -f {} +"
     ],

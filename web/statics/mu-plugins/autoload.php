@@ -1,6 +1,7 @@
 <?php
 
 use Olympus\Components\Autoloader\MuPlugins;
+use Detection\MobileDetect;
 
 /**
  * This autoloader initialize all details for Olympus Hera and Zeus.
@@ -90,6 +91,16 @@ add_action('setup_theme', function () {
     defined('OL_DISTURI')       || define('OL_DISTURI', OL_BLOG_HOME.'/resources/dist/');
     // AJAX NONCE value
     defined('OL_NONCE')         || define('OL_NONCE', wp_create_nonce(basename(OL_TPL_DIR).'_ajax_nonce'));
+
+
+    /**
+     * Device detection.
+     */
+
+    $detect = new MobileDetect();
+
+    // Define if we are in the admin panel or not
+    define('OL_DEVICE_TYPE', $detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'mobile') : 'desktop');
 
 
     /**
@@ -202,6 +213,25 @@ add_filter('network_site_url', function ($url, $path, $scheme) {
 
     return $url.ltrim($path, '/');
 }, 10, 3);
+
+/**
+ * Change `xmlrpc.php` default filename from header.
+ */
+add_filter('rest_url_prefix', function ($path) {
+    return WORDPRESSDIR.S.$path;
+});
+
+/**
+ * Change `xmlrpc.php` default filename from header.
+ */
+add_filter('site_url', function ($url, $path, $orig_scheme, $blog_id) {
+    // Check XMLRPC path
+    if ('xmlrpc.php' === $path) {
+        return str_replace(OL_BLOG_WPURL.'/xmlrpc.php', OL_BLOG_HOME.'/'.XMLRPCPATH, $url);
+    }
+
+    return $url;
+}, 10, 4);
 
 /**
  * Filters reserved site names on a sub-directory Multisite installation.

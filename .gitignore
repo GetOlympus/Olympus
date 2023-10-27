@@ -37,6 +37,7 @@ Thumbs.db
 # Olympus auto-generated files
 /web/.htaccess
 /web/robots.txt
+/web/pingback.php
 /web/xmlrpc.php
 
 # Olympus packages assets

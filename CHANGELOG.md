@@ -1,3 +1,6 @@
+## v0.0.36 (October 27, 2023)
+![][added] Add mobile detector and gettext scripts.
+
 ## v0.0.35 (May 1, 2023)
 ![][fixed] Error manager with displayError function.
 
