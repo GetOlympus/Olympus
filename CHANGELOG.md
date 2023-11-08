@@ -1,7 +1,10 @@
-## v0.0.36 (November 8, 2023)
+## v0.0.37 (November 8, 2023)
 ![][added] Change path for `wp-json` including the WordPress dir.
 ![][added] New name for `xmlrpc.php` file.
 ![][added] Add mobile detector.
+
+## v0.0.36 (October 27, 2023)
+![][added] Add mobile detector and gettext scripts.
 
 ## v0.0.35 (May 1, 2023)
 ![][fixed] Error manager with displayError function.
