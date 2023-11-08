@@ -45,7 +45,7 @@ add_action('setup_theme', function () {
      * Blog definitions.
      */
 
-    $name = get_bloginfo('name');
+    $name        = get_bloginfo('name');
     $description = get_bloginfo('description');
 
     // Home URL
@@ -99,7 +99,7 @@ add_action('setup_theme', function () {
 
     $detect = new MobileDetect();
 
-    // Define if we are in the admin panel or not
+    // Define the device type
     define('OL_DEVICE_TYPE', $detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'mobile') : 'desktop');
 
 
@@ -139,7 +139,7 @@ add_action('admin_footer', function () {
     $screen = get_current_screen();
 
     // Check network admin page or POST action
-    if ('network' !== $screen->base || !$_POST) {
+    if (is_null($screen) || 'network' !== $screen->base || !$_POST) {
         return;
     }
 

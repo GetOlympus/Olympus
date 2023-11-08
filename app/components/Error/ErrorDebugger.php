@@ -18,4 +18,5 @@ use GetOlympus\Hades\Hades;
 
 class ErrorDebugger extends Hades
 {
+    //
 }

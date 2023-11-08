@@ -68,7 +68,7 @@
   "scripts": {
     "post-install-cmd": [
       "Olympus\\Components\\Handler\\Configurator::build",
-      "if [ ! -L web/xmlrpc.php ]; then ln -s cms/xmlrpc.php web/xmlrpc.php; fi"
+      "if [ ! -L web/pingback.php ]; then ln -s cms/xmlrpc.php web/pingback.php; fi"
     ],
     "post-update-cmd": [
       "Olympus\\Components\\Handler\\Configurator::build",
