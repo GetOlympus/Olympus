@@ -16,8 +16,6 @@ namespace Olympus\Components\Autoloader;
 
 class AdminAjax
 {
-    const ADMINAJAXGETTER = 'ol-admin-ajax';
-
     /**
      * @var boolean
      */
