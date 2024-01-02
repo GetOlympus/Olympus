@@ -108,8 +108,8 @@ add_action('setup_theme', function () {
      * Class initialization.
      */
 
-    (new MuPlugins(OL_ISADMIN))->init();
-    new AdminAjax(OL_ISADMIN);
+    (new MuPlugins())->init();
+    new AdminAjax();
 });
 
 /**
