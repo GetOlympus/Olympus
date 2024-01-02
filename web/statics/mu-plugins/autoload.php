@@ -1,5 +1,6 @@
 <?php
 
+use Olympus\Components\Autoloader\AdminAjax;
 use Olympus\Components\Autoloader\MuPlugins;
 use Detection\MobileDetect;
 
@@ -108,6 +109,7 @@ add_action('setup_theme', function () {
      */
 
     (new MuPlugins(OL_ISADMIN))->init();
+    new AdminAjax(OL_ISADMIN);
 });
 
 /**
