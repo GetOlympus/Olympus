@@ -21,12 +21,7 @@ class AdminAjax
     /**
      * @var boolean
      */
-    protected $is_admin;
-
-    /**
-     * @var boolean
-     */
-    protected static $is_running = false;
+    protected static $isRunning = false;
 
     /**
      * Constructor.
@@ -35,14 +30,13 @@ class AdminAjax
      *
      * @since 0.0.38
      */
-    public function __construct($is_admin = false)
+    public function __construct()
     {
-        if (true === self::$is_running) {
-            return false;
+        if (self::$isRunning) {
+            return;
         }
 
-        self::$is_running = true;
-        $this->is_admin   = $is_admin;
+        self::$isRunning = true;
 
         add_action('after_setup_theme', [&$this, 'init']);
     }
@@ -54,13 +48,26 @@ class AdminAjax
      */
     public function init()
     {
-        if (!$this->is_admin) {
-            add_filter('admin_url', [&$this, 'redirectAdminAjaxUrl'], 11, 3);
-            add_action('template_redirect', [&$this, 'runAjaxQuery']);
-        }
+        add_action('init', [&$this, 'manageCalls']);
 
-        register_activation_hook(__FILE__, [&$this, 'activate']);
-        add_action('init', [&$this, 'rewriteCalls']);
+        if (!OL_ISADMIN) {
+            add_filter('admin_url', [&$this, 'rewriteAdminAjaxUrl'], 11, 3);
+            add_action('template_redirect', [&$this, 'runAjaxQuery'], 1);
+        }
+    }
+
+    /**
+     * Rewrite all `admin-ajax.php` default calls.
+     *
+     * @since 0.0.38
+     */
+    public function manageCalls()
+    {
+        add_rewrite_tag('%ol-admin-ajax%', '([^&]+)');
+        add_rewrite_tag('%action%', '([^&]+)');
+
+        add_rewrite_rule('^'.ADMINAJAXPATH.'/?$', 'index.php?ol-admin-ajax=1', 'top');
+        add_rewrite_rule('^'.ADMINAJAXPATH.'/([^/]+)/?$', 'index.php?ol-admin-ajax=1&action=$matches[1]', 'top');
     }
 
     /**
@@ -73,24 +80,9 @@ class AdminAjax
      *
      * @since 0.0.38
      */
-    public function redirectAdminAjaxUrl($url, $path, $blog_id)
+    public function rewriteAdminAjaxUrl($url, $path, $blog_id)
     {
-        return strpos($url, 'admin-ajax') ? home_url('/'.preg_replace('#(/$)#', '', ADMINAJAXPATH)) : $url;
-    }
-
-    /**
-     * Rewrite all `admin-ajax.php` default calls.
-     *
-     * @since 0.0.38
-     */
-    public function rewriteCalls()
-    {
-        global $wp_rewrite;
-
-        add_rewrite_tag("%".ADMINAJAXGETTER."%", "([0-9]+)");
-
-        $rule = apply_filters('ol.olympus.admin-ajax.rule', '^'.ADMINAJAXPATH.'?$');
-        add_rewrite_rule($rule, 'index.php?'.ADMINAJAXGETTER.'=true', 'top');
+        return $path === 'admin-ajax.php' ? home_url('/'.ADMINAJAXPATH.'/') : $url;
     }
 
     /**
@@ -102,14 +94,18 @@ class AdminAjax
     {
         global $wp_query;
 
-        if (!$wp_query->get(ADMINAJAXGETTER)) {
+        if (!isset($wp_query->query_vars['ol-admin-ajax'])) {
             return;
         }
 
         define('DOING_AJAX', true);
 
         // Get requested action
-        $action = isset($_REQUEST['action']) ? esc_attr($_REQUEST['action']) : false;
+        if (isset($wp_query->query_vars['action'])) {
+            $action = $wp_query->query_vars['action'];
+        } else {
+            $action = isset($_REQUEST['action']) ? esc_attr($_REQUEST['action']) : false;
+        }
 
         // Check action
         if (!$action) {
@@ -134,7 +130,7 @@ class AdminAjax
         send_nosniff_header();
         nocache_headers();
 
-        $action = (is_user_logged_in() ? 'wp_ajax_' : 'wp_ajax_nopriv_').$action;
+        $action = 'wp_ajax_'.(!is_user_logged_in() ? 'nopriv_' : '').$action;
         do_action($action);
 
         die(0);
