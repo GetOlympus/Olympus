@@ -33,7 +33,7 @@ class MuPlugins
      *
      * @since 0.0.4
      */
-    public function __construct($is_admin = false)
+    public function __construct()
     {
         if (isset(self::$singleton)) {
             return;
@@ -41,7 +41,7 @@ class MuPlugins
 
         self::$singleton = $this;
 
-        if ($is_admin) {
+        if (OL_ISADMIN) {
             add_filter('show_advanced_plugins', [&$this, 'showPlugins'], 0, 2);
         }
     }

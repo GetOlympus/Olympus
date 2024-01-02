@@ -1,6 +1,7 @@
 ## v0.0.38 (January 2nd, 2024)
 *HAPPY NEW YEAR*
 ![][added] Change path for `wp-admin/admin-ajax.php` calls.
+![][fixed] Fix bugs on `AdminAjax` component.
 
 ## v0.0.37 (November 8, 2023)
 ![][added] Change path for `wp-json` including the WordPress dir.

@@ -39,7 +39,7 @@ defined('STATICSDIR')    || define('STATICSDIR', 'statics');
 defined('MUPLUGINSDIR')  || define('MUPLUGINSDIR', 'mu-plugins');
 defined('PLUGINSDIR')    || define('PLUGINSDIR', 'plugins');
 defined('THEMESDIR')     || define('THEMESDIR', 'themes');
-defined('ADMINAJAXPATH') || define('ADMINAJAXPATH', 'request.php');
+defined('ADMINAJAXPATH') || define('ADMINAJAXPATH', 'requests.php');
 defined('XMLRPCPATH')    || define('XMLRPCPATH', 'pingback.php');
 
 /**
