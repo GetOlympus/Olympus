@@ -109,6 +109,5 @@ if (!empty($opts['wp_temp_dir'])) {
     define('WP_TEMP_DIR', (string) $opts['wp_temp_dir']);
 }
 
-
 // Free memory
 unset($opts);

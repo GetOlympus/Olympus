@@ -36,7 +36,7 @@ class AdminAjax
 
         self::$isRunning = true;
 
-        add_action('after_setup_theme', [&$this, 'init']);
+        add_action('after_setup_theme', [$this, 'init']);
     }
 
     /**
@@ -46,11 +46,11 @@ class AdminAjax
      */
     public function init()
     {
-        add_action('init', [&$this, 'manageCalls']);
+        add_action('init', [$this, 'manageCalls']);
 
         if (!OL_ISADMIN) {
-            add_filter('admin_url', [&$this, 'rewriteAdminAjaxUrl'], 11, 3);
-            add_action('template_redirect', [&$this, 'runAjaxQuery'], 1);
+            add_filter('admin_url', [$this, 'rewriteAdminAjaxUrl'], 11, 3);
+            add_action('template_redirect', [$this, 'runAjaxQuery'], 1);
         }
     }
 
