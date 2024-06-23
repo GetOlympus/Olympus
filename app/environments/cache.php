@@ -12,4 +12,8 @@
  */
 
 // Cache dis/enabled
-define('WP_CACHE', (bool) $config['cache']);
+if (isset($config['cache']) && is_bool($config['cache'])) {
+    define('WP_CACHE', $config['cache']);
+} else {
+    define('WP_CACHE', false);
+}

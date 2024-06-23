@@ -1,3 +1,6 @@
+## v0.0.39 (June 23, 2024)
+![][fixed] Fix integration with `Hades` package.
+
 ## v0.0.38 (January 2nd, 2024)
 *HAPPY NEW YEAR*
 ![][added] Change path for `wp-admin/admin-ajax.php` calls.

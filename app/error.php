@@ -16,10 +16,9 @@ use Olympus\Components\Error\ErrorDebugger;
 /**
  * Use the ErrorDebugger to display errors in development environment only
  */
-$err = new ErrorDebugger([
+$err = ErrorDebugger::register([
     'debug' => WP_DEBUG,
     'level' => ERROR_LEVEL,
     'logs'  => dirname(__FILE__).S.'logs'.S,
     'title' => 'Olympus',
 ]);
-$err->register();

@@ -12,4 +12,8 @@
  */
 
 // Multisite dis/enabled
-define('WP_ALLOW_MULTISITE', (bool) $config['multisite']);
+if (isset($config['multisite']) && is_bool($config['multisite'])) {
+    define('WP_ALLOW_MULTISITE', $config['multisite']);
+} else {
+    define('WP_ALLOW_MULTISITE', false);
+}
