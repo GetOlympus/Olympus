@@ -10,6 +10,8 @@
  * @since      0.0.39
  */
 
+$getolympus = 'https://github.com/GetOlympus';
+
 return <<<EOT
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-EN" lang="en-EN">
@@ -29,7 +31,7 @@ return <<<EOT
         <small>
             $type
             <br/>--<br/>
-            Please, find more details on the <a href="https://github.com/GetOlympus" target="_blank">Olympus framework</a> repository.
+            Please, find more details on the <a href="$getolympus" target="_blank">Olympus framework</a> repository.
         </small>
     </div>
 </body>
