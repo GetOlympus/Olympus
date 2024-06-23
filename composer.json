@@ -63,7 +63,7 @@
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "3.*",
-    "wikimedia/less.php": "^3.1"
+    "wikimedia/less.php": "^4.1"
   },
   "scripts": {
     "post-install-cmd": [
